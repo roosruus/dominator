@@ -13,6 +13,19 @@
     "plusActions": 1
   },
   {
+    "set": "Dominion 1st Edition",
+    "name": "Cellar",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 2,
+      "type": "money"
+    },
+    "description": "+1 Action\nDiscard any number of cards, then draw that many.",
+    "plusActions": 1
+  },
+  {
     "set": "Dominion 2nd Edition",
     "name": "Chapel",
     "types": [
@@ -25,7 +38,33 @@
     "description": "Trash up to 4 cards from your hand."
   },
   {
+    "set": "Dominion 1st Edition",
+    "name": "Chapel",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 2,
+      "type": "money"
+    },
+    "description": "Trash up to 4 cards from your hand."
+  },
+  {
     "set": "Dominion 2nd Edition",
+    "name": "Moat",
+    "types": [
+      "Action",
+      "Reaction"
+    ],
+    "cost": {
+      "value": 2,
+      "type": "money"
+    },
+    "description": "+2 Cards\n———-\nWhen another player plays an Attack card, you may first reveal this from your hand, to be unaffected by it.",
+    "plusCards": 2
+  },
+  {
+    "set": "Dominion 1st Edition",
     "name": "Moat",
     "types": [
       "Action",
@@ -94,7 +133,33 @@
     "plusActions": 2
   },
   {
+    "set": "Dominion 1st Edition",
+    "name": "Village",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 3,
+      "type": "money"
+    },
+    "description": "+1 Card\n+2 Actions.",
+    "plusCards": 1,
+    "plusActions": 2
+  },
+  {
     "set": "Dominion 2nd Edition",
+    "name": "Workshop",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 3,
+      "type": "money"
+    },
+    "description": "Gain a card costing up to $4."
+  },
+  {
+    "set": "Dominion 1st Edition",
     "name": "Workshop",
     "types": [
       "Action"
@@ -119,7 +184,32 @@
     "description": "Gain a silver card; put it on top of your deck. Each other player reveals a Victory card from his hand and puts it on his deck (or reveals a hand with no Victory cards)."
   },
   {
+    "set": "Dominion 1st Edition",
+    "name": "Bureaucrat",
+    "types": [
+      "Action",
+      "Attack"
+    ],
+    "cost": {
+      "value": 4,
+      "type": "money"
+    },
+    "description": "Gain a silver card; put it on top of your deck. Each other player reveals a Victory card from his hand and puts it on his deck (or reveals a hand with no Victory cards)."
+  },
+  {
     "set": "Dominion 2nd Edition",
+    "name": "Gardens",
+    "types": [
+      "Victory"
+    ],
+    "cost": {
+      "value": 4,
+      "type": "money"
+    },
+    "description": "Worth 1 Victory for every 10 cards in your deck (rounded down)."
+  },
+  {
+    "set": "Dominion 1st Edition",
     "name": "Gardens",
     "types": [
       "Victory"
@@ -145,7 +235,34 @@
     "plusCoins": 2
   },
   {
+    "set": "Dominion 1st Edition",
+    "name": "Militia",
+    "types": [
+      "Action",
+      "Attack"
+    ],
+    "cost": {
+      "value": 4,
+      "type": "money"
+    },
+    "description": "+$2\nEach other player discards down to 3 cards in their hand.",
+    "plusCoins": 2
+  },
+  {
     "set": "Dominion 2nd Edition",
+    "name": "Moneylender",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 4,
+      "type": "money"
+    },
+    "description": "You may trash a Copper from your hand. If you do, +$3.",
+    "plusCoins": 3
+  },
+  {
+    "set": "Dominion 1st Edition",
     "name": "Moneylender",
     "types": [
       "Action"
@@ -185,6 +302,18 @@
     "description": "Trash a card from your hand. Gain a card costing up to $2 more than the trashed card."
   },
   {
+    "set": "Dominion 1st Edition",
+    "name": "Remodel",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 4,
+      "type": "money"
+    },
+    "description": "Trash a card from your hand. Gain a card costing up to $2 more than the trashed card."
+  },
+  {
     "set": "Dominion 2nd Edition",
     "name": "Smithy",
     "types": [
@@ -198,7 +327,32 @@
     "plusCards": 3
   },
   {
+    "set": "Dominion 1st Edition",
+    "name": "Smithy",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 4,
+      "type": "money"
+    },
+    "description": "+3 Cards.",
+    "plusCards": 3
+  },
+  {
     "set": "Dominion 2nd Edition",
+    "name": "Throne Room",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 4,
+      "type": "money"
+    },
+    "description": "You may play an Action card from your hand twice."
+  },
+  {
+    "set": "Dominion 1st Edition",
     "name": "Throne Room",
     "types": [
       "Action"
@@ -237,7 +391,36 @@
     "plusBuys": 1
   },
   {
+    "set": "Dominion 1st Edition",
+    "name": "Council Room",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 5,
+      "type": "money"
+    },
+    "description": "+4 Cards\n+1 Buy\nEach other player draws a card.",
+    "plusCards": 4,
+    "plusBuys": 1
+  },
+  {
     "set": "Dominion 2nd Edition",
+    "name": "Festival",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 5,
+      "type": "money"
+    },
+    "description": "+2 Actions\n+1 Buy\n+$2.",
+    "plusActions": 2,
+    "plusBuys": 1,
+    "plusCoins": 2
+  },
+  {
+    "set": "Dominion 1st Edition",
     "name": "Festival",
     "types": [
       "Action"
@@ -266,7 +449,33 @@
     "plusActions": 1
   },
   {
+    "set": "Dominion 1st Edition",
+    "name": "Laboratory",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 5,
+      "type": "money"
+    },
+    "description": "+2 Cards\n+1 Action.",
+    "plusCards": 2,
+    "plusActions": 1
+  },
+  {
     "set": "Dominion 2nd Edition",
+    "name": "Library",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 5,
+      "type": "money"
+    },
+    "description": "Draw until you have 7 cards in hand, skipping any Action cards you choose to; set those aside, discarding them afterwards."
+  },
+  {
+    "set": "Dominion 1st Edition",
     "name": "Library",
     "types": [
       "Action"
@@ -294,7 +503,35 @@
     "plusCoins": 1
   },
   {
+    "set": "Dominion 1st Edition",
+    "name": "Market",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 5,
+      "type": "money"
+    },
+    "description": "+1 Card\n+1 Action\n+1 Buy\n+$1.",
+    "plusCards": 1,
+    "plusActions": 1,
+    "plusBuys": 1,
+    "plusCoins": 1
+  },
+  {
     "set": "Dominion 2nd Edition",
+    "name": "Mine",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 5,
+      "type": "money"
+    },
+    "description": "You may trash a Treasure from your hand. Gain a Treasure to your hand costing up to $3 more than it."
+  },
+  {
+    "set": "Dominion 1st Edition",
     "name": "Mine",
     "types": [
       "Action"
@@ -321,6 +558,20 @@
   },
   {
     "set": "Dominion 2nd Edition",
+    "name": "Witch",
+    "types": [
+      "Action",
+      "Attack"
+    ],
+    "cost": {
+      "value": 5,
+      "type": "money"
+    },
+    "description": "+2 Cards\nEach other player gains a Curse card.",
+    "plusCards": 2
+  },
+  {
+    "set": "Dominion 1st Edition",
     "name": "Witch",
     "types": [
       "Action",
@@ -440,7 +691,33 @@
     "plusCards": 3
   },
   {
+    "set": "Intrigue 1st Edition",
+    "name": "Courtyard",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 2,
+      "type": "money"
+    },
+    "description": "+3 Cards\nPut a card from your hand onto your deck.",
+    "plusCards": 3
+  },
+  {
     "set": "Intrigue 2nd Edition",
+    "name": "",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 2,
+      "type": "money"
+    },
+    "description": "+1 Action\nChoose one: Trash an Action card from the Supply; or gain an Action card from the trash.",
+    "plusActions": 1
+  },
+  {
+    "set": "Intrigue 1st Edition",
     "name": "",
     "types": [
       "Action"
@@ -469,6 +746,22 @@
     "plusCoins": 1
   },
   {
+    "set": "Intrigue 1st Edition",
+    "name": "Pawn",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 2,
+      "type": "money"
+    },
+    "description": "Choose two: +1 Card; +1 Action; +1 Buy; +$1. The choices must be different.",
+    "plusCards": 1,
+    "plusActions": 1,
+    "plusBuys": 1,
+    "plusCoins": 1
+  },
+  {
     "set": "Intrigue 2nd Edition",
     "name": "Masquerade",
     "types": [
@@ -482,7 +775,34 @@
     "plusCards": 2
   },
   {
+    "set": "Intrigue 1st Edition",
+    "name": "Masquerade",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 3,
+      "type": "money"
+    },
+    "description": "+2 Cards\nEach player with any cards in hand passes one to the next such player to their left, at once. Then you may trash a card from your hand.",
+    "plusCards": 2
+  },
+  {
     "set": "Intrigue 2nd Edition",
+    "name": "Shanty Town",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 3,
+      "type": "money"
+    },
+    "description": "+2 Actions\nReveal your hand. If you have no Action cards in hand, +2 Cards.",
+    "plusCards": 2,
+    "plusActions": 2
+  },
+  {
+    "set": "Intrigue 1st Edition",
     "name": "Shanty Town",
     "types": [
       "Action"
@@ -510,7 +830,35 @@
     "plusCoins": 2
   },
   {
+    "set": "Intrigue 1st Edition",
+    "name": "Steward",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 3,
+      "type": "money"
+    },
+    "description": "Choose one: +2 Cards; or +$2; or trash 2 cards from your hand.",
+    "plusCards": 2,
+    "plusCoins": 2
+  },
+  {
     "set": "Intrigue 2nd Edition",
+    "name": "Swindler",
+    "types": [
+      "Action",
+      "Attack"
+    ],
+    "cost": {
+      "value": 3,
+      "type": "money"
+    },
+    "description": "+$2\nEach other player trashes the top card of their deck and gains a card with the same cost that you choose.",
+    "plusCoins": 2
+  },
+  {
+    "set": "Intrigue 1st Edition",
     "name": "Swindler",
     "types": [
       "Action",
@@ -538,7 +886,35 @@
     "plusActions": 1
   },
   {
+    "set": "Intrigue 1st Edition",
+    "name": "Wishing Well",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 3,
+      "type": "money"
+    },
+    "description": "+1 Card; +1 Action\nName a card, then reveal the top card of your deck. If you name it, put it in your hand.",
+    "plusCards": 1,
+    "plusActions": 1
+  },
+  {
     "set": "Intrigue 2nd Edition",
+    "name": "Baron",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 4,
+      "type": "money"
+    },
+    "description": "+1 Buy\nYou may discard an Estate for +$4. If you don't gain an Estate.",
+    "plusBuys": 1,
+    "plusCoins": 4
+  },
+  {
+    "set": "Intrigue 1st Edition",
     "name": "Baron",
     "types": [
       "Action"
@@ -566,7 +942,36 @@
     "plusCoins": 1
   },
   {
+    "set": "Intrigue 1st Edition",
+    "name": "Bridge",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 4,
+      "type": "money"
+    },
+    "description": "+1 Buy\n+$1\nThis turn, cards (everywhere) cost $1 less, but not less than $0.",
+    "plusBuys": 1,
+    "plusCoins": 1
+  },
+  {
     "set": "Intrigue 2nd Edition",
+    "name": "Conspirator",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 4,
+      "type": "money"
+    },
+    "description": "+$2\nIf you've played 3 or more Actions this turn (counting this), +1 Card and +1 Action.",
+    "plusCards": 1,
+    "plusActions": 1,
+    "plusCoins": 2
+  },
+  {
+    "set": "Intrigue 1st Edition",
     "name": "Conspirator",
     "types": [
       "Action"
@@ -611,6 +1016,21 @@
     "plusCoins": 1
   },
   {
+    "set": "Intrigue 1st Edition",
+    "name": "Ironworks",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 4,
+      "type": "money"
+    },
+    "description": "Gain a card costing up to $4. If the gained card is an…\nAction card, +1 Action\nTreasure card, +$1\nVictory card, +1 Card",
+    "plusCards": 1,
+    "plusActions": 1,
+    "plusCoins": 1
+  },
+  {
     "set": "Intrigue 2nd Edition",
     "name": "Mill",
     "types": [
@@ -628,6 +1048,21 @@
   },
   {
     "set": "Intrigue 2nd Edition",
+    "name": "Mining Village",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 4,
+      "type": "money"
+    },
+    "description": "+1 Card\n+2 Actions\nYou may trash this for +$2.",
+    "plusCards": 1,
+    "plusActions": 2,
+    "plusCoins": 2
+  },
+  {
+    "set": "Intrigue 1st Edition",
     "name": "Mining Village",
     "types": [
       "Action"
@@ -683,7 +1118,35 @@
     "description": "Worth 1 Victory Point per Duchy you have."
   },
   {
+    "set": "Intrigue 1st Edition",
+    "name": "Duke",
+    "types": [
+      "Victory"
+    ],
+    "cost": {
+      "value": 5,
+      "type": "money"
+    },
+    "description": "Worth 1 Victory Point per Duchy you have."
+  },
+  {
     "set": "Intrigue 2nd Edition",
+    "name": "Minion",
+    "types": [
+      "Action",
+      "Attack"
+    ],
+    "cost": {
+      "value": 5,
+      "type": "money"
+    },
+    "description": "+1 Action\nChoose one: +$2; or discard your hand, +4 Cards, and each other player with at least 5 cards in hand discards their hand and draws 4 cards.",
+    "plusCards": 4,
+    "plusActions": 1,
+    "plusCoins": 2
+  },
+  {
+    "set": "Intrigue 1st Edition",
     "name": "Minion",
     "types": [
       "Action",
@@ -739,6 +1202,20 @@
     "plusCards": 3
   },
   {
+    "set": "Intrigue 1st Edition",
+    "name": "Torturer",
+    "types": [
+      "Action",
+      "Attack"
+    ],
+    "cost": {
+      "value": 5,
+      "type": "money"
+    },
+    "description": "+3 Cards\nEach other player either discards 2 cards or gains a Curse to their hand, their choice. (They may pick an option they can't do.)",
+    "plusCards": 3
+  },
+  {
     "set": "Intrigue 2nd Edition",
     "name": "Trading Post",
     "types": [
@@ -751,7 +1228,33 @@
     "description": "Trash 2 cards from your hand. If you did, gain a Silver to your hand."
   },
   {
+    "set": "Intrigue 1st Edition",
+    "name": "Trading Post",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 5,
+      "type": "money"
+    },
+    "description": "Trash 2 cards from your hand. If you did, gain a Silver to your hand."
+  },
+  {
     "set": "Intrigue 2nd Edition",
+    "name": "Upgrade",
+    "types": [
+      "Action"
+    ],
+    "cost": {
+      "value": 5,
+      "type": "money"
+    },
+    "description": "+1 Card\n+1 Action\nTrash a card from your hand. Gain a card costing exactly $1 more than it.",
+    "plusCards": 1,
+    "plusActions": 1
+  },
+  {
+    "set": "Intrigue 1st Edition",
     "name": "Upgrade",
     "types": [
       "Action"
@@ -778,7 +1281,35 @@
     "description": "$2\n———-\n2 Victory Points"
   },
   {
+    "set": "Intrigue 1st Edition",
+    "name": "Harem",
+    "types": [
+      "Treasure",
+      "Victory"
+    ],
+    "cost": {
+      "value": 6,
+      "type": "money"
+    },
+    "description": "$2\n———-\n2 Victory Points"
+  },
+  {
     "set": "Intrigue 2nd Edition",
+    "name": "Nobles",
+    "types": [
+      "Action",
+      "Victory"
+    ],
+    "cost": {
+      "value": 6,
+      "type": "money"
+    },
+    "description": "Choose one: +3 Cards; or +2 Actions.\n———-\n2 Victory Points",
+    "plusCards": 3,
+    "plusActions": 2
+  },
+  {
+    "set": "Intrigue 1st Edition",
     "name": "Nobles",
     "types": [
       "Action",
@@ -1346,7 +1877,7 @@
     ],
     "cost": {
       "value": 3,
-      "type": "potion"
+      "type": "money"
     },
     "description": "+2 Card\n+1 Action\n———-\nWhen you discard this from play, if you have a Potion in play, you may put this onto your deck.",
     "plusCards": 2,

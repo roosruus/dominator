@@ -5,6 +5,30 @@ const $ = require('cheerio');
 const CARD_LIST_URL = 'https://dominionstrategy.com/all-cards/';
 const OUTPUT_FILE = './src/webapp/data/cards.json';
 
+const DOMINION_1ST_ED_NAME = 'Dominion 1st Edition';
+const DOMINION_2ND_ED_NAME = 'Dominion 2nd Edition';
+const INTRIGUE_1ST_ED_NAME = 'Intrigue 1st Edition';
+const INTRIGUE_2ND_ED_NAME = 'Intrigue 2nd Edition';
+
+const DOMINION_2ND_ED_ONLY = [
+  'Harbinger',
+  'Merchant',
+  'Vassal',
+  'Poacher',
+  'Bandit',
+  'Sentry',
+  'Artisan'
+];
+const INTRIGUE_2ND_ED_ONLY = [
+  'Lurker',
+  'Diplomat',
+  'Mill',
+  'Secret Passage',
+  'Courtier',
+  'Patrol',
+  'Replace'
+];
+
 console.log(`Loading card list from ${CARD_LIST_URL} ...`);
 
 https.get(CARD_LIST_URL, (res) => {
@@ -24,21 +48,21 @@ https.get(CARD_LIST_URL, (res) => {
       if (child.tagName === 'h2') {
         let tableTitle = $(child).text().trim();
         if (tableTitle === 'Cards Removed From Dominion 1st Edition') {
-          tableTitle = 'Dominion 1st Edition';
+          currentSet = 'Dominion 1st Edition';
         } else if (tableTitle === 'Cards Removed From Intrigue 1st Edition') {
-          tableTitle = 'Intrigue 1st Edition';
+          currentSet = 'Intrigue 1st Edition';
         } else if (tableTitle.startsWith('Adventures:')) {
-          tableTitle = 'Adventures';
+          currentSet = 'Adventures';
         } else if (tableTitle.startsWith('Dark Ages:')) {
-          tableTitle = 'Dark Ages';
-        } else if (tableTitle.startsWith('Empires')
-            || tableTitle === 'Castles') {
-          tableTitle = 'Empires';
+          currentSet = 'Dark Ages';
+        } else if (tableTitle.startsWith('Empires') || tableTitle === 'Castles') {
+          currentSet = 'Empires';
         } else if (tableTitle.startsWith('Nocturne')) {
-          tableTitle = 'Nocturne';
+          currentSet = 'Nocturne';
+        } else {
+          currentSet = tableTitle;
         }
-        currentSet = tableTitle;
-        console.log(`Processing: ${currentSet}`);
+        console.log(`Processing: ${tableTitle}`);
       } else if (child.tagName === 'table') {
         // resolve cards in set
         $(child).find('tr').each((i, row) => {
@@ -58,7 +82,9 @@ https.get(CARD_LIST_URL, (res) => {
               if (cost) {
                 card.cost = {
                   value: parseInt(cost[1]),
-                  type: cost[2] ? 'potion' : 'money'
+                  type: cost[2]
+                    ? 'potion'
+                    : 'money'
                 };
               }
             } else if (i === 3) {
@@ -86,6 +112,14 @@ https.get(CARD_LIST_URL, (res) => {
             }
           });
           cards.push(card);
+          // add common Dominion cards to 1st edition
+          if (card.set === DOMINION_2ND_ED_NAME && DOMINION_2ND_ED_ONLY.indexOf(card.name) === -1) {
+            cards.push(Object.assign({}, card, {set: DOMINION_1ST_ED_NAME}));
+          }
+          // add common Intrigue cards to 1st edition
+          if (card.set === INTRIGUE_2ND_ED_NAME && INTRIGUE_2ND_ED_ONLY.indexOf(card.name) === -1) {
+            cards.push(Object.assign({}, card, {set: INTRIGUE_1ST_ED_NAME}));
+          }
         });
       }
     });
