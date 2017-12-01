@@ -35,6 +35,10 @@ const config = {
            'style-loader',
            'css-loader'
          ]
+       },
+       {
+         test: /\.json$/,
+         loader: 'json-loader'
        }
      ]
   }
