@@ -73,11 +73,11 @@ export const RULES_KINGDOM_CARDS = {
         'Teacher',
         'Champion',
         // Nocturne
-        'Will-o\'-Wisp',
+        'Will-O\'-Wisp',
         'Wish',
         'Bat',
         'Imp',
-        'Zombie ApprenticeZombie',
+        'Zombie Apprentice',
         'Zombie Mason',
         'Zombie Spy',
         'Ghost'

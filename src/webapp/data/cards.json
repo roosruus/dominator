@@ -77,7 +77,7 @@
       "value": 3,
       "type": "money"
     },
-    "description": "Discard the top card of your deck. If it’s an Action card, you may play it."
+    "description": "Discard the top card of your deck. If it's an Action card, you may play it."
   },
   {
     "set": "Dominion 2nd Edition",
@@ -547,7 +547,7 @@
       "value": 4,
       "type": "money"
     },
-    "description": "+1 Buy\nYou may discard an Estate for +$4. If you don’t gain an Estate.",
+    "description": "+1 Buy\nYou may discard an Estate for +$4. If you don't gain an Estate.",
     "plusBuys": 1,
     "plusCoins": 4
   },
@@ -575,7 +575,7 @@
       "value": 4,
       "type": "money"
     },
-    "description": "+$2\nIf you’ve played 3 or more Actions this turn (counting this), +1 Card and +1 Action.",
+    "description": "+$2\nIf you've played 3 or more Actions this turn (counting this), +1 Card and +1 Action.",
     "plusCards": 1,
     "plusActions": 1,
     "plusCoins": 2
@@ -722,7 +722,7 @@
       "value": 5,
       "type": "money"
     },
-    "description": "Trash a card from your hand. Gain a card costing up to $2 more than it. If the gained card is an Action or Treasure, put it onto your deck; if it’s a Victory card, each other player gains a Curse."
+    "description": "Trash a card from your hand. Gain a card costing up to $2 more than it. If the gained card is an Action or Treasure, put it onto your deck; if it's a Victory card, each other player gains a Curse."
   },
   {
     "set": "Intrigue 2nd Edition",
@@ -735,7 +735,7 @@
       "value": 5,
       "type": "money"
     },
-    "description": "+3 Cards\nEach other player either discards 2 cards or gains a Curse to their hand, their choice. (They may pick an option they can’t do.)",
+    "description": "+3 Cards\nEach other player either discards 2 cards or gains a Curse to their hand, their choice. (They may pick an option they can't do.)",
     "plusCards": 3
   },
   {
@@ -913,7 +913,7 @@
       "value": 2,
       "type": "money"
     },
-    "description": "+1 Action\nNow and at the start of your next turn: +$1.\n———-\nWhile this is in play, when another player plays an Attack card, it doesn’t affect you.",
+    "description": "+1 Action\nNow and at the start of your next turn: +$1.\n———-\nWhile this is in play, when another player plays an Attack card, it doesn't affect you.",
     "plusActions": 1,
     "plusCoins": 1
   },
@@ -1144,7 +1144,7 @@
       "value": 5,
       "type": "money"
     },
-    "description": "You may reveal a Province from your hand. If you do, gain a Gold to your hand. If you don’t, gain a Silver to your hand."
+    "description": "You may reveal a Province from your hand. If you do, gain a Gold to your hand. If you don't, gain a Silver to your hand."
   },
   {
     "set": "Seaside",
@@ -1185,7 +1185,7 @@
       "value": 5,
       "type": "money"
     },
-    "description": "If this is the first time you played an Outpost this turn, and the previous turn wasn’t yours, then take an extra turn after this one, and you only draw 3 cards for your next hand."
+    "description": "If this is the first time you played an Outpost this turn, and the previous turn wasn't yours, then take an extra turn after this one, and you only draw 3 cards for your next hand."
   },
   {
     "set": "Seaside",
@@ -1213,7 +1213,7 @@
       "value": 5,
       "type": "money"
     },
-    "description": "+1 Card\n+1 Action\n+$1\nWhen you discard this from play, if you didn’t buy a Victory card this turn, you may put this onto your deck.",
+    "description": "+1 Card\n+1 Action\n+$1\nWhen you discard this from play, if you didn't buy a Victory card this turn, you may put this onto your deck.",
     "plusCards": 1,
     "plusActions": 1,
     "plusCoins": 1
@@ -1283,7 +1283,7 @@
       "value": 0,
       "type": "potion"
     },
-    "description": "Trash a card from your hand. If it’s an…\nAction card, gain a Duchy\nTreasure card, gain a Transmute\nVictory card, gain a Gold"
+    "description": "Trash a card from your hand. If it's an…\nAction card, gain a Duchy\nTreasure card, gain a Transmute\nVictory card, gain a Gold"
   },
   {
     "set": "Alchemy",
@@ -1322,7 +1322,7 @@
       "value": 2,
       "type": "potion"
     },
-    "description": "+1 Action\nEach player (including you) reveals the top card of their deck and either discards it or puts it back, your choice. Then reveal cards from your deck until revealing one that isn’t an Action. Put all of those revealed cards into your hand.",
+    "description": "+1 Action\nEach player (including you) reveals the top card of their deck and either discards it or puts it back, your choice. Then reveal cards from your deck until revealing one that isn't an Action. Put all of those revealed cards into your hand.",
     "plusActions": 1
   },
   {
@@ -1369,7 +1369,7 @@
   },
   {
     "set": "Alchemy",
-    "name": "Philosopher’s Stone",
+    "name": "Philosopher's Stone",
     "types": [
       "Treasure"
     ],
@@ -1494,7 +1494,7 @@
   },
   {
     "set": "Prosperity",
-    "name": "Worker’s Village",
+    "name": "Worker's Village",
     "types": [
       "Action"
     ],
@@ -1533,7 +1533,7 @@
       "value": 5,
       "type": "money"
     },
-    "description": "$3\n+1 Buy\nWhen you play this, the player to your left names a card. You can’t buy that card this turn.",
+    "description": "$3\n+1 Buy\nWhen you play this, the player to your left names a card. You can't buy that card this turn.",
     "plusBuys": 1
   },
   {
@@ -1571,7 +1571,7 @@
       "value": 5,
       "type": "money"
     },
-    "description": "+$2\nEach other player may discard a Curse. If they don’t, they gain a Curse and a Copper.",
+    "description": "+$2\nEach other player may discard a Curse. If they don't, they gain a Curse and a Copper.",
     "plusCoins": 2
   },
   {
@@ -1651,7 +1651,7 @@
       "value": 6,
       "type": "money"
     },
-    "description": "+1 Card\n+1 Action\n+1 Buy\n+$2\n———-\nYou can’t buy this if you have any Coppers in play.",
+    "description": "+1 Card\n+1 Action\n+1 Buy\n+$2\n———-\nYou can't buy this if you have any Coppers in play.",
     "plusCards": 1,
     "plusActions": 1,
     "plusBuys": 1,
@@ -1679,7 +1679,7 @@
       "value": 7,
       "type": "money"
     },
-    "description": "Worth $?\nWhen you play this, it’s worth $1 per Treasure card you have in play (counting this)."
+    "description": "Worth $?\nWhen you play this, it's worth $1 per Treasure card you have in play (counting this)."
   },
   {
     "set": "Prosperity",
@@ -1707,7 +1707,7 @@
   },
   {
     "set": "Prosperity",
-    "name": "King’s Court",
+    "name": "King's Court",
     "types": [
       "Action"
     ],
@@ -1866,7 +1866,7 @@
       "value": 4,
       "type": "money"
     },
-    "description": "+2 Cards\nDiscard 2 cards. Each other player may reveal a Bane card from their hand; if they don’t, they gain a Curse.\n———-\nSetup: Add an extra Kingdom card pile costing $2 or $3 to the Supply. Cards from that pile are Bane cards.",
+    "description": "+2 Cards\nDiscard 2 cards. Each other player may reveal a Bane card from their hand; if they don't, they gain a Curse.\n———-\nSetup: Add an extra Kingdom card pile costing $2 or $3 to the Supply. Cards from that pile are Bane cards.",
     "plusCards": 2
   },
   {
@@ -1892,7 +1892,7 @@
       "value": 5,
       "type": "money"
     },
-    "description": "Worth $0.\nWhen you play this, gain a card costing up to $1 per differently named card you have in play (counting this). If it’s a Victory card, trash this."
+    "description": "Worth $0.\nWhen you play this, gain a card costing up to $1 per differently named card you have in play (counting this). If it's a Victory card, trash this."
   },
   {
     "set": "Cornucopia",
@@ -1904,7 +1904,7 @@
       "value": 5,
       "type": "money"
     },
-    "description": "+1 Card\n+1 Action.\nReveal your hand. Reveal cards from your deck until you reveal one that isn’t a copy of one in your hand. Put it into your hand and discard the rest.",
+    "description": "+1 Card\n+1 Action.\nReveal your hand. Reveal cards from your deck until you reveal one that isn't a copy of one in your hand. Put it into your hand and discard the rest.",
     "plusCards": 1,
     "plusActions": 1
   },
@@ -1919,7 +1919,7 @@
       "value": 5,
       "type": "money"
     },
-    "description": "+$2\nEach other player discards the top card of their deck. If it’s a Victory card they gain a Curse; otherwise they gain a copy of the discarded card or you do, your choice.",
+    "description": "+$2\nEach other player discards the top card of their deck. If it's a Victory card they gain a Curse; otherwise they gain a copy of the discarded card or you do, your choice.",
     "plusCoins": 2
   },
   {
@@ -2036,7 +2036,7 @@
   },
   {
     "set": "Hinterlands",
-    "name": "Fool’s Gold",
+    "name": "Fool's Gold",
     "types": [
       "Treasure",
       "Reaction"
@@ -2045,7 +2045,7 @@
       "value": 2,
       "type": "money"
     },
-    "description": "Worth $1 if it’s the first time you played a Fool’s Gold this turn, otherwise worth $4.\n———-\nWhen another player gains a Province, you may trash this from your hand, to gain a Gold onto your deck."
+    "description": "Worth $1 if it's the first time you played a Fool's Gold this turn, otherwise worth $4.\n———-\nWhen another player gains a Province, you may trash this from your hand, to gain a Gold onto your deck."
   },
   {
     "set": "Hinterlands",
@@ -2137,7 +2137,7 @@
       "value": 4,
       "type": "money"
     },
-    "description": "+$1\nWhen you buy or play this, each other player reveals the top 2 cards of their deck, trashes a revealed Silver or Gold you choose, discards the rest, and gains a Copper if they didn’t reveal a Treasure. You gain the trashed cards.",
+    "description": "+$1\nWhen you buy or play this, each other player reveals the top 2 cards of their deck, trashes a revealed Silver or Gold you choose, discards the rest, and gains a Copper if they didn't reveal a Treasure. You gain the trashed cards.",
     "plusCoins": 1
   },
   {
@@ -2364,7 +2364,7 @@
       "value": 1,
       "type": "money"
     },
-    "description": "+$4\nReveal your hand. -$1 per Treasure card in your hand. (You can’t go below $0.)",
+    "description": "+$4\nReveal your hand. -$1 per Treasure card in your hand. (You can't go below $0.)",
     "plusCoins": 4
   },
   {
@@ -2405,7 +2405,7 @@
       "value": 2,
       "type": "money"
     },
-    "description": "+1 Card\n+1 Action\nReveal the top card of your deck. If it’s a Curse, Ruins, Shelter, or Victory card, put it into your hand.",
+    "description": "+1 Card\n+1 Action\nReveal the top card of your deck. If it's a Curse, Ruins, Shelter, or Victory card, put it into your hand.",
     "plusCards": 1,
     "plusActions": 1
   },
@@ -2434,7 +2434,7 @@
       "value": 3,
       "type": "money"
     },
-    "description": "Look through your discard pile. You may trash a non-Treasure card from your discard pile or hand. Gain a card costing up to $3.\n———-\nWhen you discard this from play, if you didn’t buy any cards this turn, trash this and gain a Madman from the Madman pile."
+    "description": "Look through your discard pile. You may trash a non-Treasure card from your discard pile or hand. Gain a card costing up to $3.\n———-\nWhen you discard this from play, if you didn't buy any cards this turn, trash this and gain a Madman from the Madman pile."
   },
   {
     "set": "Dark Ages",
@@ -2545,7 +2545,7 @@
       "value": 4,
       "type": "money"
     },
-    "description": "+$5\nYou may trash an Action card from your hand. If you don’t, trash this.\n___\nWhen you gain this, gain two Ruins.",
+    "description": "+$5\nYou may trash an Action card from your hand. If you don't, trash this.\n___\nWhen you gain this, gain two Ruins.",
     "plusCoins": 5
   },
   {
@@ -2584,7 +2584,7 @@
       "value": 4,
       "type": "money"
     },
-    "description": "+1 Card\n+1 Action\nReveal the top card of your deck; you may discard it. Either way, if it’s an…\nAction card, +1 Action\nTreasure card, +$1\nVictory card, +1 Card",
+    "description": "+1 Card\n+1 Action\nReveal the top card of your deck; you may discard it. Either way, if it's an…\nAction card, +1 Action\nTreasure card, +$1\nVictory card, +1 Card",
     "plusCards": 1,
     "plusActions": 1,
     "plusCoins": 1
@@ -3393,7 +3393,7 @@
       "value": 3,
       "type": "money"
     },
-    "description": "+1 Card\n+1 Action\nAt the start of your next turn, +$1.\n———-\nWhen another player plays an Attack card, you may first play this from your hand.\n(+1 Action has no effect if it’s not your turn.)",
+    "description": "+1 Card\n+1 Action\nAt the start of your next turn, +$1.\n———-\nWhen another player plays an Attack card, you may first play this from your hand.\n(+1 Action has no effect if it's not your turn.)",
     "plusCards": 1,
     "plusActions": 1,
     "plusCoins": 1
@@ -3465,7 +3465,7 @@
       "value": 4,
       "type": "money"
     },
-    "description": "+1 Card\n+1 Action\nReveal the top card of your deck. If it’s a Treasure, put it into your hand. If it’s an Action or Victory card, gain a Magpie.",
+    "description": "+1 Card\n+1 Action\nReveal the top card of your deck. If it's a Treasure, put it into your hand. If it's an Action or Victory card, gain a Magpie.",
     "plusCards": 1,
     "plusActions": 1
   },
@@ -3520,7 +3520,7 @@
       "value": 4,
       "type": "money"
     },
-    "description": "+1 Buy\nTurn your Journey token over (it starts face up). Then if it’s face up, +5 Cards.",
+    "description": "+1 Buy\nTurn your Journey token over (it starts face up). Then if it's face up, +5 Cards.",
     "plusCards": 5,
     "plusBuys": 1
   },
@@ -3593,7 +3593,7 @@
       "value": 5,
       "type": "money"
     },
-    "description": "Turn your Journey token over (it starts face up). Then if it’s face down, +$1. If it’s face up, +$5, and each other player reveals the top card of their deck, trashes it if it costs from $3 to $6, and otherwise discards it and gains a Curse.",
+    "description": "Turn your Journey token over (it starts face up). Then if it's face down, +$1. If it's face up, +$5, and each other player reveals the top card of their deck, trashes it if it costs from $3 to $6, and otherwise discards it and gains a Curse.",
     "plusCoins": 1
   },
   {
@@ -3649,7 +3649,7 @@
       "value": 5,
       "type": "money"
     },
-    "description": "+1 Action\nPut this on your Tavern mat.\n———-\nDirectly after you finish playing an Action card, if it’s still in play, you may call this, to replay that Action.",
+    "description": "+1 Action\nPut this on your Tavern mat.\n———-\nDirectly after you finish playing an Action card, if it's still in play, you may call this, to replay that Action.",
     "plusActions": 1
   },
   {
@@ -3745,7 +3745,7 @@
       "value": 0,
       "type": "money"
     },
-    "description": "Once per turn: +1 Buy. If your -1 Card token isn’t on your deck, put it there and +$1.",
+    "description": "Once per turn: +1 Buy. If your -1 Card token isn't on your deck, put it there and +$1.",
     "plusBuys": 1,
     "plusCoins": 1
   },
@@ -3858,7 +3858,7 @@
       "value": 4,
       "type": "money"
     },
-    "description": "Once per turn: If the previous turn wasn’t yours, take another turn after this one, during which you can’t buy cards."
+    "description": "Once per turn: If the previous turn wasn't yours, take another turn after this one, during which you can't buy cards."
   },
   {
     "set": "Adventures",
@@ -3870,7 +3870,7 @@
       "value": 4,
       "type": "money"
     },
-    "description": "Once per turn: Turn your Journey token over (it starts face up); then if it’s face up, choose up to 3 differently named cards you have in play and gain a copy of each."
+    "description": "Once per turn: Turn your Journey token over (it starts face up); then if it's face up, choose up to 3 differently named cards you have in play and gain a copy of each."
   },
   {
     "set": "Adventures",
@@ -4027,7 +4027,7 @@
       "value": 6,
       "type": "money"
     },
-    "description": "+1 Action\nFor the rest of the game, when another player plays an Attack, it doesn’t affect you, and when you play an Action, +1 Action.\n(This stays in play. This is not in the Supply.)",
+    "description": "+1 Action\nFor the rest of the game, when another player plays an Attack, it doesn't affect you, and when you play an Action, +1 Action.\n(This stays in play. This is not in the Supply.)",
     "plusActions": 1
   },
   {
@@ -4135,7 +4135,7 @@
       "value": 2,
       "type": "money"
     },
-    "description": "+2 Cards\n+2 Actions\nYou may reveal a Gold or Plunder from your hand. If you don’t, set this aside, and return it to the Supply at the start of Clean-up.\n(This is the top half of the Encampment/Plunder pile.)",
+    "description": "+2 Cards\n+2 Actions\nYou may reveal a Gold or Plunder from your hand. If you don't, set this aside, and return it to the Supply at the start of Clean-up.\n(This is the top half of the Encampment/Plunder pile.)",
     "plusCards": 2,
     "plusActions": 2
   },
@@ -4232,7 +4232,7 @@
       "value": 3,
       "type": "money"
     },
-    "description": "+$1\nTrash a card from your hand. If it costs $3 or more, each other player gains a Curse. If it’s a Treasure, each other player discards down to 3 cards in hand.\n(This is the top half of the Catapult/Rocks pile.)",
+    "description": "+$1\nTrash a card from your hand. If it costs $3 or more, each other player gains a Curse. If it's a Treasure, each other player discards down to 3 cards in hand.\n(This is the top half of the Catapult/Rocks pile.)",
     "plusCoins": 1
   },
   {
@@ -4245,7 +4245,7 @@
       "value": 4,
       "type": "money"
     },
-    "description": "+$1\n———-\nWhen you gain or trash this, gain a Silver; if it’s your Buy phase, put the Silver on your deck, otherwise put it into your hand.\n(This is the bottom half of the Catapult/Rocks pile.)",
+    "description": "+$1\n———-\nWhen you gain or trash this, gain a Silver; if it's your Buy phase, put the Silver on your deck, otherwise put it into your hand.\n(This is the bottom half of the Catapult/Rocks pile.)",
     "plusCoins": 1
   },
   {
@@ -4280,7 +4280,7 @@
   },
   {
     "set": "Empires",
-    "name": "Farmer’s Market",
+    "name": "Farmer's Market",
     "types": [
       "Action",
       "Gathering"
@@ -4289,7 +4289,7 @@
       "value": 3,
       "type": "money"
     },
-    "description": "+1 Buy\nIf there are 4 VP or more on the Farmers’ Market Supply pile, take them and trash this. Otherwise, add 1 VP to the pile and then +$1 per 1 VP on the pile.",
+    "description": "+1 Buy\nIf there are 4 VP or more on the Farmers' Market Supply pile, take them and trash this. Otherwise, add 1 VP to the pile and then +$1 per 1 VP on the pile.",
     "plusBuys": 1,
     "plusCoins": 1
   },
@@ -4303,7 +4303,7 @@
       "value": 3,
       "type": "money"
     },
-    "description": "+$2\nReveal a card from your hand. The player to your left may reveal a copy from their hand. If they don’t, +$1 and trash a Gladiator from the Supply.\n(This is the top half of the Gladiator/Fortune pile.)",
+    "description": "+$2\nReveal a card from your hand. The player to your left may reveal a copy from their hand. If they don't, +$1 and trash a Gladiator from the Supply.\n(This is the top half of the Gladiator/Fortune pile.)",
     "plusCoins": 2
   },
   {
@@ -4316,7 +4316,7 @@
       "value": 8,
       "type": "money"
     },
-    "description": "+1 Buy\nWhen you play this, double your $ if you haven’t yet this turn.\n———-\nWhen you gain this, gain a Gold per Gladiator you have in play.\n(This is the bottom half of the Gladiator/Fortune pile.)",
+    "description": "+1 Buy\nWhen you play this, double your $ if you haven't yet this turn.\n———-\nWhen you gain this, gain a Gold per Gladiator you have in play.\n(This is the bottom half of the Gladiator/Fortune pile.)",
     "plusBuys": 1
   },
   {
@@ -4329,7 +4329,7 @@
       "value": 4,
       "type": "money"
     },
-    "description": "Trash a card from your hand. If it’s an…\nAction card, +2 Cards, +2 Actions\nTreasure card, +$2\nVictory card, +2 VP",
+    "description": "Trash a card from your hand. If it's an…\nAction card, +2 Cards, +2 Actions\nTreasure card, +$2\nVictory card, +2 VP",
     "plusCards": 2,
     "plusActions": 2,
     "plusCoins": 2
@@ -4357,7 +4357,7 @@
       "value": 4,
       "type": "money"
     },
-    "description": "+2 Actions\n+1 Buy\n+$1\n———-\nWhen you gain this, put it into your hand, +1 Action, and if it’s your Buy phase return to your Action phase.",
+    "description": "+2 Actions\n+1 Buy\n+$1\n———-\nWhen you gain this, put it into your hand, +1 Action, and if it's your Buy phase return to your Action phase.",
     "plusActions": 2,
     "plusBuys": 1,
     "plusCoins": 1
@@ -4414,7 +4414,7 @@
       "value": 5,
       "type": "money"
     },
-    "description": "If it’s your Action phase, you may play an Action from your hand twice.\nIf it’s your Buy phase, you may play a Treasure from your hand twice."
+    "description": "If it's your Action phase, you may play an Action from your hand twice.\nIf it's your Buy phase, you may play a Treasure from your hand twice."
   },
   {
     "set": "Empires",
@@ -4570,7 +4570,7 @@
   },
   {
     "set": "Empires",
-    "name": "King’s Castle",
+    "name": "King's Castle",
     "types": [
       "Victory",
       "Castle"
@@ -4599,7 +4599,7 @@
     "types": [
       "Event"
     ],
-    "description": "Gain an Estate. If you did, +1 VP per card you’ve gained this turn."
+    "description": "Gain an Estate. If you did, +1 VP per card you've gained this turn."
   },
   {
     "set": "Empires",
@@ -4712,7 +4712,7 @@
       "value": 6,
       "type": "money"
     },
-    "description": "Gain 2 Silvers. +1 VP per Silver you’ve gained this turn."
+    "description": "Gain 2 Silvers. +1 VP per Silver you've gained this turn."
   },
   {
     "set": "Empires",
@@ -4876,7 +4876,7 @@
     "types": [
       "Landmark"
     ],
-    "description": "When scoring, 3 VP per copy you have of the 2nd most common Action card among your cards (if it’s a tie, count either)."
+    "description": "When scoring, 3 VP per copy you have of the 2nd most common Action card among your cards (if it's a tie, count either)."
   },
   {
     "set": "Empires",
@@ -5058,7 +5058,7 @@
       "value": 2,
       "type": "money"
     },
-    "description": "Until your next turn, when another player plays an Attack card, it doesn’t affect you. At the start of your next turn, +$1.\n\nThis is gained to your hand (instead of your discard pile).",
+    "description": "Until your next turn, when another player plays an Attack card, it doesn't affect you. At the start of your next turn, +$1.\n\nThis is gained to your hand (instead of your discard pile).",
     "plusCoins": 1
   },
   {
@@ -5071,7 +5071,7 @@
       "value": 2,
       "type": "money"
     },
-    "description": "For each card you’ve gained this turn, you may trash a card from your hand or a Copper you have in play."
+    "description": "For each card you've gained this turn, you may trash a card from your hand or a Copper you have in play."
   },
   {
     "set": "Nocturne",
@@ -5152,7 +5152,7 @@
       "value": 3,
       "type": "money"
     },
-    "description": "If you aren’t the player with Lost in the Woods, take it, take 3 Boons, and receive the Boons in any order.\n(When this is in the supply each player replaces one starting copper with Heirloom: Lucky Coin)"
+    "description": "If you aren't the player with Lost in the Woods, take it, take 3 Boons, and receive the Boons in any order.\n(When this is in the supply each player replaces one starting copper with Heirloom: Lucky Coin)"
   },
   {
     "set": "Nocturne",
@@ -5308,13 +5308,13 @@
       "value": 4,
       "type": "money"
     },
-    "description": "+$2.\nYou may play an Action card from your hand that you don’t have a copy of in play. If you do, +1 Action.",
+    "description": "+$2.\nYou may play an Action card from your hand that you don't have a copy of in play. If you do, +1 Action.",
     "plusActions": 1,
     "plusCoins": 2
   },
   {
     "set": "Nocturne",
-    "name": "Devil’s Workshop",
+    "name": "Devil's Workshop",
     "types": [
       "Night"
     ],
@@ -5335,7 +5335,7 @@
       "value": 2,
       "type": "money"
     },
-    "description": "+2 Cards\nYou may play an Action card from your hand that you don’t have a copy of in play.\n(This is not in the supply).",
+    "description": "+2 Cards\nYou may play an Action card from your hand that you don't have a copy of in play.\n(This is not in the supply).",
     "plusCards": 2
   },
   {
@@ -5553,7 +5553,7 @@
       "value": 5,
       "type": "money"
     },
-    "description": "+1 Buy\n+$3\nReceive a Boon. If it doesn’t give +$1, each other player may receive it.",
+    "description": "+1 Buy\n+$3\nReceive a Boon. If it doesn't give +$1, each other player may receive it.",
     "plusBuys": 1,
     "plusCoins": 3
   },
@@ -5625,7 +5625,7 @@
       "value": 5,
       "type": "money"
     },
-    "description": "If it’s your Night phase, each other player receives the next Hex. Otherwise, +3 Cards.",
+    "description": "If it's your Night phase, each other player receives the next Hex. Otherwise, +3 Cards.",
     "plusCards": 3
   },
   {
@@ -5640,7 +5640,7 @@
       "value": 6,
       "type": "money"
     },
-    "description": "Each other player with 5 or more cards in hand discards a copy of a card you have in play (or reveals they can’t).\nAt the start of your next turn, +$3",
+    "description": "Each other player with 5 or more cards in hand discards a copy of a card you have in play (or reveals they can't).\nAt the start of your next turn, +$3",
     "plusCoins": 3
   },
   {
@@ -5658,7 +5658,7 @@
   },
   {
     "set": "Nocturne",
-    "name": "Will-O’-Wisp",
+    "name": "Will-O'-Wisp",
     "types": [
       "Action",
       "Spirit"
@@ -5682,7 +5682,7 @@
       "value": 2,
       "type": "money"
     },
-    "description": "+2 Cards\nYou may play an Action card from your hand that you don’t have a copy of in play.\n(This is not in the supply).",
+    "description": "+2 Cards\nYou may play an Action card from your hand that you don't have a copy of in play.\n(This is not in the supply).",
     "plusCards": 2
   },
   {
@@ -5701,7 +5701,7 @@
   },
   {
     "set": "Nocturne",
-    "name": "The Earth’s Gift",
+    "name": "The Earth's Gift",
     "types": [
       "Boon"
     ],
@@ -5709,7 +5709,7 @@
   },
   {
     "set": "Nocturne",
-    "name": "The Field’s Gift",
+    "name": "The Field's Gift",
     "types": [
       "Boon"
     ],
@@ -5719,7 +5719,7 @@
   },
   {
     "set": "Nocturne",
-    "name": "The Flame’s Gift",
+    "name": "The Flame's Gift",
     "types": [
       "Boon"
     ],
@@ -5736,7 +5736,7 @@
   },
   {
     "set": "Nocturne",
-    "name": "The Moon’s Gift",
+    "name": "The Moon's Gift",
     "types": [
       "Boon"
     ],
@@ -5744,7 +5744,7 @@
   },
   {
     "set": "Nocturne",
-    "name": "The Mountain’s Gift",
+    "name": "The Mountain's Gift",
     "types": [
       "Boon"
     ],
@@ -5752,7 +5752,7 @@
   },
   {
     "set": "Nocturne",
-    "name": "The River’s Gift.",
+    "name": "The River's Gift.",
     "types": [
       "Boon"
     ],
@@ -5761,7 +5761,7 @@
   },
   {
     "set": "Nocturne",
-    "name": "The Sea’s Gift",
+    "name": "The Sea's Gift",
     "types": [
       "Boon"
     ],
@@ -5770,7 +5770,7 @@
   },
   {
     "set": "Nocturne",
-    "name": "The Sky’s Gift",
+    "name": "The Sky's Gift",
     "types": [
       "Boon"
     ],
@@ -5778,7 +5778,7 @@
   },
   {
     "set": "Nocturne",
-    "name": "The Sun’s Gift",
+    "name": "The Sun's Gift",
     "types": [
       "Boon"
     ],
@@ -5786,15 +5786,15 @@
   },
   {
     "set": "Nocturne",
-    "name": "The Swamp’s Gift",
+    "name": "The Swamp's Gift",
     "types": [
       "Boon"
     ],
-    "description": "Gain a Will-O’-Wisp from its pile."
+    "description": "Gain a Will-O'-Wisp from its pile."
   },
   {
     "set": "Nocturne",
-    "name": "The Wind’s Gift",
+    "name": "The Wind's Gift",
     "types": [
       "Boon"
     ],
@@ -5807,7 +5807,7 @@
     "types": [
       "Hex"
     ],
-    "description": "Put your deck into your discard pile. Look through it and put 2 Coppers from it onto your deck (or reveal you can’t.)"
+    "description": "Put your deck into your discard pile. Look through it and put 2 Coppers from it onto your deck (or reveal you can't.)"
   },
   {
     "set": "Nocturne",
@@ -5815,7 +5815,7 @@
     "types": [
       "Hex"
     ],
-    "description": "If you don’t have Deluded or Envious, take Deluded."
+    "description": "If you don't have Deluded or Envious, take Deluded."
   },
   {
     "set": "Nocturne",
@@ -5823,7 +5823,7 @@
     "types": [
       "State"
     ],
-    "description": "At the start of your Buy phase, return this, and you can’t buy Actions this turn."
+    "description": "At the start of your Buy phase, return this, and you can't buy Actions this turn."
   },
   {
     "set": "Nocturne",
@@ -5831,7 +5831,7 @@
     "types": [
       "Hex"
     ],
-    "description": "If you don’t have Envious or Deluded, take Envious."
+    "description": "If you don't have Envious or Deluded, take Envious."
   },
   {
     "set": "Nocturne",
@@ -5855,7 +5855,7 @@
     "types": [
       "Hex"
     ],
-    "description": "If you have at least 5 cards in hand, discard an Action or Treasure (or reveal you can’t.)"
+    "description": "If you have at least 5 cards in hand, discard an Action or Treasure (or reveal you can't.)"
   },
   {
     "set": "Nocturne",
@@ -5879,7 +5879,7 @@
     "types": [
       "Hex"
     ],
-    "description": "Trash the top card of your deck. If it’s Copper or Estate, gain a Curse. Otherwise, gain a cheaper card that shares a type with it."
+    "description": "Trash the top card of your deck. If it's Copper or Estate, gain a Curse. Otherwise, gain a cheaper card that shares a type with it."
   },
   {
     "set": "Nocturne",

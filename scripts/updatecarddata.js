@@ -46,16 +46,15 @@ https.get(CARD_LIST_URL, (res) => {
             set: currentSet
           };
           $(row).find('td').each((i, cell) => {
+            const cellText = $(cell).text().replace(/\u2019/g, '\'').trim();
             // resolve card properties
             if (i === 0) {
-              const name = $(cell).text().trim();
-              card.name = name;
+              card.name = cellText;
             } else if (i === 1) {
-              const types = $(cell).text().split(/-|\u2013/)
-                  .map((type) => type.trim());
+              const types = cellText.split(/-|\u2013/).map((type) => type.trim());
               card.types = types;
             } else if (i === 2) {
-              const cost = /\$(\d+)(◉)?/.exec($(cell).text());
+              const cost = /\$(\d+)(◉)?/.exec(cellText);
               if (cost) {
                 card.cost = {
                   value: parseInt(cost[1]),
@@ -63,7 +62,7 @@ https.get(CARD_LIST_URL, (res) => {
                 };
               }
             } else if (i === 3) {
-              const description = $(cell).text().trim();
+              const description = cellText;
               card.description = description;
 
               const plusCards = /\+(\d) Card/.exec(description);
