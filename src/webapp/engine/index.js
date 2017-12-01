@@ -1,40 +1,7 @@
 import ALL_CARDS from '../data/cards.json';
 import {shuffleArray} from './utils';
+import {GROUP_TYPE_SET, GROUP_TYPE_CARD_TYPE, DEFAULT_RULES, RULES_KINGDOM_CARDS} from './rules';
 
-const GROUP_TYPE_SET = 'set';
-const GROUP_TYPE_CARD_TYPE = 'cardtype';
-
-const DEFAULT_RULES = {
-  numKingdomCards: 10,
-  filters: {
-    include: {
-      groups: [],
-      specificCards: []
-    },
-    exclude: {
-      groups: [],
-      specificCards: []
-    }
-  }
-};
-
-const RULES_KINGDOM_CARDS = {
-  filters: {
-    exclude: {
-      groups: [
-        {
-          name: 'Ruins',
-          type: GROUP_TYPE_CARD_TYPE
-        },
-        {
-          name: 'Shelter',
-          type: GROUP_TYPE_CARD_TYPE
-        }
-      ],
-      specificCards: ['Spoils', 'Platinum', 'Colony', 'Potion']
-    }
-  }
-};
 
 export const shuffle = (customRules = {}) => {
   const rules = {...DEFAULT_RULES, ...customRules};
@@ -132,6 +99,8 @@ const isCardInGroups = (card, groups) => {
 const isCardInGroup = (card, group) => {
   if (group.type === GROUP_TYPE_SET) {
     return card.set === group.name;
+  } else if (group.type === GROUP_TYPE_CARD_TYPE) {
+    return card.types.indexOf(group.name) !== -1;
   }
   return false;
 };
