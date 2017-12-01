@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
+    "start": "webpack-dev-server --open",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open"
+    "updatecarddata": "node ./scripts/updatecarddata.js"
   },
   "author": "",
   "license": "ISC",

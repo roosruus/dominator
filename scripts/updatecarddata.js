@@ -3,7 +3,7 @@ const https = require('https');
 const $ = require('cheerio');
 
 const CARD_LIST_URL = 'https://dominionstrategy.com/all-cards/';
-const OUTPUT_FILE = 'cards.json';
+const OUTPUT_FILE = './src/webapp/data/cards.json';
 
 console.log(`Loading card list from ${CARD_LIST_URL} ...`);
 
@@ -55,8 +55,13 @@ https.get(CARD_LIST_URL, (res) => {
                   .map((type) => type.trim());
               card.types = types;
             } else if (i === 2) {
-              const cost = $(cell).text().replace(/\D/, '');
-              card.cost = parseInt(cost);
+              const cost = /\$(\d+)(◉)?/.exec($(cell).text());
+              if (cost) {
+                card.cost = {
+                  value: parseInt(cost[1]),
+                  type: cost[2] ? 'potion' : 'money'
+                };
+              }
             } else if (i === 3) {
               const description = $(cell).text().trim();
               card.description = description;
