@@ -107,6 +107,15 @@ https.get(CARD_LIST_URL, (res) => {
               if (plusCoins) {
                 card.plusCoins = parseInt(plusCoins[1]);
               }
+              
+              const categories = [];
+              const gainSpoils = /Gain . Spoils/.exec(description);
+              if(gainSpoils) {
+                categories.push('gainspoils');
+              }
+              if(categories.length > 0) {
+                card.categories = categories;
+              }
 
               return false;
             }

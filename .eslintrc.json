@@ -1,5 +1,5 @@
 {
-  "extends": "google",
+  "extends": "eslint:recommended",
   "env": {
     "browser": true,
     "node": true
@@ -16,19 +16,12 @@
       "react"
   ],
   "rules": {
-    "comma-dangle": ["error", "never"],
+    "indent": ["error", 2],
     "max-len": ["error", 120],
-    "no-undef": "error",
+    "no-console": "off",
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
-    "require-jsdoc":  ["error", {
-      "require": {
-        "FunctionDeclaration": true,
-        "MethodDefinition": false,
-        "ClassDeclaration": false,
-        "ArrowFunctionExpression": false,
-        "FunctionExpression": false
-      }
-    }]
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"]
   }
 }

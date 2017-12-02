@@ -3132,7 +3132,10 @@
       "value": 4,
       "type": "money"
     },
-    "description": "Gain a Spoils from the Spoils pile. Each other player gains a Ruins."
+    "description": "Gain a Spoils from the Spoils pile. Each other player gains a Ruins.",
+    "categories": [
+      "gainspoils"
+    ]
   },
   {
     "set": "Dark Ages",
@@ -3211,7 +3214,10 @@
     },
     "description": "+1 Card\n+2 Actions\nGain a Spoils from the Spoils pile.",
     "plusCards": 1,
-    "plusActions": 2
+    "plusActions": 2,
+    "categories": [
+      "gainspoils"
+    ]
   },
   {
     "set": "Dark Ages",
@@ -3319,7 +3325,10 @@
       "value": 5,
       "type": "money"
     },
-    "description": "Trash this. Each other player with 5 or more cards in hand reveals their hand and discards a card that you choose. Gain 2 Spoils from the Spoils pile."
+    "description": "Trash this. Each other player with 5 or more cards in hand reveals their hand and discards a card that you choose. Gain 2 Spoils from the Spoils pile.",
+    "categories": [
+      "gainspoils"
+    ]
   },
   {
     "set": "Dark Ages",

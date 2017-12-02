@@ -6,6 +6,7 @@ export const DEFAULT_RULES = {
   filters: {
     include: {
       groups: [],
+      limits: [],
       specificCards: []
     },
     exclude: {
