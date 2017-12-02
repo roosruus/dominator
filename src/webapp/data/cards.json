@@ -1877,7 +1877,7 @@
     ],
     "cost": {
       "value": 3,
-      "type": "money"
+      "type": "potion"
     },
     "description": "+2 Card\n+1 Action\n———-\nWhen you discard this from play, if you have a Potion in play, you may put this onto your deck.",
     "plusCards": 2,
@@ -3608,14 +3608,6 @@
       "type": "money"
     },
     "description": "Each other player reveals the top two cards of their deck, trashes one of them costing from $3 to $6, and discards the rest. If a Knight is trashed by this, trash this.\n———-\nWhen you trash this, gain a Gold."
-  },
-  {
-    "set": "Dark Ages",
-    "name": "Shelters",
-    "types": [
-      ""
-    ],
-    "description": "Replaces starting Estates"
   },
   {
     "set": "Dark Ages",

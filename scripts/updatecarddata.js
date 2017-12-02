@@ -111,6 +111,10 @@ https.get(CARD_LIST_URL, (res) => {
               return false;
             }
           });
+          // Not a card
+          if(card.name === 'Shelters') {
+            return;
+          }
           cards.push(card);
           // add common Dominion cards to 1st edition
           if (card.set === DOMINION_2ND_ED_NAME && DOMINION_2ND_ED_ONLY.indexOf(card.name) === -1) {
