@@ -1,7 +1,7 @@
-export const shuffleArray = (arr) => {
+export const shuffleArray = (original) => {
+  const arr = original.slice();
   let currentIndex = arr.length;
-  let temporaryValue;
-  let randomIndex;
+  let temporaryValue, randomIndex;
 
   // While there remain elements to shuffle...
   while (0 !== currentIndex) {

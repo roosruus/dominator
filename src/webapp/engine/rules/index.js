@@ -1,7 +1,6 @@
-export const GROUP_TYPE_SET = 'set';
-export const GROUP_TYPE_CARD_TYPE = 'cardtype';
+import { GROUP_TYPE_CARD_TYPE, createRules } from './factory.js';
 
-export const DEFAULT_RULES = {
+export const DEFAULT_RULES = createRules({
   numKingdomCards: 10,
   filters: {
     include: {
@@ -14,9 +13,9 @@ export const DEFAULT_RULES = {
       specificCards: []
     }
   }
-};
+});
 
-export const RULES_KINGDOM_CARDS = {
+export const RULES_KINGDOM_CARDS = createRules({
   filters: {
     exclude: {
       groups: [
@@ -85,4 +84,4 @@ export const RULES_KINGDOM_CARDS = {
       ]
     }
   }
-};
+});

@@ -14,7 +14,7 @@ const config = {
     })
   ],
   devServer: {
-     contentBase: BUILD_DIR
+    contentBase: BUILD_DIR
   },
   output: {
     path: BUILD_DIR,
@@ -30,17 +30,14 @@ const config = {
         }
       },
       {
-         test: /\.css$/,
-         use: [
-           'style-loader',
-           'css-loader'
-         ]
-       },
-       {
-         test: /\.json$/,
-         loader: 'json-loader'
-       }
-     ]
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      }
+    ]
   }
 };
 
