@@ -31,6 +31,10 @@
     "lodash": "^4.17.4",
     "material-ui": "^0.19.4",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-tap-event-plugin": "^3.0.2",
+    "redux": "^3.7.2",
+    "redux-actions": "^2.2.1"
   }
 }

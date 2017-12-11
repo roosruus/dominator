@@ -2,6 +2,15 @@ import { shuffleArray } from './utils';
 import { DEFAULT_RULES, RULES_KINGDOM_CARDS } from './rules/index';
 import ALL_CARDS from '../data/cards.json';
 
+export const getExpansions = () => {
+  return ALL_CARDS.reduce((sets, card) => {
+    if (!sets.includes(card.set)) {
+      sets.push(card.set);
+    }
+    return sets;
+  }, []);
+};
+
 const createCardPool = cards => {
   const findCard = name => {
     for (const card of cards) {
