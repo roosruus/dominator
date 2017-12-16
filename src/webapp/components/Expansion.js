@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListItem } from 'material-ui/List';
+import { ListItem, ListItemText } from 'material-ui/List';
 import Checkbox from 'material-ui/Checkbox';
 
 export default class Expansion extends React.Component {
@@ -14,10 +14,10 @@ export default class Expansion extends React.Component {
 
   render() {
     return (
-      <ListItem
-        leftCheckbox={<Checkbox checked={this.props.selected} onCheck={this.handleCheck} />}
-        primaryText={this.props.name}
-      />
+      <ListItem>
+        <Checkbox checked={this.props.selected} onChange={this.handleCheck}/>
+        <ListItemText primary={this.props.name} />
+      </ListItem>
     );
   }
 }

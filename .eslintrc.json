@@ -17,7 +17,7 @@
       "react"
   ],
   "rules": {
-    "indent": ["error", 2],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
     "max-len": ["error", 120],
     "no-console": "off",
     "react/jsx-uses-react": "error",
