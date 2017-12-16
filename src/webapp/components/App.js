@@ -6,15 +6,9 @@ import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import Card, { CardContent } from 'material-ui/Card';
-import Table, {
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from 'material-ui/Table';
-import Tooltip from 'material-ui/Tooltip';
 
 import ExpansionList from './ExpansionList';
+import ResultsTable from './ResultsTable';
 import { pickCards } from '../actions';
 import { getCurrentRules } from '../reducers';
 import { createGameSetup } from '../engine';
@@ -60,26 +54,7 @@ class App extends Component {
         </Card>
         {this.props.pickedCards.length > 0 && (
           <Card>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>
-                    <Tooltip title="Sort" enterDelay={300}>
-                      Card
-                    </Tooltip>
-                  </TableCell>
-                  <TableCell>Expansion</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {this.props.pickedCards.map(card => (
-                  <TableRow key={`result-row-${card.name}`}>
-                    <TableCell>{card.name}</TableCell>
-                    <TableCell>{card.set}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            <ResultsTable pickedCards={this.props.pickedCards}/>
           </Card>
         )}
       </div>
