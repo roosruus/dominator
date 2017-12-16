@@ -705,20 +705,7 @@
   },
   {
     "set": "Intrigue 2nd Edition",
-    "name": "",
-    "types": [
-      "Action"
-    ],
-    "cost": {
-      "value": 2,
-      "type": "money"
-    },
-    "description": "+1 Action\nChoose one: Trash an Action card from the Supply; or gain an Action card from the trash.",
-    "plusActions": 1
-  },
-  {
-    "set": "Intrigue 1st Edition",
-    "name": "",
+    "name": "Lurker",
     "types": [
       "Action"
     ],

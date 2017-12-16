@@ -73,7 +73,13 @@ https.get(CARD_LIST_URL, (res) => {
             const cellText = $(cell).text().replace(/\u2019/g, '\'').trim();
             // resolve card properties
             if (i === 0) {
-              card.name = cellText;
+              if(!cellText && currentSet === 'Intrigue 2nd Edition') {
+                // Fix card name missing in the source data
+                card.name = 'Lurker';
+              }
+              else {
+                card.name = cellText;
+              }
             } else if (i === 1) {
               const types = cellText.split(/-|\u2013/).map((type) => type.trim());
               card.types = types;
