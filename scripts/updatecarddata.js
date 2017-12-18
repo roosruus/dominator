@@ -139,6 +139,10 @@ https.get(CARD_LIST_URL, (res) => {
           if(card.name === 'Shelters') {
             return;
           }
+          // Fix types for Knights
+          else if(card.name === 'Knights') {
+            card.types = ['Action', 'Attack', 'Victory', 'Knight'];
+          }
           cards.push(card);
           // add common Dominion cards to 1st edition
           if (card.set === DOMINION_2ND_ED_NAME && DOMINION_2ND_ED_ONLY.indexOf(card.name) === -1) {

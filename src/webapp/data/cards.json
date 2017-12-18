@@ -3454,7 +3454,10 @@
     "set": "Dark Ages",
     "name": "Knights",
     "types": [
-      ""
+      "Action",
+      "Attack",
+      "Victory",
+      "Knight"
     ],
     "description": "Shuffle the Knight pile before each game with it. Keep it face down except for the top card, which is the only one that can be bought or gained."
   },

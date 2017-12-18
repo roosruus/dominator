@@ -80,7 +80,18 @@ export const RULES_KINGDOM_CARDS = createRules({
         'Zombie Apprentice',
         'Zombie Mason',
         'Zombie Spy',
-        'Ghost'
+        'Ghost',
+        // Knights
+        'Dame Anna',
+        'Dame Josephine',
+        'Dame Molly',
+        'Dame Natalie',
+        'Dame Sylvia',
+        'Sir Bailey',
+        'Sir Destry',
+        'Sir Martin',
+        'Sir Michael',
+        'Sir Vander'
       ]
     }
   }
