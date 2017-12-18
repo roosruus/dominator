@@ -7,7 +7,7 @@ import ExpandMore from 'material-ui-icons/ExpandMore';
 import { connect } from 'react-redux';
 
 import Expansion from './Expansion';
-import { toggleExpansion, toggleAllExpansions, toggleExpansionDrawer } from '../actions';
+import { toggleExpansion, toggleAllExpansions, toggleExpansionDrawer, setExpansionMinMax } from '../actions';
 import {
   getExpansionList,
   getSelectedExpansionsText,
@@ -19,9 +19,11 @@ import {
 class ExpansionList extends React.Component {
   constructor(props) {
     super(props);
+
     this.handleExpansionSelected = this.handleExpansionSelected.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
+    this.handleMinMaxChange = this.handleMinMaxChange.bind(this);
   }
 
   handleExpansionSelected(name) {
@@ -38,6 +40,11 @@ class ExpansionList extends React.Component {
     const { dispatch, areAllExpansionsSelected } = this.props;
     dispatch(toggleAllExpansions(!areAllExpansionsSelected));
   }
+  
+  handleMinMaxChange(payload) {
+    const { dispatch } = this.props;
+    dispatch(setExpansionMinMax(payload));
+  }
 
   render() {
     return (
@@ -50,7 +57,11 @@ class ExpansionList extends React.Component {
               onChange={this.handleCheck}
             />
           )}
-          <ListItemText primary="Expansions" onClick={this.handleClick} secondary={this.props.selectedExpansions} />
+          <ListItemText
+            primary="Expansions"
+            onClick={this.handleClick}
+            secondary={!this.props.open ? this.props.selectedExpansions : ''}
+          />
           {this.props.open ? <ExpandLess onClick={this.handleClick} /> : <ExpandMore onClick={this.handleClick} />}
         </ListItem>
         <Collapse component="li" in={this.props.open} timeout="auto" unmountOnExit>
@@ -59,7 +70,10 @@ class ExpansionList extends React.Component {
               <Expansion
                 name={expansion.name}
                 selected={expansion.selected}
+                min={expansion.min}
+                max={expansion.max}
                 onSelected={this.handleExpansionSelected}
+                onMinMaxChange={this.handleMinMaxChange}
                 key={`exp_${i}`}
               />
             ))}

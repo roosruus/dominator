@@ -1,29 +1,48 @@
 import { combineReducers } from 'redux';
 
 import { getExpansions } from './engine';
-import { TOGGLE_EXPANSION, TOGGLE_ALL_EXPANSIONS, TOGGLE_EXPANSION_DRAWER, PICK_CARDS } from './actions';
+import { GROUP_TYPE_SET } from './engine/rules/factory';
+import {
+  TOGGLE_EXPANSION,
+  TOGGLE_ALL_EXPANSIONS,
+  TOGGLE_EXPANSION_DRAWER,
+  SET_EXPANSION_MIN_MAX,
+  PICK_CARDS
+} from './actions';
 
-
-const selectedExpansionsReducer = selectAll => (map, set) => ({ ...map, [set]: selectAll });
+const selectedExpansionsReducer = selectAll => (map, [set, props]) => ({
+  ...map,
+  [set]: Object.assign({ min: 0, max: 10 }, props, { selected: selectAll })
+});
 
 const expansionsInitState = {
   drawerOpen: false,
-  items: getExpansions().reduce(selectedExpansionsReducer(true), {})
+  items: getExpansions()
+    .map(expansion => [expansion])
+    .reduce(selectedExpansionsReducer(true), {})
 };
+
 const expansions = (state = expansionsInitState, action) => {
   switch (action.type) {
     case TOGGLE_EXPANSION: {
       const name = action.payload;
-      const newItems = { ...state.items, [name]: !state.items[name] };
+      const newItem = { ...state.items[name], selected: !state.items[name].selected };
+      const newItems = { ...state.items, [name]: newItem };
       return { ...state, items: newItems };
     }
     case TOGGLE_ALL_EXPANSIONS: {
       const selectAll = action.payload;
-      const newItems = Object.keys(state.items).reduce(selectedExpansionsReducer(selectAll), {});
+      const newItems = Object.entries(state.items).reduce(selectedExpansionsReducer(selectAll), {});
       return { ...state, items: newItems };
     }
     case TOGGLE_EXPANSION_DRAWER:
       return { ...state, drawerOpen: !state.drawerOpen };
+    case SET_EXPANSION_MIN_MAX: {
+      const { name, min, max } = action.payload;
+      const newItem = { ...state.items[name], min, max };
+      const newItems = { ...state.items, [name]: newItem };
+      return { ...state, items: newItems };
+    }
     case PICK_CARDS:
       return { ...state, drawerOpen: false };
     default:
@@ -45,13 +64,12 @@ const rootReducer = combineReducers({
   pickedCards
 });
 
-
 export const getExpansionList = state =>
-  Object.entries(state.expansions.items).map(([expansion, selected]) => ({ name: expansion, selected }));
+  Object.entries(state.expansions.items).map(([expansion, props]) => ({ name: expansion, ...props }));
 
 const getSelectedExpansions = state =>
   Object.entries(state.expansions.items)
-    .filter(([, selected]) => selected)
+    .filter(([, props]) => props.selected)
     .map(([expansion]) => expansion);
 
 const numAllExpansions = getExpansions().length;
@@ -71,12 +89,17 @@ export const getSelectedExpansionsText = state => {
 
 export const isExpansionDrawerOpen = state => state.expansions.drawerOpen;
 
+const getSelectedExpansionLimits = state =>
+  Object.entries(state.expansions.items)
+    .filter(([, props]) => props.selected)
+    .map(([expansion, props]) => ({ type: GROUP_TYPE_SET, name: expansion, min: props.min, max: props.max }));
+
 export const getCurrentRules = state => ({
   numKingdomCards: 10,
   filters: {
     include: {
-      groups: getSelectedExpansions(state).map(expansion => ({ name: expansion, type: 'set' })),
-      limits: [],
+      groups: getSelectedExpansions(state).map(expansion => ({ name: expansion, type: GROUP_TYPE_SET })),
+      limits: getSelectedExpansionLimits(state),
       specificCards: []
     },
     exclude: {
@@ -85,6 +108,5 @@ export const getCurrentRules = state => ({
     }
   }
 });
-
 
 export default rootReducer;
