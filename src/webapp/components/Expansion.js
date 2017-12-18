@@ -2,7 +2,7 @@ import React from 'react';
 import { ListItem, ListItemText } from 'material-ui/List';
 import Checkbox from 'material-ui/Checkbox';
 
-export default class Expansion extends React.Component {
+export default class Expansion extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handleCheck = this.handleCheck.bind(this);

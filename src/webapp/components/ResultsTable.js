@@ -93,15 +93,13 @@ class SortableTableHead extends Component {
         <TableRow>
           {columnData.map(column => (
             <TableCell key={column.id}>
-              <Tooltip title="Sort" enterDelay={300}>
-                <TableSortLabel
-                  active={orderBy === column.id}
-                  direction={order}
-                  onClick={this.createSortHandler(column.id)}
-                >
-                  {column.label}
-                </TableSortLabel>
-              </Tooltip>
+              <TableSortLabel
+                active={orderBy === column.id}
+                direction={order}
+                onClick={this.createSortHandler(column.id)}
+              >
+                {column.label}
+              </TableSortLabel>
             </TableCell>
           ))}
         </TableRow>
