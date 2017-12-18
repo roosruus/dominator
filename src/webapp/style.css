@@ -3,3 +3,7 @@ html {
   max-width: 1000px;
   margin: auto;
 }
+
+li.expansion-list-item {
+  padding: 0;
+}

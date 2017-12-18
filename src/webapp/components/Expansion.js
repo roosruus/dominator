@@ -8,14 +8,14 @@ export default class Expansion extends React.Component {
     this.handleCheck = this.handleCheck.bind(this);
   }
 
-  handleCheck(e, value) {
-    this.props.onSelected(this.props.name, value);
+  handleCheck() {
+    this.props.onSelected(this.props.name);
   }
 
   render() {
     return (
-      <ListItem>
-        <Checkbox checked={this.props.selected} onChange={this.handleCheck}/>
+      <ListItem dense button onClick={this.handleCheck} className="expansion-list-item">
+        <Checkbox checked={this.props.selected} disableRipple/>
         <ListItemText primary={this.props.name} />
       </ListItem>
     );

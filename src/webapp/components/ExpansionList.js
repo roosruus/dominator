@@ -6,8 +6,8 @@ import ExpandMore from 'material-ui-icons/ExpandMore';
 import { connect } from 'react-redux';
 
 import Expansion from './Expansion';
-import { selectExpansion } from '../actions';
-import { getExpansionList } from '../reducers';
+import { toggleExpansion } from '../actions';
+import { getExpansionList, getSelectedExpansionsText } from '../reducers';
 
 class ExpansionList extends React.Component {
   constructor(props) {
@@ -17,9 +17,9 @@ class ExpansionList extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleExpansionSelected(name, selected) {
+  handleExpansionSelected(name) {
     const { dispatch } = this.props;
-    dispatch(selectExpansion({ name, selected }));
+    dispatch(toggleExpansion(name));
   }
 
   handleClick() {
@@ -30,7 +30,7 @@ class ExpansionList extends React.Component {
     return (
       <List>
         <ListItem button onClick={this.handleClick}>
-          <ListItemText primary="Expansions" />
+          <ListItemText primary="Expansions" secondary={this.props.selectedExpansions}/>
           {this.state.open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
         <Collapse component="li" in={this.state.open} timeout="auto" unmountOnExit>
@@ -50,6 +50,9 @@ class ExpansionList extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ expansions: getExpansionList(state) });
+const mapStateToProps = state => ({
+  expansions: getExpansionList(state),
+  selectedExpansions: getSelectedExpansionsText(state)
+});
 
 export default connect(mapStateToProps)(ExpansionList);
