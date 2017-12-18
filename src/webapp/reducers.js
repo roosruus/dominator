@@ -1,15 +1,21 @@
 import { combineReducers } from 'redux';
 
 import { getExpansions } from './engine';
-import { TOGGLE_EXPANSION, PICK_CARDS } from './actions';
+import { TOGGLE_EXPANSION, TOGGLE_ALL_EXPANSIONS, PICK_CARDS } from './actions';
 
 
-const expansionsInitState = getExpansions().reduce((map, set) => ({ ...map, [set]: true }), {});
+const selectedExpansionsReducer = selectAll => (map, set) => ({ ...map, [set]: selectAll});
+
+const expansionsInitState = getExpansions().reduce(selectedExpansionsReducer(true), {});
 const expansions = (state = expansionsInitState, action) => {
   switch (action.type) {
     case TOGGLE_EXPANSION: {
       const name = action.payload;
       return { ...state, [name]: !state[name] };
+    }
+    case TOGGLE_ALL_EXPANSIONS: {
+      const selectAll = action.payload;
+      return Object.keys(state).reduce(selectedExpansionsReducer(selectAll), {});
     }
     default:
       return state;
@@ -40,6 +46,9 @@ const getSelectedExpansions = state =>
     .map(([expansion]) => expansion);
 
 const numAllExpansions = getExpansions().length;
+export const areAllExpansionsSelected = state => getSelectedExpansions(state).length === numAllExpansions;
+export const isNoExpansionsSelected = state => getSelectedExpansions(state).length  === 0;
+
 export const getSelectedExpansionsText = state => {
   let text;
   const selectedExpansions = getSelectedExpansions(state);
