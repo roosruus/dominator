@@ -84,13 +84,22 @@ https.get(CARD_LIST_URL, (res) => {
               const types = cellText.split(/-|\u2013/).map((type) => type.trim());
               card.types = types;
             } else if (i === 2) {
-              const cost = /\$(\d+)(◉)?/.exec(cellText);
+              const cost = /\$?(\d+)(◉|D)?/.exec(cellText);
               if (cost) {
+                let type;
+                if(cost[2] === '◉') {
+                  type = 'potion';
+                }
+                else if(cost[2] === 'D') {
+                  type = 'debt';
+                }
+                else {
+                  type = 'money';
+                }
+                
                 card.cost = {
                   value: parseInt(cost[1]),
-                  type: cost[2]
-                    ? 'potion'
-                    : 'money'
+                  type
                 };
               }
             } else if (i === 3) {

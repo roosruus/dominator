@@ -4615,6 +4615,10 @@
     "types": [
       "Action"
     ],
+    "cost": {
+      "value": 4,
+      "type": "debt"
+    },
     "description": "Gain a card costing up to $4. You may trash this. If you do, gain a card costing up to $4."
   },
   {
@@ -4623,6 +4627,10 @@
     "types": [
       "Action"
     ],
+    "cost": {
+      "value": 8,
+      "type": "debt"
+    },
     "description": "+2 Actions\nReveal your hand. +1 Card per Action card revealed.)",
     "plusCards": 1,
     "plusActions": 2
@@ -4633,6 +4641,10 @@
     "types": [
       "Action"
     ],
+    "cost": {
+      "value": 8,
+      "type": "debt"
+    },
     "description": "Play this as if it were an Action card in the Supply costing up to $5. This is that card until it leaves play.)"
   },
   {
@@ -4641,6 +4653,10 @@
     "types": [
       "Action"
     ],
+    "cost": {
+      "value": 8,
+      "type": "debt"
+    },
     "description": "+5 Cards\nReveal your hand; discard the Coppers.",
     "plusCards": 5
   },
@@ -5118,6 +5134,10 @@
     "types": [
       "Event"
     ],
+    "cost": {
+      "value": 5,
+      "type": "debt"
+    },
     "description": "Gain an Estate. If you did, +1 VP per card you've gained this turn."
   },
   {
@@ -5126,6 +5146,10 @@
     "types": [
       "Event"
     ],
+    "cost": {
+      "value": 8,
+      "type": "debt"
+    },
     "description": "Look through your discard pile. Choose up to 5 cards from it and shuffle the rest into your deck. Gain a Duchy."
   },
   {
@@ -5134,6 +5158,10 @@
     "types": [
       "Event"
     ],
+    "cost": {
+      "value": 8,
+      "type": "debt"
+    },
     "description": "After this turn, put all cards from your deck and discard pile into your hand, trash any number, shuffle your hand into your deck, then draw 5 cards."
   },
   {
