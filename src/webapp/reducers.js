@@ -1,22 +1,31 @@
 import { combineReducers } from 'redux';
 
 import { getExpansions } from './engine';
-import { TOGGLE_EXPANSION, TOGGLE_ALL_EXPANSIONS, PICK_CARDS } from './actions';
+import { TOGGLE_EXPANSION, TOGGLE_ALL_EXPANSIONS, TOGGLE_EXPANSION_DRAWER, PICK_CARDS } from './actions';
 
 
-const selectedExpansionsReducer = selectAll => (map, set) => ({ ...map, [set]: selectAll});
+const selectedExpansionsReducer = selectAll => (map, set) => ({ ...map, [set]: selectAll });
 
-const expansionsInitState = getExpansions().reduce(selectedExpansionsReducer(true), {});
+const expansionsInitState = {
+  drawerOpen: false,
+  items: getExpansions().reduce(selectedExpansionsReducer(true), {})
+};
 const expansions = (state = expansionsInitState, action) => {
   switch (action.type) {
     case TOGGLE_EXPANSION: {
       const name = action.payload;
-      return { ...state, [name]: !state[name] };
+      const newItems = { ...state.items, [name]: !state.items[name] };
+      return { ...state, items: newItems };
     }
     case TOGGLE_ALL_EXPANSIONS: {
       const selectAll = action.payload;
-      return Object.keys(state).reduce(selectedExpansionsReducer(selectAll), {});
+      const newItems = Object.keys(state.items).reduce(selectedExpansionsReducer(selectAll), {});
+      return { ...state, items: newItems };
     }
+    case TOGGLE_EXPANSION_DRAWER:
+      return { ...state, drawerOpen: !state.drawerOpen };
+    case PICK_CARDS:
+      return { ...state, drawerOpen: false };
     default:
       return state;
   }
@@ -38,28 +47,29 @@ const rootReducer = combineReducers({
 
 
 export const getExpansionList = state =>
-  Object.entries(state.expansions).map(([expansion, selected]) => ({ name: expansion, selected }));
+  Object.entries(state.expansions.items).map(([expansion, selected]) => ({ name: expansion, selected }));
 
 const getSelectedExpansions = state =>
-  Object.entries(state.expansions)
+  Object.entries(state.expansions.items)
     .filter(([, selected]) => selected)
     .map(([expansion]) => expansion);
 
 const numAllExpansions = getExpansions().length;
 export const areAllExpansionsSelected = state => getSelectedExpansions(state).length === numAllExpansions;
-export const isNoExpansionsSelected = state => getSelectedExpansions(state).length  === 0;
+export const isNoExpansionsSelected = state => getSelectedExpansions(state).length === 0;
 
 export const getSelectedExpansionsText = state => {
   let text;
   const selectedExpansions = getSelectedExpansions(state);
-  if(selectedExpansions.length === numAllExpansions) {
+  if (selectedExpansions.length === numAllExpansions) {
     text = 'All';
-  }
-  else {
+  } else {
     text = selectedExpansions.join(', ');
   }
   return text;
 };
+
+export const isExpansionDrawerOpen = state => state.expansions.drawerOpen;
 
 export const getCurrentRules = state => ({
   numKingdomCards: 10,

@@ -7,18 +7,18 @@ import ExpandMore from 'material-ui-icons/ExpandMore';
 import { connect } from 'react-redux';
 
 import Expansion from './Expansion';
-import { toggleExpansion, toggleAllExpansions } from '../actions';
+import { toggleExpansion, toggleAllExpansions, toggleExpansionDrawer } from '../actions';
 import {
   getExpansionList,
   getSelectedExpansionsText,
   areAllExpansionsSelected,
-  isNoExpansionsSelected
+  isNoExpansionsSelected,
+  isExpansionDrawerOpen
 } from '../reducers';
 
 class ExpansionList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { open: false };
     this.handleExpansionSelected = this.handleExpansionSelected.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
@@ -30,7 +30,8 @@ class ExpansionList extends React.Component {
   }
 
   handleClick() {
-    this.setState({ open: !this.state.open });
+    const { dispatch } = this.props;
+    dispatch(toggleExpansionDrawer());
   }
 
   handleCheck() {
@@ -41,8 +42,8 @@ class ExpansionList extends React.Component {
   render() {
     return (
       <List>
-        <ListItem button className={this.state.open ? 'no-left-padding' : ''}>
-          {this.state.open && (
+        <ListItem button className={this.props.open ? 'no-left-padding' : ''}>
+          {this.props.open && (
             <Checkbox
               checked={this.props.areAllExpansionsSelected}
               indeterminate={!(this.props.areAllExpansionsSelected || this.props.isNoExpansionsSelected)}
@@ -50,9 +51,9 @@ class ExpansionList extends React.Component {
             />
           )}
           <ListItemText primary="Expansions" onClick={this.handleClick} secondary={this.props.selectedExpansions} />
-          {this.state.open ? <ExpandLess onClick={this.handleClick} /> : <ExpandMore onClick={this.handleClick} />}
+          {this.props.open ? <ExpandLess onClick={this.handleClick} /> : <ExpandMore onClick={this.handleClick} />}
         </ListItem>
-        <Collapse component="li" in={this.state.open} timeout="auto" unmountOnExit>
+        <Collapse component="li" in={this.props.open} timeout="auto" unmountOnExit>
           <List disablePadding>
             {this.props.expansions.map((expansion, i) => (
               <Expansion
@@ -73,7 +74,8 @@ const mapStateToProps = state => ({
   expansions: getExpansionList(state),
   selectedExpansions: getSelectedExpansionsText(state),
   areAllExpansionsSelected: areAllExpansionsSelected(state),
-  isNoExpansionsSelected: isNoExpansionsSelected(state)
+  isNoExpansionsSelected: isNoExpansionsSelected(state),
+  open: isExpansionDrawerOpen(state)
 });
 
 export default connect(mapStateToProps)(ExpansionList);
