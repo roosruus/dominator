@@ -46,6 +46,13 @@ export const createGameSetup = (rules, allCards = ALL_CARDS) => {
   allCards = createCardPool(allCards);
   rules = DEFAULT_RULES.merge(rules);
   const cardPool = allCards.filterCards(RULES_KINGDOM_CARDS).filterCards(rules);
+  
+  const getAlchemyCards = cards => {
+    if(cards.find(card => card.cost && card.cost.type === 'potion')) {
+      additionalCards.push(allCards.findCard('Potion'));
+    }
+    return [];
+  };
 
   const getProsperityCards = cards => {
     const numProsperityCards = cards.filter(card => card.set === 'Prosperity').length;
@@ -53,6 +60,13 @@ export const createGameSetup = (rules, allCards = ALL_CARDS) => {
     const includeProsperityCards = Math.random() < numProsperityCards / cards.length;
     if (includeProsperityCards) {
       return allCards.findCards(['Platinum', 'Colony']);
+    }
+    return [];
+  };
+  
+  const getCornucopiaCards = cards => {
+    if(cards.find(card => card.name === 'Tournament')) {
+      return allCards.findCards(['Bag of Gold', 'Diadem', 'Followers', 'Princess', 'Trusty Steed']);
     }
     return [];
   };
@@ -92,9 +106,16 @@ export const createGameSetup = (rules, allCards = ALL_CARDS) => {
     getPickedCards,
     pickCards: () => {
       pickedCards = rules.pickCardsFromPool(cardPool.shuffle());
+      
+      // add additional Alchemy cards
+      additionalCards.push(...getAlchemyCards(pickedCards));
 
       // add additional Prosperity cards
       additionalCards.push(...getProsperityCards(pickedCards));
+
+      // add additional Cornucopia cards
+      additionalCards.push(...getCornucopiaCards(pickedCards));
+      // TODO: handle Young Witch
 
       // add additional Dark Ages cards
       additionalCards.push(...getDarkAgesCards(pickedCards));
