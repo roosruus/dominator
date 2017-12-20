@@ -46,6 +46,25 @@ class ResultsTable extends Component {
         : this.props.pickedCards.slice().sort((a, b) => (getterFunc(a) < getterFunc(b) ? -1 : 1));
     return sortedCards;
   }
+  
+  formatCost(cost) {
+    let formatted = '';
+    if(cost) {
+      if(cost.type === 'money') {
+        formatted = `$${cost.value}`;
+      }
+      else if(cost.type === 'potion') {
+        formatted = `${cost.value}P`;
+      }
+      else if(cost.type === 'debt') {
+        formatted = `${cost.value}D`;
+      }
+      else {
+        formatted = cost.value;
+      }
+    }
+    return formatted;
+  }
 
   render() {
     
@@ -63,7 +82,7 @@ class ResultsTable extends Component {
             <TableRow key={`result-row-${card.name}`}>
               <TableCell>{card.name}</TableCell>
               <TableCell>{card.set}</TableCell>
-              <TableCell>{card.cost.value}</TableCell>
+              <TableCell>{this.formatCost(card.cost)}</TableCell>
             </TableRow>
           ))}
         </TableBody>
