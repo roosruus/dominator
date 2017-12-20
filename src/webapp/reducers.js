@@ -15,7 +15,7 @@ const selectedExpansionsReducer = selectAll => (map, [set, props]) => ({
   [set]: Object.assign({ min: 0, max: 10 }, props, { selected: selectAll })
 });
 
-const expansionsInitState = {
+export const expansionsInitState = {
   drawerOpen: false,
   items: getExpansions()
     .map(expansion => [expansion])
