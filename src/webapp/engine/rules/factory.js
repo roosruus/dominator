@@ -26,6 +26,15 @@ export const createRules = ruleData => {
     }
     return false;
   };
+  
+  const includesCardWithName = (cards, name) => {
+    for(let card of cards) {
+      if(card.name === name) {
+        return true;
+      }
+    }
+    return false;
+  };
 
   return {
     filterCards: cards => {
@@ -54,7 +63,7 @@ export const createRules = ruleData => {
         for (let i = 0; pickedCards.length < cardsToPick && i < specificCards.length; i++) {
           const requestedCard = specificCards[i];
           const pickedCard = cardPool.findCard(requestedCard);
-          if (pickedCard) {
+          if (pickedCard && !includesCardWithName(pickedCards, pickedCard.name)) {
             pickedCards.push(pickedCard);
           }
         }
@@ -71,7 +80,7 @@ export const createRules = ruleData => {
               cursor++
             ) {
               const card = cardPool.get(cursor);
-              if (!pickedCards.includes(card) && isCardInGroup(card, group)) {
+              if (!includesCardWithName(pickedCards, card.name) && isCardInGroup(card, group)) {
                 pickedCards.push(card);
               }
             }
@@ -99,7 +108,7 @@ export const createRules = ruleData => {
           }
         }
 
-        if (pickThisCard) {
+        if (pickThisCard && !includesCardWithName(pickedCards, pickedCard.name)) {
           pickedCards.push(pickedCard);
         }
       }
