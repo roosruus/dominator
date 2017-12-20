@@ -57,7 +57,6 @@ export const RULES_KINGDOM_CARDS = createRules({
         }
       ],
       specificCards: [
-        'Spoils',
         // Prosperity
         'Platinum',
         'Colony',
@@ -81,7 +80,11 @@ export const RULES_KINGDOM_CARDS = createRules({
         'Zombie Mason',
         'Zombie Spy',
         'Ghost',
-        // Knights
+        // Dark Ages
+        'Spoils',
+        'Madman',
+        'Mercenary',
+        // Dark Ages - Knights
         'Dame Anna',
         'Dame Josephine',
         'Dame Molly',
@@ -91,7 +94,7 @@ export const RULES_KINGDOM_CARDS = createRules({
         'Sir Destry',
         'Sir Martin',
         'Sir Michael',
-        'Sir Vander'
+        'Sir Vander',
       ]
     }
   }

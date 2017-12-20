@@ -40,21 +40,24 @@ const createCardPool = cards => {
 };
 
 export const createGameSetup = (rules, allCards = ALL_CARDS) => {
+  const additionalCards = [];
+  let pickedCards = [];
+  
   allCards = createCardPool(allCards);
   rules = DEFAULT_RULES.merge(rules);
   const cardPool = allCards.filterCards(RULES_KINGDOM_CARDS).filterCards(rules);
 
-  const addProsperityCards = cards => {
+  const getProsperityCards = cards => {
     const numProsperityCards = cards.filter(card => card.set === 'Prosperity').length;
     // include prosperity Platinum and Colony based on number of Prosperity cards in the deck
     const includeProsperityCards = Math.random() < numProsperityCards / cards.length;
     if (includeProsperityCards) {
-      return [...cards, ...allCards.findCards(['Platinum', 'Colony'])];
+      return allCards.findCards(['Platinum', 'Colony']);
     }
-    return cards;
+    return [];
   };
 
-  const addDarkAgesCards = cards => {
+  const getDarkAgesCards = cards => {
     const additionalCards = [];
     const hasLooter = !!cards.find(card => card.types.includes('Looter'));
     if (hasLooter) {
@@ -78,18 +81,23 @@ export const createGameSetup = (rules, allCards = ALL_CARDS) => {
       additionalCards.push(allCards.findCard('Mercenary'));
     }
 
-    return [...cards, ...additionalCards];
+    return additionalCards;
   };
+  
+  const getAdditionalCards = () => additionalCards;
+  const getPickedCards = () => pickedCards;
 
   return {
+    getAdditionalCards,
+    getPickedCards,
     pickCards: () => {
-      let pickedCards = rules.pickCardsFromPool(cardPool.shuffle());
+      pickedCards = rules.pickCardsFromPool(cardPool.shuffle());
 
       // add additional Prosperity cards
-      pickedCards = addProsperityCards(pickedCards);
+      additionalCards.push(...getProsperityCards(pickedCards));
 
       // add additional Dark Ages cards
-      pickedCards = addDarkAgesCards(pickedCards);
+      additionalCards.push(...getDarkAgesCards(pickedCards));
 
       return pickedCards;
     }

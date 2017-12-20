@@ -14,12 +14,16 @@ import { getCurrentRules } from '../reducers';
 import { createGameSetup } from '../engine';
 
 
-const styles = {
+const styles = theme => ({
+  results: theme.mixins.gutters({
+    paddingTop: 16,
+    paddingBottom: 16,
+    marginTop: theme.spacing.unit * 3,
+  }),
   flex: {
     flex: 1
   }
-};
-
+});
 
 class App extends Component {
   constructor(props) {
@@ -29,12 +33,14 @@ class App extends Component {
 
   handleTouchTap() {
     const { dispatch, currentRules } = this.props;
-    const pickedCards = createGameSetup(currentRules).pickCards();
-    dispatch(pickCards(pickedCards));
+    const gameSetup = createGameSetup(currentRules);
+    const kingdomCards = gameSetup.pickCards();
+    const additionalCards = gameSetup.getAdditionalCards();
+    dispatch(pickCards({kingdomCards, additionalCards}));
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, pickedCards } = this.props;
     return (
       <div>
         <AppBar position="static">
@@ -52,9 +58,16 @@ class App extends Component {
             <ExpansionList />
           </CardContent>
         </Card>
-        {this.props.pickedCards.length > 0 && (
-          <Card>
-            <ResultsTable pickedCards={this.props.pickedCards}/>
+        {pickedCards.kingdomCards && (
+          <Card className={classes.results}>
+            <Typography type="title">Kingdom cards</Typography>
+            <ResultsTable pickedCards={pickedCards.kingdomCards}/>
+            {pickedCards.additionalCards && pickedCards.additionalCards.length > 0 &&
+              <div>
+                <Typography type="title">Additional cards</Typography>
+                <ResultsTable pickedCards={pickedCards.additionalCards}/>
+              </div>
+            }
           </Card>
         )}
       </div>

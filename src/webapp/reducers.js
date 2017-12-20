@@ -50,7 +50,7 @@ const expansions = (state = expansionsInitState, action) => {
   }
 };
 
-const pickedCards = (state = [], action) => {
+const pickedCards = (state = {}, action) => {
   switch (action.type) {
     case PICK_CARDS:
       return action.payload;
