@@ -43,7 +43,9 @@ class ExpansionList extends React.Component {
   
   handleMinMaxChange(payload) {
     const { dispatch } = this.props;
-    dispatch(setExpansionMinMax(payload));
+    if(!isNaN(payload.min) && !isNaN(payload.max)) {
+      dispatch(setExpansionMinMax(payload));
+    }
   }
 
   render() {

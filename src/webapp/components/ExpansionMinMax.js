@@ -1,9 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Dialog, { DialogTitle, DialogContent, DialogActions } from 'material-ui/Dialog';
 import Select from 'material-ui/Select';
 import Button from 'material-ui/Button';
 import { FormControl } from 'material-ui/Form';
 import Input, { InputLabel } from 'material-ui/Input';
+
+import { MAX_KINGDOM_CARDS } from '../engine/rules';
 
 class ExpansionMinMax extends React.Component {
   constructor(props) {
@@ -26,7 +29,7 @@ class ExpansionMinMax extends React.Component {
 
   handleChange(field) {
     return e => {
-      this.setState({ [field]: e.target.value });
+      this.setState({ [field]: e.target.value ? parseInt(e.target.value) : undefined });
     };
   }
 
@@ -70,5 +73,18 @@ class ExpansionMinMax extends React.Component {
     );
   }
 }
+
+ExpansionMinMax.propTypes = {
+  min: PropTypes.number,
+  max: PropTypes.number,
+  onClose: PropTypes.func,
+  open: PropTypes.bool,
+  title: PropTypes.string
+};
+
+ExpansionMinMax.defaultProps = {
+  min: 0,
+  max: MAX_KINGDOM_CARDS
+};
 
 export default ExpansionMinMax;

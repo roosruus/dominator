@@ -1,7 +1,9 @@
 import { GROUP_TYPE_CARD_TYPE, createRules } from './factory.js';
 
+export const MAX_KINGDOM_CARDS = 10;
+
 export const DEFAULT_RULES = createRules({
-  numKingdomCards: 10,
+  numKingdomCards: MAX_KINGDOM_CARDS,
   filters: {
     include: {
       groups: [],

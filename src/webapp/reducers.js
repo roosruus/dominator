@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 
 import { getExpansions } from './engine';
 import { GROUP_TYPE_SET } from './engine/rules/factory';
+import { MAX_KINGDOM_CARDS } from './engine/rules';
 import {
   TOGGLE_EXPANSION,
   TOGGLE_ALL_EXPANSIONS,
@@ -12,7 +13,7 @@ import {
 
 const selectedExpansionsReducer = selectAll => (map, [set, props]) => ({
   ...map,
-  [set]: Object.assign({ min: 0, max: 10 }, props, { selected: selectAll })
+  [set]: Object.assign({ min: 0, max: MAX_KINGDOM_CARDS }, props, { selected: selectAll })
 });
 
 export const expansionsInitState = {
@@ -95,7 +96,7 @@ const getSelectedExpansionLimits = state =>
     .map(([expansion, props]) => ({ type: GROUP_TYPE_SET, name: expansion, min: props.min, max: props.max }));
 
 export const getCurrentRules = state => ({
-  numKingdomCards: 10,
+  numKingdomCards: MAX_KINGDOM_CARDS,
   filters: {
     include: {
       groups: getSelectedExpansions(state).map(expansion => ({ name: expansion, type: GROUP_TYPE_SET })),

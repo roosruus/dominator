@@ -28,8 +28,8 @@ export const createRules = ruleData => {
   };
   
   const includesCardWithName = (cards, name) => {
-    for(let card of cards) {
-      if(card.name === name) {
+    for (let card of cards) {
+      if (card.name === name) {
         return true;
       }
     }
@@ -93,14 +93,16 @@ export const createRules = ruleData => {
         let pickedCard = cardPool.get(cursor);
         let pickThisCard = true;
 
-        if (pickedCards.includes(pickedCard)) {
+        if (includesCardWithName(pickedCards, pickedCard.name)) {
           pickThisCard = false;
         } else if (rules.filters.include) {
-          for (let group of rules.filters.include.groups) {
+          const { groups, limits } = rules.filters.include;
+          for (let limit of limits) {
             if (
-              group.max &&
-              isCardInGroup(pickedCard, group) &&
-              pickedCards.filter(card => isCardInGroup(card, group)).length >= group.max
+              !isCardInGroups(pickedCard, groups) ||
+              (isCardInGroup(pickedCard, limit) &&
+                limit.max &&
+                pickedCards.filter(card => isCardInGroup(card, limit)).length >= limit.max)
             ) {
               pickThisCard = false;
               break;
@@ -108,7 +110,7 @@ export const createRules = ruleData => {
           }
         }
 
-        if (pickThisCard && !includesCardWithName(pickedCards, pickedCard.name)) {
+        if (pickThisCard) {
           pickedCards.push(pickedCard);
         }
       }

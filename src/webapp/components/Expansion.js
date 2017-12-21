@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ListItem, ListItemText, ListItemSecondaryAction } from 'material-ui/List';
 import Checkbox from 'material-ui/Checkbox';
 import IconButton from 'material-ui/IconButton';
 import MoreVert from 'material-ui-icons/MoreVert';
 
 import ExpansionMinMax from './ExpansionMinMax';
+import { MAX_KINGDOM_CARDS } from '../engine/rules';
 
 export default class Expansion extends React.PureComponent {
   constructor(props) {
@@ -33,7 +35,7 @@ export default class Expansion extends React.PureComponent {
     const {min, max} = this.props;
     
     let secondaryText = '';
-    if(min !== 0 || max !== 10) {
+    if(min !== 0 || max !== MAX_KINGDOM_CARDS) {
       secondaryText = `Min: ${min}, Max: ${max}`;
     }
     
@@ -59,3 +61,17 @@ export default class Expansion extends React.PureComponent {
     );
   }
 }
+
+Expansion.propTypes = {
+  min: PropTypes.number,
+  max: PropTypes.number,
+  name: PropTypes.string,
+  onMinMaxChange: PropTypes.func,
+  onSelected: PropTypes.func,
+  selected: PropTypes.bool
+};
+
+Expansion.defaultProps = {
+  min: 0,
+  max: MAX_KINGDOM_CARDS
+};

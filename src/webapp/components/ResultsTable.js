@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Table, { TableBody, TableCell, TableHead, TableRow, TableSortLabel } from 'material-ui/Table';
-import Tooltip from 'material-ui/Tooltip';
 
 
 class ResultsTable extends Component {
@@ -29,37 +28,34 @@ class ResultsTable extends Component {
 
   getSortedCards() {
     const { order, orderBy } = this.state;
-    
+
     let getterFunc = card => card[orderBy];
-    for(let column of this.columnData) {
-      if(column.id === orderBy) {
-        if(column.getter) {
+    for (let column of this.columnData) {
+      if (column.id === orderBy) {
+        if (column.getter) {
           getterFunc = column.getter;
         }
         break;
       }
     }
-    
+
     const sortedCards =
       order === 'desc'
         ? this.props.pickedCards.slice().sort((a, b) => (getterFunc(b) < getterFunc(a) ? -1 : 1))
         : this.props.pickedCards.slice().sort((a, b) => (getterFunc(a) < getterFunc(b) ? -1 : 1));
     return sortedCards;
   }
-  
+
   formatCost(cost) {
     let formatted = '';
-    if(cost) {
-      if(cost.type === 'money') {
+    if (cost) {
+      if (cost.type === 'money') {
         formatted = `$${cost.value}`;
-      }
-      else if(cost.type === 'potion') {
+      } else if (cost.type === 'potion') {
         formatted = `${cost.value}P`;
-      }
-      else if(cost.type === 'debt') {
+      } else if (cost.type === 'debt') {
         formatted = `${cost.value}D`;
-      }
-      else {
+      } else {
         formatted = cost.value;
       }
     }
@@ -67,7 +63,6 @@ class ResultsTable extends Component {
   }
 
   render() {
-    
     const { order, orderBy } = this.state;
     return (
       <Table>
