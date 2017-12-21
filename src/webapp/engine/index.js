@@ -56,7 +56,7 @@ export const createGameSetup = (rules, allCards = ALL_CARDS) => {
 
   const getProsperityCards = cards => {
     const numProsperityCards = cards.filter(card => card.set === 'Prosperity').length;
-    // include prosperity Platinum and Colony based on number of Prosperity cards in the deck
+    // include prosperity Platinum and Colony based on the number of Prosperity cards in the deck
     const includeProsperityCards = Math.random() < numProsperityCards / cards.length;
     if (includeProsperityCards) {
       return allCards.findCards(['Platinum', 'Colony']);
@@ -91,6 +91,13 @@ export const createGameSetup = (rules, allCards = ALL_CARDS) => {
     const hasUrchin = !!cards.find(card => card.name === 'Urchin');
     if (hasUrchin) {
       additionalCards.push(allCards.findCard('Mercenary'));
+    }
+
+    const numDarkAgesCards = cards.filter(card => card.set === 'Dark Ages').length;
+    // include Shelters based on the number of Dark Ages cards in the deck
+    const includeShelters = Math.random() < numDarkAgesCards / cards.length;
+    if (includeShelters) {
+      additionalCards.push(allCards.findCard('Shelters'));
     }
 
     return additionalCards;
