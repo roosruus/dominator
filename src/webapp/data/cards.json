@@ -3393,7 +3393,8 @@
       "type": "money"
     },
     "description": "+$1",
-    "plusCoins": 1
+    "plusCoins": 1,
+    "partOf": "Ruins"
   },
   {
     "set": "Dark Ages",
@@ -3407,7 +3408,8 @@
       "type": "money"
     },
     "description": "+1 Card",
-    "plusCards": 1
+    "plusCards": 1,
+    "partOf": "Ruins"
   },
   {
     "set": "Dark Ages",
@@ -3421,7 +3423,8 @@
       "type": "money"
     },
     "description": "+1 Buy",
-    "plusBuys": 1
+    "plusBuys": 1,
+    "partOf": "Ruins"
   },
   {
     "set": "Dark Ages",
@@ -3435,7 +3438,8 @@
       "type": "money"
     },
     "description": "+1 Action",
-    "plusActions": 1
+    "plusActions": 1,
+    "partOf": "Ruins"
   },
   {
     "set": "Dark Ages",
@@ -3448,7 +3452,8 @@
       "value": 0,
       "type": "money"
     },
-    "description": "Look at the top 2 cards of your deck. Discard them or put them back in any order."
+    "description": "Look at the top 2 cards of your deck. Discard them or put them back in any order.",
+    "partOf": "Ruins"
   },
   {
     "set": "Dark Ages",
@@ -3473,7 +3478,8 @@
       "value": 5,
       "type": "money"
     },
-    "description": "You may trash up to 2 cards from your hand.\nEach other player reveals the top two cards of their deck, trashes one of them costing from $3 to $6, and discards the rest. If a Knight is trashed by this, trash this."
+    "description": "You may trash up to 2 cards from your hand.\nEach other player reveals the top two cards of their deck, trashes one of them costing from $3 to $6, and discards the rest. If a Knight is trashed by this, trash this.",
+    "partOf": "Knights"
   },
   {
     "set": "Dark Ages",
@@ -3488,7 +3494,8 @@
       "value": 5,
       "type": "money"
     },
-    "description": "Each other player reveals the top two cards of their deck, trashes one of them costing from $3 to $6, and discards the rest. If a Knight is trashed by this, trash this.\n———-\nWorth 2 VP"
+    "description": "Each other player reveals the top two cards of their deck, trashes one of them costing from $3 to $6, and discards the rest. If a Knight is trashed by this, trash this.\n———-\nWorth 2 VP",
+    "partOf": "Knights"
   },
   {
     "set": "Dark Ages",
@@ -3503,7 +3510,8 @@
       "type": "money"
     },
     "description": "+2 Actions.\nEach other player reveals the top two cards of their deck, trashes one of them costing from $3 to $6, and discards the rest. If a Knight is trashed by this, trash this.",
-    "plusActions": 2
+    "plusActions": 2,
+    "partOf": "Knights"
   },
   {
     "set": "Dark Ages",
@@ -3517,7 +3525,8 @@
       "value": 5,
       "type": "money"
     },
-    "description": "You may gain a card costing up to $3.\nEach other player reveals the top two cards of their deck, trashes one of them costing from $3 to $6, and discards the rest. If a Knight is trashed by this, trash this."
+    "description": "You may gain a card costing up to $3.\nEach other player reveals the top two cards of their deck, trashes one of them costing from $3 to $6, and discards the rest. If a Knight is trashed by this, trash this.",
+    "partOf": "Knights"
   },
   {
     "set": "Dark Ages",
@@ -3532,7 +3541,8 @@
       "type": "money"
     },
     "description": "+$2\nEach other player reveals the top two cards of their deck, trashes one of them costing from $3 to $6, and discards the rest. If a Knight is trashed by this, trash this.",
-    "plusCoins": 2
+    "plusCoins": 2,
+    "partOf": "Knights"
   },
   {
     "set": "Dark Ages",
@@ -3548,7 +3558,8 @@
     },
     "description": "+1 Card\n+1 Action\nEach other player reveals the top two cards of their deck, trashes one of them costing from $3 to $6, and discards the rest. If a Knight is trashed by this, trash this.",
     "plusCards": 1,
-    "plusActions": 1
+    "plusActions": 1,
+    "partOf": "Knights"
   },
   {
     "set": "Dark Ages",
@@ -3563,7 +3574,8 @@
       "type": "money"
     },
     "description": "+2 Cards\nEach other player reveals the top two cards of their deck, trashes one of them costing from $3 to $6, and discards the rest. If a Knight is trashed by this, trash this.",
-    "plusCards": 2
+    "plusCards": 2,
+    "partOf": "Knights"
   },
   {
     "set": "Dark Ages",
@@ -3578,7 +3590,8 @@
       "type": "money"
     },
     "description": "+2 Buys\nEach other player reveals the top two cards of their deck, trashes one of them costing from $3 to $6, and discards the rest. If a Knight is trashed by this, trash this.",
-    "plusBuys": 2
+    "plusBuys": 2,
+    "partOf": "Knights"
   },
   {
     "set": "Dark Ages",
@@ -3592,7 +3605,8 @@
       "value": 5,
       "type": "money"
     },
-    "description": "Each other player discards down to 3 cards in hand.\nEach other player reveals the top two cards of their deck, trashes one of them costing from $3 to $6, and discards the rest. If a Knight is trashed by this, trash this."
+    "description": "Each other player discards down to 3 cards in hand.\nEach other player reveals the top two cards of their deck, trashes one of them costing from $3 to $6, and discards the rest. If a Knight is trashed by this, trash this.",
+    "partOf": "Knights"
   },
   {
     "set": "Dark Ages",
@@ -3606,7 +3620,8 @@
       "value": 5,
       "type": "money"
     },
-    "description": "Each other player reveals the top two cards of their deck, trashes one of them costing from $3 to $6, and discards the rest. If a Knight is trashed by this, trash this.\n———-\nWhen you trash this, gain a Gold."
+    "description": "Each other player reveals the top two cards of their deck, trashes one of them costing from $3 to $6, and discards the rest. If a Knight is trashed by this, trash this.\n———-\nWhen you trash this, gain a Gold.",
+    "partOf": "Knights"
   },
   {
     "set": "Dark Ages",
@@ -3619,7 +3634,8 @@
       "value": 1,
       "type": "money"
     },
-    "description": "When you buy a Victory card, you may trash this from your hand."
+    "description": "When you buy a Victory card, you may trash this from your hand.",
+    "partOf": "Shelters"
   },
   {
     "set": "Dark Ages",
@@ -3633,7 +3649,8 @@
       "type": "money"
     },
     "description": "+2 Actions",
-    "plusActions": 2
+    "plusActions": 2,
+    "partOf": "Shelters"
   },
   {
     "set": "Dark Ages",
@@ -3647,7 +3664,8 @@
       "type": "money"
     },
     "description": "0 VP\n___\nWhen you trash this, +1 Card.",
-    "plusCards": 1
+    "plusCards": 1,
+    "partOf": "Shelters"
   },
   {
     "set": "Guilds",
@@ -6478,5 +6496,27 @@
       "Hex"
     ],
     "description": "Reveal cards from your deck until revealing one costing $3 or $4. Trash it and discard the rest."
+  },
+  {
+    "name": "Shelters",
+    "set": "Dark Ages",
+    "types": [
+      "Shelter"
+    ],
+    "cost": {
+      "type": "money",
+      "value": 1
+    }
+  },
+  {
+    "name": "Ruins",
+    "set": "Dark Ages",
+    "types": [
+      "Ruins"
+    ],
+    "cost": {
+      "type": "money",
+      "value": 0
+    }
   }
 ]

@@ -1,6 +1,6 @@
 import { shuffleArray } from './utils';
 import { DEFAULT_RULES, RULES_KINGDOM_CARDS } from './rules/index';
-import ALL_CARDS from '../data/cards.json';
+import { ALL_CARDS } from '../data';
 
 export const getExpansions = () => {
   return ALL_CARDS.reduce((sets, card) => {
@@ -42,13 +42,13 @@ const createCardPool = cards => {
 export const createGameSetup = (rules, allCards = ALL_CARDS) => {
   const additionalCards = [];
   let pickedCards = [];
-  
+
   allCards = createCardPool(allCards);
   rules = DEFAULT_RULES.merge(rules);
   const cardPool = allCards.filterCards(RULES_KINGDOM_CARDS).filterCards(rules);
-  
+
   const getAlchemyCards = cards => {
-    if(cards.find(card => card.cost && card.cost.type === 'potion')) {
+    if (cards.find(card => card.cost && card.cost.type === 'potion')) {
       additionalCards.push(allCards.findCard('Potion'));
     }
     return [];
@@ -63,9 +63,9 @@ export const createGameSetup = (rules, allCards = ALL_CARDS) => {
     }
     return [];
   };
-  
+
   const getCornucopiaCards = cards => {
-    if(cards.find(card => card.name === 'Tournament')) {
+    if (cards.find(card => card.name === 'Tournament')) {
       return allCards.findCards(['Bag of Gold', 'Diadem', 'Followers', 'Princess', 'Trusty Steed']);
     }
     return [];
@@ -75,9 +75,7 @@ export const createGameSetup = (rules, allCards = ALL_CARDS) => {
     const additionalCards = [];
     const hasLooter = !!cards.find(card => card.types.includes('Looter'));
     if (hasLooter) {
-      additionalCards.push(
-        ...allCards.findCards(['Abandoned Mine', 'Ruined Library', 'Ruined Market', 'Ruined Village', 'Survivors'])
-      );
+      additionalCards.push(allCards.findCard('Ruins'));
     }
 
     const hasGainSpoils = !!cards.find(card => card.categories && card.categories.includes('gainspoils'));
@@ -97,7 +95,7 @@ export const createGameSetup = (rules, allCards = ALL_CARDS) => {
 
     return additionalCards;
   };
-  
+
   const getAdditionalCards = () => additionalCards;
   const getPickedCards = () => pickedCards;
 
@@ -106,7 +104,7 @@ export const createGameSetup = (rules, allCards = ALL_CARDS) => {
     getPickedCards,
     pickCards: () => {
       pickedCards = rules.pickCardsFromPool(cardPool.shuffle());
-      
+
       // add additional Alchemy cards
       additionalCards.push(...getAlchemyCards(pickedCards));
 

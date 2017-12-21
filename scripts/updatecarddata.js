@@ -135,6 +135,13 @@ https.get(CARD_LIST_URL, (res) => {
               return false;
             }
           });
+          
+          // Check if split pile and add reference
+          const partOf = getPartOf(card);
+          if(partOf) {
+            card.partOf = partOf;
+          }
+          
           // Not a card
           if(card.name === 'Shelters') {
             return;
@@ -155,6 +162,29 @@ https.get(CARD_LIST_URL, (res) => {
         });
       }
     });
+    
+    // Add cards representing piles consisting of other cards
+    const shelters = {
+      name: 'Shelters',
+      set: 'Dark Ages',
+      types: ['Shelter'],
+      cost: {
+        type: 'money',
+        value: 1
+      }
+    };
+    cards.push(shelters);
+    
+    const ruins = {
+      name: 'Ruins',
+      set: 'Dark Ages',
+      types: ['Ruins'],
+      cost: {
+        type: 'money',
+        value: 0
+      }
+    };
+    cards.push(ruins);
 
     console.log(`Writing results to: ${OUTPUT_FILE}`);
     fs.writeFile(OUTPUT_FILE, JSON.stringify(cards, null, '  '), (err) => {
@@ -168,3 +198,17 @@ https.get(CARD_LIST_URL, (res) => {
 }).on('error', (e) => {
   console.error(`Got error: ${e.message}`);
 });
+
+const getPartOf = card => {
+  let partOf;
+  if(card.types.includes('Knight')) {
+    partOf = 'Knights';
+  }
+  else if(['Hovel', 'Necropolis', 'Overgrown Estate'].includes(card.name)) {
+    partOf = 'Shelters';
+  }
+  else if(card.types.includes('Ruins')) {
+    partOf = 'Ruins';
+  }
+  return partOf;
+};
