@@ -13,12 +13,11 @@ import { pickCards } from '../actions';
 import { getCurrentRules } from '../reducers';
 import { createGameSetup } from '../engine';
 
-
 const styles = theme => ({
   results: theme.mixins.gutters({
     paddingTop: 16,
     paddingBottom: 16,
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing.unit * 3
   }),
   flex: {
     flex: 1
@@ -36,7 +35,7 @@ class App extends Component {
     const gameSetup = createGameSetup(currentRules);
     const kingdomCards = gameSetup.pickCards();
     const additionalCards = gameSetup.getAdditionalCards();
-    dispatch(pickCards({kingdomCards, additionalCards}));
+    dispatch(pickCards({ kingdomCards, additionalCards }));
   }
 
   render() {
@@ -61,13 +60,14 @@ class App extends Component {
         {pickedCards.kingdomCards && (
           <Card className={classes.results}>
             <Typography type="title">Kingdom cards</Typography>
-            <ResultsTable pickedCards={pickedCards.kingdomCards}/>
-            {pickedCards.additionalCards && pickedCards.additionalCards.length > 0 &&
-              <div>
-                <Typography type="title">Additional cards</Typography>
-                <ResultsTable pickedCards={pickedCards.additionalCards}/>
-              </div>
-            }
+            <ResultsTable pickedCards={pickedCards.kingdomCards} />
+            {pickedCards.additionalCards &&
+              pickedCards.additionalCards.length > 0 && (
+                <div>
+                  <Typography type="title">Additional cards</Typography>
+                  <ResultsTable pickedCards={pickedCards.additionalCards} />
+                </div>
+              )}
           </Card>
         )}
       </div>

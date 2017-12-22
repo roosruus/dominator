@@ -1,10 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withStyles } from 'material-ui/styles';
 import List, { ListItem, ListItemText } from 'material-ui/List';
 import Checkbox from 'material-ui/Checkbox';
 import Collapse from 'material-ui/transitions/Collapse';
 import ExpandLess from 'material-ui-icons/ExpandLess';
 import ExpandMore from 'material-ui-icons/ExpandMore';
-import { connect } from 'react-redux';
 
 import Expansion from './Expansion';
 import { toggleExpansion, toggleAllExpansions, toggleExpansionDrawer, setExpansionMinMax } from '../actions';
@@ -15,6 +16,12 @@ import {
   isNoExpansionsSelected,
   isExpansionDrawerOpen
 } from '../reducers';
+
+const styles = {
+  noLeftPadding: {
+    paddingLeft: 0
+  }
+};
 
 class ExpansionList extends React.Component {
   constructor(props) {
@@ -40,18 +47,19 @@ class ExpansionList extends React.Component {
     const { dispatch, areAllExpansionsSelected } = this.props;
     dispatch(toggleAllExpansions(!areAllExpansionsSelected));
   }
-  
+
   handleMinMaxChange(payload) {
     const { dispatch } = this.props;
-    if(!isNaN(payload.min) && !isNaN(payload.max)) {
+    if (!isNaN(payload.min) && !isNaN(payload.max)) {
       dispatch(setExpansionMinMax(payload));
     }
   }
 
   render() {
+    const { classes } = this.props;
     return (
       <List>
-        <ListItem button className={this.props.open ? 'no-left-padding' : ''}>
+        <ListItem button className={this.props.open ? classes.noLeftPadding : ''}>
           {this.props.open && (
             <Checkbox
               checked={this.props.areAllExpansionsSelected}
@@ -94,4 +102,4 @@ const mapStateToProps = state => ({
   open: isExpansionDrawerOpen(state)
 });
 
-export default connect(mapStateToProps)(ExpansionList);
+export default connect(mapStateToProps)(withStyles(styles)(ExpansionList));

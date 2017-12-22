@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
 import { ListItem, ListItemText, ListItemSecondaryAction } from 'material-ui/List';
 import Checkbox from 'material-ui/Checkbox';
 import IconButton from 'material-ui/IconButton';
@@ -8,7 +9,13 @@ import MoreVert from 'material-ui-icons/MoreVert';
 import ExpansionMinMax from './ExpansionMinMax';
 import { MAX_KINGDOM_CARDS } from '../engine/rules';
 
-export default class Expansion extends React.PureComponent {
+const styles = {
+  expansionListItem: {
+    padding: 0
+  }
+};
+
+class Expansion extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = { open: false, anchorEl: null };
@@ -32,16 +39,16 @@ export default class Expansion extends React.PureComponent {
   }
 
   render() {
-    const {min, max} = this.props;
-    
+    const { min, max, classes } = this.props;
+
     let secondaryText = '';
-    if(min !== 0 || max !== MAX_KINGDOM_CARDS) {
+    if (min !== 0 || max !== MAX_KINGDOM_CARDS) {
       secondaryText = `Min: ${min}, Max: ${max}`;
     }
-    
+
     return (
       <div>
-        <ListItem dense button onTouchTap={this.handleCheck} className="expansion-list-item">
+        <ListItem dense button onTouchTap={this.handleCheck} className={classes.expansionListItem}>
           <Checkbox checked={this.props.selected} disableRipple />
           <ListItemText primary={this.props.name} secondary={secondaryText} />
           <ListItemSecondaryAction>
@@ -75,3 +82,5 @@ Expansion.defaultProps = {
   min: 0,
   max: MAX_KINGDOM_CARDS
 };
+
+export default withStyles(styles)(Expansion);
