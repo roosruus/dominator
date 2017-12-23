@@ -8,7 +8,7 @@ import Button from 'material-ui/Button';
 import Card, { CardContent } from 'material-ui/Card';
 
 import ExpansionList from './ExpansionList';
-import ResultsTable from './ResultsTable';
+import CardTable from './CardTable';
 import { pickCards } from '../actions';
 import { getCurrentRules } from '../reducers';
 import { createGameSetup } from '../engine';
@@ -60,12 +60,12 @@ class App extends Component {
         {pickedCards.kingdomCards && (
           <Card className={classes.results}>
             <Typography type="title">Kingdom cards</Typography>
-            <ResultsTable pickedCards={pickedCards.kingdomCards} />
+            <CardTable cards={pickedCards.kingdomCards} />
             {pickedCards.additionalCards &&
               pickedCards.additionalCards.length > 0 && (
                 <div>
                   <Typography type="title">Additional cards</Typography>
-                  <ResultsTable pickedCards={pickedCards.additionalCards} />
+                  <CardTable cards={pickedCards.additionalCards} />
                 </div>
               )}
           </Card>

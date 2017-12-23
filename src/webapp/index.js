@@ -8,19 +8,11 @@ injectTapEventPlugin();
 import App from './components/App';
 import rootReducer, { expansionsInitState } from './reducers';
 import { observeStore } from './utils';
-import { persistSelections, getPersistedSelections } from './persistence';
+import { persistSelections, mergePersistedSelections } from './persistence';
 
 import './style.css';
 
-const initialState = {};
-const persistedSelections = getPersistedSelections();
-if (persistedSelections) {
-  initialState.expansions = {
-    ...expansionsInitState,
-    items: persistedSelections
-  };
-}
-
+const initialState = mergePersistedSelections(expansionsInitState);
 const store = createStore(rootReducer, initialState);
 observeStore(store, state => state.expansions.items, persistSelections);
 

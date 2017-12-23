@@ -3,12 +3,16 @@ import { DEFAULT_RULES, RULES_KINGDOM_CARDS } from './rules/index';
 import { ALL_CARDS } from '../data';
 
 export const getExpansions = () => {
-  return ALL_CARDS.reduce((sets, card) => {
-    if (!sets.includes(card.set)) {
-      sets.push(card.set);
+  const cardsByExpansion = {};
+  
+  for(let card of ALL_CARDS) {
+    if(!cardsByExpansion[card.set]) {
+      cardsByExpansion[card.set] = {};
     }
-    return sets;
-  }, []);
+    cardsByExpansion[card.set][card.name] = card;
+  }
+  
+  return cardsByExpansion;
 };
 
 const createCardPool = cards => {
