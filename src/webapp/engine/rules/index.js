@@ -97,6 +97,14 @@ export const RULES_KINGDOM_CARDS = createRules({
         'Sir Martin',
         'Sir Michael',
         'Sir Vander',
+        // Empires
+        'Plunder',
+        'Emporium',
+        'Bustling Village',
+        'Rocks',
+        'Fortune',
+        // Promo Cards
+        'Avanto'
       ]
     }
   }

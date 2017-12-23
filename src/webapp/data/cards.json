@@ -4705,7 +4705,8 @@
       "value": 5,
       "type": "money"
     },
-    "description": "$2\n+1 VP\n(This is the bottom half of the Encampment/Plunder pile.)"
+    "description": "$2\n+1 VP\n(This is the bottom half of the Encampment/Plunder pile.)",
+    "partOf": "Encampment"
   },
   {
     "set": "Empires",
@@ -4734,7 +4735,8 @@
     "description": "+1 Card\n+1 Action\n+$1\n———-\nWhen you gain this, if you have at least 5 Action cards in play, +2 VP.\n(This is the bottom half of the Patrician/Emporium pile.)",
     "plusCards": 1,
     "plusActions": 1,
-    "plusCoins": 1
+    "plusCoins": 1,
+    "partOf": "Patrician"
   },
   {
     "set": "Empires",
@@ -4762,7 +4764,8 @@
     },
     "description": "+1 Card\n+3 Actions\nLook through your discard pile. You may reveal a Settlers from it and put it into your hand.\n(This is the bottom half of the Settlers/Bustling Village pile.)",
     "plusCards": 1,
-    "plusActions": 3
+    "plusActions": 3,
+    "partOf": "Settlers"
   },
   {
     "set": "Empires",
@@ -4802,7 +4805,8 @@
       "type": "money"
     },
     "description": "+$1\n———-\nWhen you gain or trash this, gain a Silver; if it's your Buy phase, put the Silver on your deck, otherwise put it into your hand.\n(This is the bottom half of the Catapult/Rocks pile.)",
-    "plusCoins": 1
+    "plusCoins": 1,
+    "partOf": "Catapult"
   },
   {
     "set": "Empires",
@@ -4873,7 +4877,8 @@
       "type": "money"
     },
     "description": "+1 Buy\nWhen you play this, double your $ if you haven't yet this turn.\n———-\nWhen you gain this, gain a Gold per Gladiator you have in play.\n(This is the bottom half of the Gladiator/Fortune pile.)",
-    "plusBuys": 1
+    "plusBuys": 1,
+    "partOf": "Gladiator"
   },
   {
     "set": "Empires",
@@ -5522,7 +5527,8 @@
       "value": 5,
       "type": "money"
     },
-    "description": "+ 3 Cards\nYou may play a Sauna from your hand\n(This is the bottom half of the Sauna/Avanto pile.)"
+    "description": "+ 3 Cards\nYou may play a Sauna from your hand\n(This is the bottom half of the Sauna/Avanto pile.)",
+    "partOf": "Sauna"
   },
   {
     "set": "Promotional Cards",

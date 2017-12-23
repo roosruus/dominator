@@ -203,12 +203,22 @@ const getPartOf = card => {
   let partOf;
   if(card.types.includes('Knight')) {
     partOf = 'Knights';
-  }
-  else if(['Hovel', 'Necropolis', 'Overgrown Estate'].includes(card.name)) {
+  } else if(['Hovel', 'Necropolis', 'Overgrown Estate'].includes(card.name)) {
     partOf = 'Shelters';
-  }
-  else if(card.types.includes('Ruins')) {
+  } else if(card.types.includes('Ruins')) {
     partOf = 'Ruins';
+  } else if(card.name === 'Avanto') {
+    partOf = 'Sauna';
+  } else if(card.name === 'Plunder') {
+    partOf = 'Encampment';
+  } else if(card.name === 'Emporium') {
+    partOf = 'Patrician';
+  } else if(card.name === 'Bustling Village') {
+    partOf = 'Settlers';
+  } else if(card.name === 'Rocks') {
+    partOf = 'Catapult';
+  } else if(card.name === 'Fortune') {
+    partOf = 'Gladiator';
   }
   return partOf;
 };
