@@ -22,15 +22,7 @@ const styles = {
 class ExpansionMinMax extends PureComponent {
   constructor(props) {
     super(props);
-    const cardsCopy = {};
-    for (let [name, card] of Object.entries(props.getCardsInExpansion(props.title))) {
-      cardsCopy[name] = { ...card };
-    }
-    this.state = {
-      cards: cardsCopy,
-      min: this.props.min,
-      max: this.props.max
-    };
+    this.state = this.getInitialState();
 
     this.handleEnter = this.handleEnter.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -38,11 +30,20 @@ class ExpansionMinMax extends PureComponent {
     this.handleSelectAll = this.handleSelectAll.bind(this);
   }
 
-  handleEnter() {
-    this.setState({
+  getInitialState() {
+    const cardsCopy = {};
+    for (let [name, card] of Object.entries(this.props.getCardsInExpansion(this.props.title))) {
+      cardsCopy[name] = { ...card };
+    }
+    return {
+      cards: cardsCopy,
       min: this.props.min,
       max: this.props.max
-    });
+    };
+  }
+
+  handleEnter() {
+    this.setState(this.getInitialState());
   }
 
   handleChange(field) {
