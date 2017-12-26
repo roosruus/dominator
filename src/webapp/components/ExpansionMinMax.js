@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
@@ -19,7 +19,7 @@ const styles = {
   }
 };
 
-class ExpansionMinMax extends React.PureComponent {
+class ExpansionMinMax extends PureComponent {
   constructor(props) {
     super(props);
     const cardsCopy = {};
@@ -35,6 +35,7 @@ class ExpansionMinMax extends React.PureComponent {
     this.handleEnter = this.handleEnter.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSelectCard = this.handleSelectCard.bind(this);
+    this.handleSelectAll = this.handleSelectAll.bind(this);
   }
 
   handleEnter() {
@@ -53,6 +54,16 @@ class ExpansionMinMax extends React.PureComponent {
   handleSelectCard(card) {
     this.setState({
       cards: { ...this.state.cards, [card.name]: { ...card, selected: !card.selected } }
+    });
+  }
+
+  handleSelectAll(e, selected) {
+    const newCards = Object.entries(this.state.cards)
+      .map(([, card]) => ({ ...card, selected }))
+      .reduce((obj, card) => ({ ...obj, [card.name]: card }), {});
+
+    this.setState({
+      cards: newCards
     });
   }
 
@@ -93,6 +104,7 @@ class ExpansionMinMax extends React.PureComponent {
               cards={Object.values(this.state.cards)}
               displayColumns={['name', 'cost']}
               onSelectCard={this.handleSelectCard}
+              onSelectAll={this.handleSelectAll}
               selectableRows={true}
               sortableHeader={false}
             />

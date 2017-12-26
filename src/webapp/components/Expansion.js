@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import { ListItem, ListItemText, ListItemSecondaryAction } from 'material-ui/List';
@@ -15,7 +15,7 @@ const styles = {
   }
 };
 
-class Expansion extends React.PureComponent {
+class Expansion extends PureComponent {
   constructor(props) {
     super(props);
     this.state = { open: false, anchorEl: null };

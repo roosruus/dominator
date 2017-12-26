@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
 import List, { ListItem, ListItemText } from 'material-ui/List';
@@ -23,7 +23,7 @@ const styles = {
   }
 };
 
-class ExpansionList extends React.Component {
+class ExpansionList extends PureComponent {
   constructor(props) {
     super(props);
 

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Table, { TableBody, TableCell, TableHead, TableRow, TableSortLabel } from 'material-ui/Table';
 import Checkbox from 'material-ui/Checkbox';
 
-class CardTable extends Component {
+class CardTable extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -74,8 +74,12 @@ class CardTable extends Component {
   }
 
   render() {
-    const { selectableRows, sortableHeader } = this.props;
+    const { selectableRows, sortableHeader, onSelectCard, onSelectAll } = this.props;
     const { order, orderBy } = this.state;
+    
+    const sortedCards = this.getSortedCards();
+    const numSelected = sortedCards.filter(card => card.selected).length;
+    
     return (
       <Table>
         <SortableTableHead
@@ -85,13 +89,16 @@ class CardTable extends Component {
           orderBy={orderBy}
           disableSorting={!sortableHeader}
           selectableRows={selectableRows}
+          allSelected={numSelected === sortedCards.length}
+          noneSelected={numSelected === 0}
+          onSelectAll={onSelectAll}
         />
         <TableBody>
-          {this.getSortedCards().map(card => (
+          {sortedCards.map(card => (
             <TableRow key={`result-row-${card.name}`}>
               {selectableRows && (
                 <TableCell padding="none">
-                  <Checkbox checked={card.selected} onChange={() => this.props.onSelectCard(card)}/>
+                  <Checkbox checked={card.selected} onChange={() => onSelectCard(card)} />
                 </TableCell>
               )}
               {this.columnData.map(({ id }) => (
@@ -105,7 +112,7 @@ class CardTable extends Component {
   }
 }
 
-class SortableTableHead extends Component {
+class SortableTableHead extends PureComponent {
   createSortHandler(property) {
     return event => {
       this.props.onRequestSort(event, property);
@@ -113,13 +120,22 @@ class SortableTableHead extends Component {
   }
 
   render() {
-    const { order, orderBy, columnData, disableSorting, selectableRows } = this.props;
+    const {
+      order,
+      orderBy,
+      columnData,
+      disableSorting,
+      selectableRows,
+      allSelected,
+      noneSelected,
+      onSelectAll
+    } = this.props;
     return (
       <TableHead>
         <TableRow>
           {selectableRows && (
             <TableCell padding="none">
-              <Checkbox />
+              <Checkbox checked={allSelected} indeterminate={!(allSelected || noneSelected)} onChange={onSelectAll} />
             </TableCell>
           )}
           {columnData.map(column => (
@@ -146,6 +162,7 @@ CardTable.propTypes = {
   cards: PropTypes.array.isRequired,
   displayColumns: PropTypes.array,
   onSelectCard: PropTypes.func,
+  onSelectAll: PropTypes.func,
   selectableRows: PropTypes.bool,
   sortableHeader: PropTypes.bool
 };
