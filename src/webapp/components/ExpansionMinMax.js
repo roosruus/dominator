@@ -10,7 +10,7 @@ import Input, { InputLabel } from 'material-ui/Input';
 import Typography from 'material-ui/Typography';
 
 import CardTable from './CardTable';
-import { MAX_KINGDOM_CARDS } from '../engine/rules';
+import { MAX_KINGDOM_CARDS, RULES_KINGDOM_CARDS } from '../engine/rules';
 import { createGetCardsInExpansion } from '../reducers';
 
 const styles = {
@@ -32,8 +32,11 @@ class ExpansionMinMax extends PureComponent {
 
   getInitialState() {
     const cardsCopy = {};
-    for (let [name, card] of Object.entries(this.props.getCardsInExpansion(this.props.title))) {
-      cardsCopy[name] = { ...card };
+    const kingdomCards = RULES_KINGDOM_CARDS.filterCards(
+      Object.values(this.props.getCardsInExpansion(this.props.title))
+    );
+    for (let card of kingdomCards) {
+      cardsCopy[card.name] = { ...card };
     }
     return {
       cards: cardsCopy,
