@@ -124,9 +124,20 @@ https.get(CARD_LIST_URL, (res) => {
               }
               
               const categories = [];
-              const gainSpoils = /Gain . Spoils/.exec(description);
+              const gainSpoils = /gain . spoils/i.exec(description);
               if(gainSpoils) {
                 categories.push('gainspoils');
+              }
+              const gainCurse = /gains? a curse/i.exec(description);
+              if(gainCurse) {
+                categories.push('gaincurse');
+              }
+              const handReducing = new RegExp(
+                'each other player [\\w\\s,]*' +
+                '(puts [\\w\\s]+ on(to)? (his|their) deck|discards (down to|their hand|\\d cards|a copy of))', 'i'
+              ).exec(description);
+              if(handReducing) {
+                categories.push('handreducing');
               }
               if(categories.length > 0) {
                 card.categories = categories;
@@ -153,6 +164,12 @@ https.get(CARD_LIST_URL, (res) => {
               value: 5,
               type: 'money'
             };
+          }
+          // Fix missing description for Taxman
+          else if(card.name === 'Taxman') {
+            card.description = 'You may trash a Treasure from your hand. ' +
+              'Each other player with 5 or more cards in hand discards a copy of it (or reveals a hand without it). ' +
+              'Gain a Treasure card costing up to $3 more than the trashed card, putting it on top of your deck.';
           }
           cards.push(card);
           // add common Dominion cards to 1st edition

@@ -181,7 +181,10 @@
       "value": 4,
       "type": "money"
     },
-    "description": "Gain a silver card; put it on top of your deck. Each other player reveals a Victory card from his hand and puts it on his deck (or reveals a hand with no Victory cards)."
+    "description": "Gain a silver card; put it on top of your deck. Each other player reveals a Victory card from his hand and puts it on his deck (or reveals a hand with no Victory cards).",
+    "categories": [
+      "handreducing"
+    ]
   },
   {
     "set": "Dominion 1st Edition",
@@ -194,7 +197,10 @@
       "value": 4,
       "type": "money"
     },
-    "description": "Gain a silver card; put it on top of your deck. Each other player reveals a Victory card from his hand and puts it on his deck (or reveals a hand with no Victory cards)."
+    "description": "Gain a silver card; put it on top of your deck. Each other player reveals a Victory card from his hand and puts it on his deck (or reveals a hand with no Victory cards).",
+    "categories": [
+      "handreducing"
+    ]
   },
   {
     "set": "Dominion 2nd Edition",
@@ -232,7 +238,10 @@
       "type": "money"
     },
     "description": "+$2\nEach other player discards down to 3 cards in their hand.",
-    "plusCoins": 2
+    "plusCoins": 2,
+    "categories": [
+      "handreducing"
+    ]
   },
   {
     "set": "Dominion 1st Edition",
@@ -246,7 +255,10 @@
       "type": "money"
     },
     "description": "+$2\nEach other player discards down to 3 cards in their hand.",
-    "plusCoins": 2
+    "plusCoins": 2,
+    "categories": [
+      "handreducing"
+    ]
   },
   {
     "set": "Dominion 2nd Edition",
@@ -568,7 +580,10 @@
       "type": "money"
     },
     "description": "+2 Cards\nEach other player gains a Curse card.",
-    "plusCards": 2
+    "plusCards": 2,
+    "categories": [
+      "gaincurse"
+    ]
   },
   {
     "set": "Dominion 1st Edition",
@@ -582,7 +597,10 @@
       "type": "money"
     },
     "description": "+2 Cards\nEach other player gains a Curse card.",
-    "plusCards": 2
+    "plusCards": 2,
+    "categories": [
+      "gaincurse"
+    ]
   },
   {
     "set": "Dominion 2nd Edition",
@@ -1130,7 +1148,10 @@
     "description": "+1 Action\nChoose one: +$2; or discard your hand, +4 Cards, and each other player with at least 5 cards in hand discards their hand and draws 4 cards.",
     "plusCards": 4,
     "plusActions": 1,
-    "plusCoins": 2
+    "plusCoins": 2,
+    "categories": [
+      "handreducing"
+    ]
   },
   {
     "set": "Intrigue 1st Edition",
@@ -1146,7 +1167,10 @@
     "description": "+1 Action\nChoose one: +$2; or discard your hand, +4 Cards, and each other player with at least 5 cards in hand discards their hand and draws 4 cards.",
     "plusCards": 4,
     "plusActions": 1,
-    "plusCoins": 2
+    "plusCoins": 2,
+    "categories": [
+      "handreducing"
+    ]
   },
   {
     "set": "Intrigue 2nd Edition",
@@ -1172,7 +1196,10 @@
       "value": 5,
       "type": "money"
     },
-    "description": "Trash a card from your hand. Gain a card costing up to $2 more than it. If the gained card is an Action or Treasure, put it onto your deck; if it's a Victory card, each other player gains a Curse."
+    "description": "Trash a card from your hand. Gain a card costing up to $2 more than it. If the gained card is an Action or Treasure, put it onto your deck; if it's a Victory card, each other player gains a Curse.",
+    "categories": [
+      "gaincurse"
+    ]
   },
   {
     "set": "Intrigue 2nd Edition",
@@ -1186,7 +1213,11 @@
       "type": "money"
     },
     "description": "+3 Cards\nEach other player either discards 2 cards or gains a Curse to their hand, their choice. (They may pick an option they can't do.)",
-    "plusCards": 3
+    "plusCards": 3,
+    "categories": [
+      "gaincurse",
+      "handreducing"
+    ]
   },
   {
     "set": "Intrigue 1st Edition",
@@ -1200,7 +1231,11 @@
       "type": "money"
     },
     "description": "+3 Cards\nEach other player either discards 2 cards or gains a Curse to their hand, their choice. (They may pick an option they can't do.)",
-    "plusCards": 3
+    "plusCards": 3,
+    "categories": [
+      "gaincurse",
+      "handreducing"
+    ]
   },
   {
     "set": "Intrigue 2nd Edition",
@@ -1403,7 +1438,10 @@
       "type": "money"
     },
     "description": "+$2\nTrash this. Add an Embargo token to a Supply pile. (For the rest of the game, when a player buys a card from that pile, they gain a Curse.)",
-    "plusCoins": 2
+    "plusCoins": 2,
+    "categories": [
+      "gaincurse"
+    ]
   },
   {
     "set": "Seaside",
@@ -1623,7 +1661,10 @@
       "value": 4,
       "type": "money"
     },
-    "description": "Each other player discards the top card of their deck, then gains a Curse onto their deck."
+    "description": "Each other player discards the top card of their deck, then gains a Curse onto their deck.",
+    "categories": [
+      "gaincurse"
+    ]
   },
   {
     "set": "Seaside",
@@ -1676,7 +1717,10 @@
       "type": "money"
     },
     "description": "+2 Cards\nEach other player with 4 or more cards in hand puts cards from their hand onto their deck until they have 3 cards in hand.",
-    "plusCards": 2
+    "plusCards": 2,
+    "categories": [
+      "handreducing"
+    ]
   },
   {
     "set": "Seaside",
@@ -1883,7 +1927,10 @@
     },
     "description": "+1 Card\n+1 Action\nEach other player gains a curse.",
     "plusCards": 1,
-    "plusActions": 1
+    "plusActions": 1,
+    "categories": [
+      "gaincurse"
+    ]
   },
   {
     "set": "Alchemy",
@@ -2090,7 +2137,10 @@
       "type": "money"
     },
     "description": "+$2\nEach other player may discard a Curse. If they don't, they gain a Curse and a Copper.",
-    "plusCoins": 2
+    "plusCoins": 2,
+    "categories": [
+      "gaincurse"
+    ]
   },
   {
     "set": "Prosperity",
@@ -2157,7 +2207,10 @@
     },
     "description": "+1 Buy; +$2\nEach other player discards down to 3 cards in hand.\n———-\nWhile this is in play, when you buy a card, +1 VP token.",
     "plusBuys": 1,
-    "plusCoins": 2
+    "plusCoins": 2,
+    "categories": [
+      "handreducing"
+    ]
   },
   {
     "set": "Prosperity",
@@ -2385,7 +2438,10 @@
       "type": "money"
     },
     "description": "+2 Cards\nDiscard 2 cards. Each other player may reveal a Bane card from their hand; if they don't, they gain a Curse.\n———-\nSetup: Add an extra Kingdom card pile costing $2 or $3 to the Supply. Cards from that pile are Bane cards.",
-    "plusCards": 2
+    "plusCards": 2,
+    "categories": [
+      "gaincurse"
+    ]
   },
   {
     "set": "Cornucopia",
@@ -2438,7 +2494,10 @@
       "type": "money"
     },
     "description": "+$2\nEach other player discards the top card of their deck. If it's a Victory card they gain a Curse; otherwise they gain a copy of the discarded card or you do, your choice.",
-    "plusCoins": 2
+    "plusCoins": 2,
+    "categories": [
+      "gaincurse"
+    ]
   },
   {
     "set": "Cornucopia",
@@ -2493,7 +2552,11 @@
       "type": "money"
     },
     "description": "+2 Cards\nGain an Estate. Each other player gains a Curse and discards down to 3 cards in hand.\n(This is not in the Supply.)",
-    "plusCards": 2
+    "plusCards": 2,
+    "categories": [
+      "gaincurse",
+      "handreducing"
+    ]
   },
   {
     "set": "Cornucopia",
@@ -2788,7 +2851,10 @@
       "value": 5,
       "type": "money"
     },
-    "description": "Worth $1\nWhen you play this, you may gain a Copper to your hand.\n———\nWhen you gain this, each other player gains a Curse."
+    "description": "Worth $1\nWhen you play this, you may gain a Copper to your hand.\n———\nWhen you gain this, each other player gains a Curse.",
+    "categories": [
+      "gaincurse"
+    ]
   },
   {
     "set": "Hinterlands",
@@ -2830,7 +2896,10 @@
     },
     "description": "+3 Cards\n+1 Buy\nEach other player draws a card, then discards down to 3 cards in hand.",
     "plusCards": 3,
-    "plusBuys": 1
+    "plusBuys": 1,
+    "categories": [
+      "handreducing"
+    ]
   },
   {
     "set": "Hinterlands",
@@ -3024,7 +3093,10 @@
     },
     "description": "+1 Card\n+1 Action\nEach other player discards down to 4 cards in hand.\n———-\nWhen you play another Attack card with this in play, you may first trash this, to gain a Mercenary from the Mercenary pile.",
     "plusCards": 1,
-    "plusActions": 1
+    "plusActions": 1,
+    "categories": [
+      "handreducing"
+    ]
   },
   {
     "set": "Dark Ages",
@@ -3038,7 +3110,10 @@
       "type": "money"
     },
     "description": "You may trash 2 cards from your hand. If you do, +2 Cards, + $2, and each other player discards down to 3 cards in hand.\n(This is not in the Supply.)",
-    "plusCards": 2
+    "plusCards": 2,
+    "categories": [
+      "handreducing"
+    ]
   },
   {
     "set": "Dark Ages",
@@ -3610,6 +3685,9 @@
       "type": "money"
     },
     "description": "Each other player discards down to 3 cards in hand.\nEach other player reveals the top two cards of their deck, trashes one of them costing from $3 to $6, and discards the rest. If a Knight is trashed by this, trash this.",
+    "categories": [
+      "handreducing"
+    ],
     "partOf": "Knights"
   },
   {
@@ -3772,7 +3850,8 @@
     "cost": {
       "value": 4,
       "type": "money"
-    }
+    },
+    "description": "You may trash a Treasure from your hand. Each other player with 5 or more cards in hand discards a copy of it (or reveals a hand without it). Gain a Treasure card costing up to $3 more than the trashed card, putting it on top of your deck."
   },
   {
     "set": "Guilds",
@@ -3837,7 +3916,10 @@
       "value": 5,
       "type": "money"
     },
-    "description": "Gain a Gold. Each other player gains a Curse, and if they did, draws a card."
+    "description": "Gain a Gold. Each other player gains a Curse, and if they did, draws a card.",
+    "categories": [
+      "gaincurse"
+    ]
   },
   {
     "set": "Adventures",
@@ -4138,7 +4220,10 @@
       "type": "money"
     },
     "description": "Turn your Journey token over (it starts face up). Then if it's face down, +$1. If it's face up, +$5, and each other player reveals the top card of their deck, trashes it if it costs from $3 to $6, and otherwise discards it and gains a Curse.",
-    "plusCoins": 1
+    "plusCoins": 1,
+    "categories": [
+      "gaincurse"
+    ]
   },
   {
     "set": "Adventures",
@@ -4224,7 +4309,10 @@
       "type": "money"
     },
     "description": "Until your next turn, when any other player buys a card, they gain a Curse.\nAt the start of your next turn, +$3.",
-    "plusCoins": 3
+    "plusCoins": 3,
+    "categories": [
+      "gaincurse"
+    ]
   },
   {
     "set": "Adventures",
@@ -4796,7 +4884,11 @@
       "type": "money"
     },
     "description": "+$1\nTrash a card from your hand. If it costs $3 or more, each other player gains a Curse. If it's a Treasure, each other player discards down to 3 cards in hand.\n(This is the top half of the Catapult/Rocks pile.)",
-    "plusCoins": 1
+    "plusCoins": 1,
+    "categories": [
+      "gaincurse",
+      "handreducing"
+    ]
   },
   {
     "set": "Empires",
@@ -5022,7 +5114,10 @@
       "type": "money"
     },
     "description": "+$3\nYou may reveal a Gold from your hand. If you do, each other player discards down to 2 cards in hand, then draws a card.",
-    "plusCoins": 3
+    "plusCoins": 3,
+    "categories": [
+      "handreducing"
+    ]
   },
   {
     "set": "Empires",
@@ -5090,7 +5185,10 @@
       "value": 6,
       "type": "money"
     },
-    "description": "2 VP\n———-\nWhen you gain this during your turn, gain a Gold, and each other player with 5 or more cards in hand puts 2 cards from their hand onto their deck."
+    "description": "2 VP\n———-\nWhen you gain this during your turn, gain a Gold, and each other player with 5 or more cards in hand puts 2 cards from their hand onto their deck.",
+    "categories": [
+      "handreducing"
+    ]
   },
   {
     "set": "Empires",
@@ -5241,7 +5339,10 @@
       "value": 9,
       "type": "money"
     },
-    "description": "Gain a Curse. If you do, trash a card from your hand. +1 VP per $1 it cost."
+    "description": "Gain a Curse. If you do, trash a card from your hand. +1 VP per $1 it cost.",
+    "categories": [
+      "gaincurse"
+    ]
   },
   {
     "set": "Empires",
@@ -6092,7 +6193,10 @@
       "value": 5,
       "type": "money"
     },
-    "description": "When you play this, if you then have an odd number of Idols in play, receive a Boon; if an even number, each other player gains a Curse."
+    "description": "When you play this, if you then have an odd number of Idols in play, receive a Boon; if an even number, each other player gains a Curse.",
+    "categories": [
+      "gaincurse"
+    ]
   },
   {
     "set": "Nocturne",
@@ -6118,7 +6222,10 @@
       "value": 4,
       "type": "money"
     },
-    "description": "Worth $3\nWhen you play this, gain a Curse."
+    "description": "Worth $3\nWhen you play this, gain a Curse.",
+    "categories": [
+      "gaincurse"
+    ]
   },
   {
     "set": "Nocturne",
@@ -6219,7 +6326,10 @@
       "type": "money"
     },
     "description": "Each other player with 5 or more cards in hand discards a copy of a card you have in play (or reveals they can't).\nAt the start of your next turn, +$3",
-    "plusCoins": 3
+    "plusCoins": 3,
+    "categories": [
+      "handreducing"
+    ]
   },
   {
     "set": "Nocturne",
@@ -6457,7 +6567,10 @@
     "types": [
       "Hex"
     ],
-    "description": "Trash the top card of your deck. If it's Copper or Estate, gain a Curse. Otherwise, gain a cheaper card that shares a type with it."
+    "description": "Trash the top card of your deck. If it's Copper or Estate, gain a Curse. Otherwise, gain a cheaper card that shares a type with it.",
+    "categories": [
+      "gaincurse"
+    ]
   },
   {
     "set": "Nocturne",
@@ -6489,7 +6602,10 @@
     "types": [
       "Hex"
     ],
-    "description": "Gain a Curse to your hand."
+    "description": "Gain a Curse to your hand.",
+    "categories": [
+      "gaincurse"
+    ]
   },
   {
     "set": "Nocturne",

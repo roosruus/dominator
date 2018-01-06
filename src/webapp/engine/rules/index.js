@@ -13,7 +13,8 @@ export const DEFAULT_RULES = createRules({
     exclude: {
       groups: [],
       specificCards: []
-    }
+    },
+    disjointCards: []
   }
 });
 

@@ -7,6 +7,7 @@ export const GROUP_TYPE_COST = 'cost';
 export const GROUP_TYPE_PLUS_BUYS = 'plusbuys';
 export const GROUP_TYPE_PLUS_CARDS = 'pluscards';
 export const GROUP_TYPE_PLUS_ACTIONS = 'plusactions';
+export const GROUP_TYPE_COMPOUND = 'compound';
 
 const VALID_OPERATORS = ['>', '>=', '==', '<=', '<', '!='];
 
@@ -59,18 +60,32 @@ export const createRules = ruleData => {
         }
         return eval(`${comparable} ${operator} ${value}`);
       }
+      case GROUP_TYPE_COMPOUND: {
+        let result = true;
+        for (let subGroup of group.subGroups) {
+          result = result && isCardInGroupBeforeNegate(card, subGroup);
+        }
+        return result;
+      }
       default:
         return false;
     }
   };
 
-  const includesCardWithName = (cards, name) => {
+  const satisfiesRules = (cards, name) => {
     for (let card of cards) {
       if (card.name === name) {
-        return true;
+        return false;
       }
     }
-    return false;
+    if (rules.filters) {
+      for (let cardList of rules.filters.disjointCards) {
+        if (cards.filter(card => cardList.includes(card.name)).length > 0 && cardList.includes(name)) {
+          return false;
+        }
+      }
+    }
+    return true;
   };
 
   return {
@@ -100,7 +115,7 @@ export const createRules = ruleData => {
         for (let i = 0; pickedCards.length < cardsToPick && i < specificCards.length; i++) {
           const requestedCard = specificCards[i];
           const pickedCard = cardPool.findCard(requestedCard);
-          if (pickedCard && !includesCardWithName(pickedCards, pickedCard.name)) {
+          if (pickedCard && satisfiesRules(pickedCards, pickedCard.name)) {
             pickedCards.push(pickedCard);
           }
         }
@@ -117,7 +132,7 @@ export const createRules = ruleData => {
               cursor++
             ) {
               const card = cardPool.get(cursor);
-              if (!includesCardWithName(pickedCards, card.name) && isCardInGroup(card, group)) {
+              if (satisfiesRules(pickedCards, card.name) && isCardInGroup(card, group)) {
                 pickedCards.push(card);
               }
             }
@@ -130,7 +145,7 @@ export const createRules = ruleData => {
         let pickedCard = cardPool.get(cursor);
         let pickThisCard = true;
 
-        if (includesCardWithName(pickedCards, pickedCard.name)) {
+        if (!satisfiesRules(pickedCards, pickedCard.name)) {
           pickThisCard = false;
         } else if (rules.filters.include) {
           const { groups, limits } = rules.filters.include;
