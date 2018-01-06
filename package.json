@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "updatecarddata": "node ./scripts/updatecarddata.js"
   },
-  "author": "",
+  "author": "roosruus",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "6.26.0",

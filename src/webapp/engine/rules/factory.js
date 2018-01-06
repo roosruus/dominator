@@ -2,6 +2,13 @@ import _merge from 'lodash/merge';
 
 export const GROUP_TYPE_SET = 'set';
 export const GROUP_TYPE_CARD_TYPE = 'cardtype';
+export const GROUP_TYPE_CATEGORY = 'category';
+export const GROUP_TYPE_COST = 'cost';
+export const GROUP_TYPE_PLUS_BUYS = 'plusbuys';
+export const GROUP_TYPE_PLUS_CARDS = 'pluscards';
+export const GROUP_TYPE_PLUS_ACTIONS = 'plusactions';
+
+const VALID_OPERATORS = ['>', '>=', '==', '<=', '<', '!='];
 
 export const createRules = ruleData => {
   const rules = ruleData;
@@ -19,14 +26,44 @@ export const createRules = ruleData => {
   };
 
   const isCardInGroup = (card, group) => {
-    if (group.type === GROUP_TYPE_SET) {
-      return card.set === group.name;
-    } else if (group.type === GROUP_TYPE_CARD_TYPE) {
-      return card.types.includes(group.name);
-    }
-    return false;
+    return group.negate ? !isCardInGroupBeforeNegate(card, group) : isCardInGroupBeforeNegate(card, group);
   };
-  
+
+  const isCardInGroupBeforeNegate = (card, group) => {
+    switch (group.type) {
+      case GROUP_TYPE_SET:
+        return card.set === group.name;
+      case GROUP_TYPE_CARD_TYPE:
+        return card.types.includes(group.name);
+      case GROUP_TYPE_CATEGORY:
+        return card.categories && card.categories.includes(group.name);
+      case GROUP_TYPE_COST:
+      case GROUP_TYPE_PLUS_BUYS:
+      case GROUP_TYPE_PLUS_CARDS:
+      case GROUP_TYPE_PLUS_ACTIONS: {
+        const { value, operator } = group.rule;
+        if (isNaN(value) || !VALID_OPERATORS.includes(operator)) {
+          return false;
+        }
+        let comparable = 0;
+        if (group.type === GROUP_TYPE_COST && card.cost) {
+          comparable = card.cost.value;
+        } else if (group.type === GROUP_TYPE_PLUS_BUYS) {
+          comparable = card.plusBuys;
+        } else if (group.type === GROUP_TYPE_PLUS_CARDS) {
+          comparable = card.plusCards;
+        } else if (group.type === GROUP_TYPE_PLUS_ACTIONS) {
+          comparable = card.plusActions;
+        } else {
+          return false;
+        }
+        return eval(`${comparable} ${operator} ${value}`);
+      }
+      default:
+        return false;
+    }
+  };
+
   const includesCardWithName = (cards, name) => {
     for (let card of cards) {
       if (card.name === name) {

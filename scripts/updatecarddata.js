@@ -146,9 +146,13 @@ https.get(CARD_LIST_URL, (res) => {
           if(card.name === 'Shelters') {
             return;
           }
-          // Fix types for Knights
+          // Fix types and cost for Knights
           else if(card.name === 'Knights') {
             card.types = ['Action', 'Attack', 'Victory', 'Knight'];
+            card.cost = {
+              value: 5,
+              type: 'money'
+            };
           }
           cards.push(card);
           // add common Dominion cards to 1st edition

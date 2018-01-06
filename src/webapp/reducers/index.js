@@ -8,7 +8,8 @@ import {
   TOGGLE_EXPANSION_DRAWER,
   TOGGLE_CARD,
   SET_EXPANSION_MIN_MAX,
-  PICK_CARDS
+  PICK_CARDS,
+  TOGGLE_APPLY_RECOMMENDED_RULES
 } from '../actions';
 
 export * from './helpers';
@@ -52,7 +53,7 @@ const expansions = (state = expansionsInitState, action) => {
       const { set, name } = action.payload;
       const currentCard = state.items[set].cards[name];
       const newCard = { ...currentCard, selected: !currentCard.selected };
-      const newCards = { ...state.items[set].cards, [name]: newCard};
+      const newCards = { ...state.items[set].cards, [name]: newCard };
       const newItem = { ...state.items[set], cards: newCards };
       const newItems = { ...state.items, [set]: newItem };
       return { ...state, items: newItems };
@@ -79,9 +80,19 @@ const pickedCards = (state = {}, action) => {
   }
 };
 
+const otherRules = (state = { applyRecommendedRules: false }, action) => {
+  switch (action.type) {
+    case TOGGLE_APPLY_RECOMMENDED_RULES:
+      return { ...state, applyRecommendedRules: !state.applyRecommendedRules };
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
   expansions,
-  pickedCards
+  pickedCards,
+  otherRules
 });
 
 export default rootReducer;

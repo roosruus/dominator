@@ -3464,7 +3464,11 @@
       "Victory",
       "Knight"
     ],
-    "description": "Shuffle the Knight pile before each game with it. Keep it face down except for the top card, which is the only one that can be bought or gained."
+    "description": "Shuffle the Knight pile before each game with it. Keep it face down except for the top card, which is the only one that can be bought or gained.",
+    "cost": {
+      "value": 5,
+      "type": "money"
+    }
   },
   {
     "set": "Dark Ages",

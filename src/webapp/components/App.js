@@ -8,6 +8,7 @@ import Button from 'material-ui/Button';
 import Card, { CardContent } from 'material-ui/Card';
 
 import ExpansionList from './ExpansionList';
+import ApplyRecommendedRules from './ApplyRecommendedRules';
 import CardTable from './CardTable';
 import { pickCards } from '../actions';
 import { getCurrentRules } from '../reducers';
@@ -55,6 +56,7 @@ class App extends Component {
         <Card>
           <CardContent>
             <ExpansionList />
+            <ApplyRecommendedRules />
           </CardContent>
         </Card>
         {pickedCards.kingdomCards && (
