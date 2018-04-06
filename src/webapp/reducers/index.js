@@ -80,7 +80,7 @@ const pickedCards = (state = {}, action) => {
   }
 };
 
-const otherRules = (state = { applyRecommendedRules: false }, action) => {
+const otherRules = (state = { applyRecommendedRules: true }, action) => {
   switch (action.type) {
     case TOGGLE_APPLY_RECOMMENDED_RULES:
       return { ...state, applyRecommendedRules: !state.applyRecommendedRules };

@@ -8,13 +8,14 @@ injectTapEventPlugin();
 import App from './components/App';
 import rootReducer, { expansionsInitState } from './reducers';
 import { observeStore } from './utils';
-import { persistSelections, mergePersistedSelections } from './persistence';
+import { persistCardSelections, persistRuleSelections, mergePersistedSelections } from './persistence';
 
 import './style.css';
 
 const initialState = mergePersistedSelections(expansionsInitState);
 const store = createStore(rootReducer, initialState);
-observeStore(store, state => state.expansions.items, persistSelections);
+observeStore(store, state => state.expansions.items, persistCardSelections);
+observeStore(store, state => state.otherRules, persistRuleSelections);
 
 ReactDOM.render(
   <Provider store={store}>

@@ -1,8 +1,12 @@
-export const persistSelections = selections => {
+export const persistCardSelections = selections => {
   localStorage.setItem('selections', JSON.stringify(selections));
 };
 
-export const getPersistedSelections = () => {
+export const persistRuleSelections = rules => {
+  localStorage.setItem('rules', JSON.stringify(rules));
+};
+
+const getPersistedCardSelections = () => {
   let selections;
   const persistedValue = localStorage.getItem('selections');
   if (persistedValue) {
@@ -11,10 +15,19 @@ export const getPersistedSelections = () => {
   return selections;
 };
 
-export const mergePersistedSelections = (expansionsInitState) => {
+const getPersistedRuleSelections = () => {
+  let selections;
+  const persistedValue = localStorage.getItem('rules');
+  if (persistedValue) {
+    selections = JSON.parse(persistedValue);
+  }
+  return selections;
+};
+
+export const mergePersistedSelections = (expansionsInitState, rulesInitState) => {
   const initialState = {};
   
-  const persistedSelections = getPersistedSelections();
+  const persistedSelections = getPersistedCardSelections();
   if (persistedSelections) {
     const newItems = {};
     for(let [expansion, props] of Object.entries(expansionsInitState.items)) {
@@ -36,5 +49,14 @@ export const mergePersistedSelections = (expansionsInitState) => {
       items: newItems
     };
   }
+  
+  const persistedRuleSelections = getPersistedRuleSelections();
+  if (persistedRuleSelections) {
+    initialState.otherRules = {
+      ...rulesInitState,
+      ...persistedRuleSelections
+    };
+  }
+  
   return initialState;
 };
