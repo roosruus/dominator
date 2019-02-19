@@ -23,22 +23,19 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.jsx?/,
+        test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader'
+          loader: 'babel-loader',
         }
       },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
       }
     ]
-  }
+  },
+  mode: 'development'
 };
 
 module.exports = config;
