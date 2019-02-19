@@ -1,10 +1,12 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import { ListItem, ListItemText, ListItemSecondaryAction } from 'material-ui/List';
-import Checkbox from 'material-ui/Checkbox';
-import IconButton from 'material-ui/IconButton';
-import MoreVert from 'material-ui-icons/MoreVert';
+import { withStyles } from '@material-ui/core/styles';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import Checkbox from '@material-ui/core/Checkbox';
+import IconButton from '@material-ui/core/IconButton';
+import MoreVert from '@material-ui/icons/MoreVert';
 
 import ExpansionMinMax from './ExpansionMinMax';
 import { MAX_KINGDOM_CARDS } from '../engine/rules';
@@ -48,12 +50,12 @@ class Expansion extends PureComponent {
 
     return (
       <div>
-        <ListItem dense button onTouchTap={this.handleCheck} className={classes.expansionListItem}>
+        <ListItem dense button onClick={this.handleCheck} className={classes.expansionListItem}>
           <Checkbox checked={this.props.selected} disableRipple />
           <ListItemText primary={this.props.name} secondary={secondaryText} />
           <ListItemSecondaryAction>
             <IconButton>
-              <MoreVert onTouchTap={this.handleMore} />
+              <MoreVert onClick={this.handleMore} />
             </IconButton>
           </ListItemSecondaryAction>
         </ListItem>

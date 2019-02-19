@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withStyles } from 'material-ui/styles';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
-import Card, { CardContent } from 'material-ui/Card';
+import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 import ExpansionList from './ExpansionList';
 import ApplyRecommendedRules from './ApplyRecommendedRules';
@@ -48,7 +49,7 @@ class App extends Component {
             <Typography type="title" color="inherit" className={classes.flex}>
               Shuffle My Kingdom
             </Typography>
-            <Button color="contrast" onTouchTap={this.handleTouchTap}>
+            <Button color="secondary" onClick={this.handleTouchTap}>
               Shuffle
             </Button>
           </Toolbar>
