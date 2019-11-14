@@ -57,6 +57,14 @@ export const RULES_KINGDOM_CARDS = createRules({
         {
           name: 'State',
           type: GROUP_TYPE_CARD_TYPE
+        },
+        {
+          name: 'Artifact',
+          type: GROUP_TYPE_CARD_TYPE
+        },
+        {
+          name: 'Project',
+          type: GROUP_TYPE_CARD_TYPE
         }
       ],
       specificCards: [

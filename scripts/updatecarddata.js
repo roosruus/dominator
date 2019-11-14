@@ -43,10 +43,11 @@ https.get(CARD_LIST_URL, (res) => {
     const dom = $.load(rawData);
     const content = dom('#post-3041 .entry-content');
     let currentSet = '';
+    let tableTitle = '';
     content.children().each((i, child) => {
       // resolve set
       if (child.tagName === 'h2') {
-        let tableTitle = $(child).text().trim();
+        tableTitle = $(child).text().trim().replace(/\s/g, ' ');
         if (tableTitle === 'Cards Removed From Dominion 1st Edition') {
           currentSet = 'Dominion 1st Edition';
         } else if (tableTitle === 'Cards Removed From Intrigue 1st Edition') {
@@ -59,6 +60,8 @@ https.get(CARD_LIST_URL, (res) => {
           currentSet = 'Empires';
         } else if (tableTitle.startsWith('Nocturne')) {
           currentSet = 'Nocturne';
+        } else if (tableTitle.startsWith('Renaissance')) {
+          currentSet = 'Renaissance';
         } else {
           currentSet = tableTitle;
         }
@@ -83,7 +86,7 @@ https.get(CARD_LIST_URL, (res) => {
             } else if (i === 1) {
               const types = cellText.split(/-|\u2013/).map((type) => type.trim());
               card.types = types;
-            } else if (i === 2) {
+            } else if (i === 2 && tableTitle !== 'Renaissance Artifacts') {
               const cost = /\$?(\d+)(◉|D)?/.exec(cellText);
               if (cost) {
                 let type;
@@ -102,7 +105,7 @@ https.get(CARD_LIST_URL, (res) => {
                   type
                 };
               }
-            } else if (i === 3) {
+            } else if (i === 3 || (i === 2 && tableTitle === 'Renaissance Artifacts')) {
               const description = cellText;
               card.description = description;
 
