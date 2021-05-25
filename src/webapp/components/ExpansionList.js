@@ -45,6 +45,10 @@ class ExpansionList extends PureComponent {
     dispatch(toggleExpansionDrawer());
   }
 
+  preventClick(e) {
+    e.stopPropagation();
+  }
+
   handleCheck() {
     const { dispatch, areAllExpansionsSelected } = this.props;
     dispatch(toggleAllExpansions(!areAllExpansionsSelected));
@@ -61,20 +65,20 @@ class ExpansionList extends PureComponent {
     const { classes } = this.props;
     return (
       <List>
-        <ListItem button className={this.props.open ? classes.noLeftPadding : ''}>
+        <ListItem button onClick={this.handleClick} className={this.props.open ? classes.noLeftPadding : ''}>
           {this.props.open && (
             <Checkbox
               checked={this.props.areAllExpansionsSelected}
               indeterminate={!(this.props.areAllExpansionsSelected || this.props.isNoExpansionsSelected)}
               onChange={this.handleCheck}
+              onClick={this.preventClick}
             />
           )}
           <ListItemText
             primary="Expansions"
-            onClick={this.handleClick}
             secondary={!this.props.open ? this.props.selectedExpansions : ''}
           />
-          {this.props.open ? <ExpandLess onClick={this.handleClick} /> : <ExpandMore onClick={this.handleClick} />}
+          {this.props.open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
         <Collapse component="li" in={this.props.open} timeout="auto" unmountOnExit>
           <List disablePadding>
