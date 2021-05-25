@@ -106,6 +106,7 @@ export const getCurrentRules = state => {
         min: 0,
         max: 2
       }
+      // Include Watchtower with Mountebank
     ]);
     rules.filters.disjointCards = rules.filters.disjointCards.concat([
       ['Laboratory', 'Hunting Party', 'Stables'],

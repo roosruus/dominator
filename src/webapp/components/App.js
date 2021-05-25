@@ -46,10 +46,10 @@ class App extends Component {
       <div>
         <AppBar position="static">
           <Toolbar>
-            <Typography type="title" color="inherit" className={classes.flex}>
+            <Typography variant="h6" className={classes.flex}>
               Shuffle My Kingdom
             </Typography>
-            <Button color="secondary" onClick={this.handleTouchTap}>
+            <Button color="inherit" onClick={this.handleTouchTap}>
               Shuffle
             </Button>
           </Toolbar>
@@ -66,11 +66,11 @@ class App extends Component {
             <CardTable cards={pickedCards.kingdomCards} />
             {pickedCards.additionalCards &&
               pickedCards.additionalCards.length > 0 && (
-                <div>
-                  <Typography type="title">Additional cards</Typography>
-                  <CardTable cards={pickedCards.additionalCards} />
-                </div>
-              )}
+              <div>
+                <Typography type="title">Additional cards</Typography>
+                <CardTable cards={pickedCards.additionalCards} />
+              </div>
+            )}
           </Card>
         )}
       </div>

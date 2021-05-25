@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 
+export const TOGGLE_CARD = 'TOGGLE_CARD';
 export const TOGGLE_EXPANSION = 'TOGGLE_EXPANSION';
 export const TOGGLE_ALL_EXPANSIONS = 'TOGGLE_ALL_EXPANSIONS';
 export const TOGGLE_EXPANSION_DRAWER = 'TOGGLE_EXPANSION_DRAWER';
