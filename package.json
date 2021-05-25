@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "deployToFirebase": "npm run build && firebase deploy",
-    "start": "webpack-dev-server --host 0.0.0.0",
+    "start": "webpack serve",
     "test": "echo \"Error: no test specified\" && exit 1",
     "updatecarddata": "node ./scripts/updatecarddata.js"
   },
@@ -17,16 +17,16 @@
     "@babel/preset-env": "7.14.2",
     "@babel/preset-react": "7.13.13",
     "babel-loader": "8.2.2",
-    "cheerio": "1.0.0-rc.2",
-    "clean-webpack-plugin": "1.0.1",
-    "css-loader": "2.1.0",
+    "cheerio": "1.0.0-rc.9",
+    "clean-webpack-plugin": "4.0.0-alpha.0",
+    "css-loader": "5.2.6",
     "eslint": "7.27.0",
     "eslint-plugin-react": "7.23.2",
-    "html-webpack-plugin": "3.2.0",
-    "style-loader": "0.23.1",
-    "webpack": "4.29.5",
-    "webpack-cli": "3.2.3",
-    "webpack-dev-server": "3.1.14"
+    "html-webpack-plugin": "5.3.1",
+    "style-loader": "2.0.0",
+    "webpack": "5.37.1",
+    "webpack-cli": "4.7.0",
+    "webpack-dev-server": "3.11.2"
   },
   "dependencies": {
     "@material-ui/core": "4.11.4",
@@ -35,7 +35,6 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-redux": "7.2.4",
-    "react-tap-event-plugin": "3.0.3",
     "redux": "4.1.0",
     "redux-actions": "2.6.5"
   }
