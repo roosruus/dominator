@@ -46,7 +46,7 @@ export const createRules = ruleData => {
         if (isNaN(value) || !VALID_OPERATORS.includes(operator)) {
           return false;
         }
-        let comparable = 0;
+        let comparable;
         if (group.type === GROUP_TYPE_COST && card.cost) {
           comparable = card.cost.value;
         } else if (group.type === GROUP_TYPE_PLUS_BUYS) {

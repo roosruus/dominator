@@ -1,5 +1,4 @@
 const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const BUILD_DIR = path.resolve(__dirname, 'build/dist');
@@ -8,23 +7,25 @@ const APP_DIR = path.resolve(__dirname, 'src/webapp');
 const config = {
   entry: APP_DIR + '/index.js',
   plugins: [
-    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: APP_DIR + '/index.html'
     })
   ],
   devServer: {
-    contentBase: BUILD_DIR
+    static: BUILD_DIR,
+    historyApiFallback: true
   },
   output: {
     path: BUILD_DIR,
-    filename: '[name].js'
+    filename: '[name].[contenthash].js',
+    publicPath: '/',
+    clean: true
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
         }
@@ -34,8 +35,7 @@ const config = {
         use: ['style-loader', 'css-loader']
       }
     ]
-  },
-  mode: 'development'
+  }
 };
 
 module.exports = config;

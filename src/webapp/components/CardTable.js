@@ -1,180 +1,106 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import { useMemo, useState } from 'react';
+import { Checkbox, Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
 
-class CardTable extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      order: 'asc',
-      orderBy: 'name'
-    };
-
-    this.columnData = [
-      { id: 'name', numeric: false, label: 'Card' },
-      { id: 'set', numeric: false, label: 'Expansion' },
-      { id: 'cost', getter: card => card.cost.value, numeric: true, label: 'Cost' }
-    ].filter(column => !props.displayColumns || props.displayColumns.includes(column.id));
-
-    this.handleRequestSort = this.handleRequestSort.bind(this);
-    this.getSortedCards = this.getSortedCards.bind(this);
+const formatCost = cost => {
+  if (!cost) {
+    return '';
   }
-
-  handleRequestSort(event, property) {
-    const orderBy = property;
-    let order = 'desc';
-
-    if (this.state.orderBy === property && this.state.order === 'desc') {
-      order = 'asc';
-    }
-
-    this.setState({ order, orderBy });
+  switch (cost.type) {
+    case 'money':
+      return `$${cost.value}`;
+    case 'potion':
+      return `${cost.value}P`;
+    case 'debt':
+      return `${cost.value}D`;
+    default:
+      return cost.value;
   }
+};
 
-  getSortedCards() {
-    const { order, orderBy } = this.state;
+const COLUMNS = [
+  { id: 'name', label: 'Card', sortValue: card => card.name },
+  { id: 'set', label: 'Expansion', sortValue: card => card.set },
+  { id: 'cost', label: 'Cost', sortValue: card => card.cost?.value ?? 0, format: formatCost }
+];
 
-    let getterFunc = card => card[orderBy];
-    for (let column of this.columnData) {
-      if (column.id === orderBy) {
-        if (column.getter) {
-          getterFunc = column.getter;
-        }
-        break;
-      }
-    }
+const compare = (a, b) => (typeof a === 'string' ? a.localeCompare(b) : a - b);
 
-    const sortedCards =
-      order === 'desc'
-        ? this.props.cards.slice().sort((a, b) => (getterFunc(b) < getterFunc(a) ? -1 : 1))
-        : this.props.cards.slice().sort((a, b) => (getterFunc(a) < getterFunc(b) ? -1 : 1));
-    return sortedCards;
-  }
+export default function CardTable({
+  cards,
+  columns = ['name', 'set', 'cost'],
+  selectable = false,
+  sortable = true,
+  onToggleCard,
+  onToggleAll
+}) {
+  const [sort, setSort] = useState({ orderBy: 'name', order: 'asc' });
+  const visibleColumns = COLUMNS.filter(column => columns.includes(column.id));
 
-  formatCell(columnId, cardProp) {
-    if (columnId !== 'cost') {
-      return cardProp;
-    }
+  const sortedCards = useMemo(() => {
+    const { sortValue } = COLUMNS.find(column => column.id === sort.orderBy);
+    const direction = sort.order === 'asc' ? 1 : -1;
+    return [...cards].sort((a, b) => direction * compare(sortValue(a), sortValue(b)));
+  }, [cards, sort]);
 
-    let formatted = '';
-    if (cardProp) {
-      if (cardProp.type === 'money') {
-        formatted = `$${cardProp.value}`;
-      } else if (cardProp.type === 'potion') {
-        formatted = `${cardProp.value}P`;
-      } else if (cardProp.type === 'debt') {
-        formatted = `${cardProp.value}D`;
-      } else {
-        formatted = cardProp.value;
-      }
-    }
-    return formatted;
-  }
+  const handleSort = columnId => {
+    setSort(current => ({
+      orderBy: columnId,
+      order: current.orderBy === columnId && current.order === 'asc' ? 'desc' : 'asc'
+    }));
+  };
 
-  render() {
-    const { selectableRows, sortableHeader, onSelectCard, onSelectAll } = this.props;
-    const { order, orderBy } = this.state;
-    
-    const sortedCards = this.getSortedCards();
-    const numSelected = sortedCards.filter(card => card.selected).length;
-    
-    return (
-      <Table>
-        <SortableTableHead
-          columnData={this.columnData}
-          onRequestSort={this.handleRequestSort}
-          order={order}
-          orderBy={orderBy}
-          disableSorting={!sortableHeader}
-          selectableRows={selectableRows}
-          allSelected={numSelected === sortedCards.length}
-          noneSelected={numSelected === 0}
-          onSelectAll={onSelectAll}
-        />
-        <TableBody>
-          {sortedCards.map(card => (
-            <TableRow key={`result-row-${card.name}`}>
-              {selectableRows && (
-                <TableCell padding="none">
-                  <Checkbox checked={card.selected} onChange={() => onSelectCard(card)} />
-                </TableCell>
-              )}
-              {this.columnData.map(({ id }) => (
-                <TableCell key={`cell-${card.name}-${id}`}>{this.formatCell(id, card[id])}</TableCell>
-              ))}
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    );
-  }
-}
+  const numSelected = cards.filter(card => card.selected).length;
+  const allSelected = numSelected === cards.length;
 
-class SortableTableHead extends PureComponent {
-  createSortHandler(property) {
-    return event => {
-      this.props.onRequestSort(event, property);
-    };
-  }
-
-  render() {
-    const {
-      order,
-      orderBy,
-      columnData,
-      disableSorting,
-      selectableRows,
-      allSelected,
-      noneSelected,
-      onSelectAll
-    } = this.props;
-    return (
+  return (
+    <Table size="small">
       <TableHead>
         <TableRow>
-          {selectableRows && (
-            <TableCell padding="none">
-              <Checkbox checked={allSelected} indeterminate={!(allSelected || noneSelected)} onChange={onSelectAll} />
+          {selectable && (
+            <TableCell padding="checkbox">
+              <Checkbox
+                checked={allSelected}
+                indeterminate={numSelected > 0 && !allSelected}
+                onChange={onToggleAll}
+                slotProps={{ input: { 'aria-label': 'Select all cards' } }}
+              />
             </TableCell>
           )}
-          {columnData.map(column => (
-            <TableCell key={column.id}>
-              {!disableSorting && (
+          {visibleColumns.map(column => (
+            <TableCell key={column.id} sortDirection={sort.orderBy === column.id ? sort.order : false}>
+              {sortable ? (
                 <TableSortLabel
-                  active={orderBy === column.id}
-                  direction={order}
-                  onClick={this.createSortHandler(column.id)}
+                  active={sort.orderBy === column.id}
+                  direction={sort.orderBy === column.id ? sort.order : 'asc'}
+                  onClick={() => handleSort(column.id)}
                 >
                   {column.label}
                 </TableSortLabel>
+              ) : (
+                column.label
               )}
-              {disableSorting && column.label}
             </TableCell>
           ))}
         </TableRow>
       </TableHead>
-    );
-  }
+      <TableBody>
+        {sortedCards.map(card => (
+          <TableRow key={card.name}>
+            {selectable && (
+              <TableCell padding="checkbox">
+                <Checkbox
+                  checked={card.selected}
+                  onChange={() => onToggleCard(card)}
+                  slotProps={{ input: { 'aria-label': card.name } }}
+                />
+              </TableCell>
+            )}
+            {visibleColumns.map(({ id, format }) => (
+              <TableCell key={id}>{format ? format(card[id]) : card[id]}</TableCell>
+            ))}
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
 }
-
-CardTable.propTypes = {
-  cards: PropTypes.array.isRequired,
-  displayColumns: PropTypes.array,
-  onSelectCard: PropTypes.func,
-  onSelectAll: PropTypes.func,
-  selectableRows: PropTypes.bool,
-  sortableHeader: PropTypes.bool
-};
-
-CardTable.defaultProps = {
-  selectableRows: false,
-  sortableHeader: true
-};
-
-export default CardTable;
