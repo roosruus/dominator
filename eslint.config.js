@@ -1,25 +1,25 @@
-const js = require('@eslint/js');
-const stylistic = require('@stylistic/eslint-plugin');
-const react = require('eslint-plugin-react');
-const reactHooks = require('eslint-plugin-react-hooks');
-const globals = require('globals');
+import js from '@eslint/js';
+import stylistic from '@stylistic/eslint-plugin';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import globals from 'globals';
 
-module.exports = [
+export default [
   {
     ignores: ['build/']
   },
   js.configs.recommended,
   {
-    files: ['src/**/*.js'],
+    files: ['src/**/*.{js,jsx}'],
     ...react.configs.flat.recommended,
     ...react.configs.flat['jsx-runtime'],
     languageOptions: {
       ...react.configs.flat.recommended.languageOptions,
-      sourceType: 'module',
       globals: globals.browser
     },
     settings: {
       react: {
+        // Set explicitly: eslint-plugin-react's version detection crashes on ESLint 10.
         version: '19.3'
       }
     },
@@ -31,11 +31,17 @@ module.exports = [
     }
   },
   {
-    files: ['src/**/*.js'],
+    files: ['src/**/*.{js,jsx}'],
     ...reactHooks.configs.flat.recommended
   },
   {
-    files: ['*.js', 'scripts/**/*.js'],
+    files: ['*.js'],
+    languageOptions: {
+      globals: globals.node
+    }
+  },
+  {
+    files: ['**/*.cjs'],
     languageOptions: {
       sourceType: 'commonjs',
       globals: globals.node
