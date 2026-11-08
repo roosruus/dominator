@@ -9,7 +9,6 @@ const selectExpansionItems = state => state.expansions.items;
 export const selectIsExpansionDrawerOpen = state => state.expansions.drawerOpen;
 export const selectPickedCards = state => state.pickedCards;
 export const selectIsApplyRecommendedRules = state => state.otherRules.applyRecommendedRules;
-export const selectCardsInExpansion = (state, expansion) => state.expansions.items[expansion].cards;
 
 export const selectExpansionList = createSelector([selectExpansionItems], items =>
   Object.entries(items).map(([name, props]) => ({ name, ...props }))
@@ -28,10 +27,12 @@ export const selectSelectedExpansionsText = state =>
   selectAreAllExpansionsSelected(state) ? 'All' : selectSelectedExpansionNames(state).join(', ');
 
 const selectExcludedCardNames = createSelector([selectExpansionList], expansions =>
-  expansions
-    .flatMap(expansion => Object.values(expansion.cards))
-    .filter(card => !card.selected)
-    .map(card => card.name)
+  expansions.flatMap(expansion => expansion.excludedCards)
+);
+
+export const selectSettings = createSelector(
+  [selectExpansionItems, selectIsApplyRecommendedRules],
+  (expansions, applyRecommendedRules) => ({ expansions, applyRecommendedRules })
 );
 
 export const selectCurrentRules = createSelector(

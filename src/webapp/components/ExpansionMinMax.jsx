@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import {
   Box,
   Button,
@@ -13,8 +12,8 @@ import {
 } from '@mui/material';
 
 import CardTable from './CardTable';
-import { MAX_KINGDOM_CARDS, RULES_KINGDOM_CARDS } from '../engine/rules';
-import { selectCardsInExpansion } from '../store/selectors';
+import { getKingdomCardsInExpansion } from '../engine';
+import { MAX_KINGDOM_CARDS } from '../engine/rules';
 
 const LIMIT_OPTIONS = Array.from({ length: MAX_KINGDOM_CARDS + 1 }, (_, i) => i);
 
@@ -37,24 +36,28 @@ function LimitSelect({ label, value, onChange }) {
   );
 }
 
-// Rendered only while the dialog is open, so its state starts fresh from the store each time.
-function ExpansionMinMaxForm({ title, min, max, onClose }) {
-  const cardsInExpansion = useSelector(state => selectCardsInExpansion(state, title));
+// Rendered only while the dialog is open, so its state starts fresh from the props each time.
+function ExpansionMinMaxForm({ title, min, max, excludedCards, onClose }) {
+  const [kingdomCards] = useState(() => getKingdomCardsInExpansion(title));
   const [limits, setLimits] = useState({ min, max });
-  const [cards, setCards] = useState(() =>
-    Object.fromEntries(
-      RULES_KINGDOM_CARDS.filterCards(Object.values(cardsInExpansion)).map(card => [card.name, card])
-    )
-  );
+  const [excluded, setExcluded] = useState(() => new Set(excludedCards));
+
+  const cards = kingdomCards.map(card => ({ ...card, selected: !excluded.has(card.name) }));
 
   const toggleCard = card => {
-    setCards(current => ({ ...current, [card.name]: { ...card, selected: !card.selected } }));
+    setExcluded(current => {
+      const next = new Set(current);
+      if (next.has(card.name)) {
+        next.delete(card.name);
+      } else {
+        next.add(card.name);
+      }
+      return next;
+    });
   };
 
   const toggleAllCards = (event, selected) => {
-    setCards(current =>
-      Object.fromEntries(Object.values(current).map(card => [card.name, { ...card, selected }]))
-    );
+    setExcluded(selected ? new Set() : new Set(kingdomCards.map(card => card.name)));
   };
 
   return (
@@ -72,7 +75,7 @@ function ExpansionMinMaxForm({ title, min, max, onClose }) {
         </Box>
         <Typography variant="subtitle1">Individual cards</Typography>
         <CardTable
-          cards={Object.values(cards)}
+          cards={cards}
           columns={['name', 'cost']}
           onToggleCard={toggleCard}
           onToggleAll={toggleAllCards}
@@ -82,16 +85,16 @@ function ExpansionMinMaxForm({ title, min, max, onClose }) {
       </DialogContent>
       <DialogActions>
         <Button onClick={() => onClose()}>Cancel</Button>
-        <Button onClick={() => onClose({ ...limits, cards })}>Ok</Button>
+        <Button onClick={() => onClose({ ...limits, excludedCards: [...excluded] })}>Ok</Button>
       </DialogActions>
     </>
   );
 }
 
-export default function ExpansionMinMax({ title, open, min, max, onClose }) {
+export default function ExpansionMinMax({ title, open, min, max, excludedCards, onClose }) {
   return (
     <Dialog open={open} onClose={() => onClose()}>
-      <ExpansionMinMaxForm title={title} min={min} max={max} onClose={onClose} />
+      <ExpansionMinMaxForm title={title} min={min} max={max} excludedCards={excludedCards} onClose={onClose} />
     </Dialog>
   );
 }

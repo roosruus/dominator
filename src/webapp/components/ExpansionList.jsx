@@ -37,8 +37,15 @@ export default function ExpansionList() {
       </ListItemButton>
       <Collapse component="li" in={open} timeout="auto" unmountOnExit>
         <List disablePadding>
-          {expansions.map(({ name, selected, min, max }) => (
-            <Expansion key={name} name={name} selected={selected} min={min} max={max} />
+          {expansions.map(({ name, selected, min, max, excludedCards }) => (
+            <Expansion
+              key={name}
+              name={name}
+              selected={selected}
+              min={min}
+              max={max}
+              excludedCards={excludedCards}
+            />
           ))}
         </List>
       </Collapse>

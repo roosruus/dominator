@@ -83,8 +83,12 @@ CI runs lint, tests and build on every push to `master`.
 - Read state through selectors in `store/selectors.js`. Selectors that derive new arrays or objects must be
   memoized with `createSelector` so `useSelector` doesn't re-render on every store update.
 - Side effects and engine calls go in thunks (see `shuffleKingdom`), not components.
-- `localStorage` keys `selections` and `rules` hold users' saved settings. Changing their shape needs a migration
-  in `store/persistence.js`, or it is a breaking change.
+- Keep only user choices in state (selections, limits, excluded card names), never card data. Card details come
+  from the engine and `cards.json`, so data updates reach every user.
+- Saved settings live in the versioned `settings` key in `localStorage`. To change their shape, bump
+  `SETTINGS_VERSION` in `store/persistence.js` and migrate the previous version, as done for the version 1
+  `selections`/`rules` keys; dropping users' settings instead is a breaking change. Treat loaded values as untrusted
+  and fall back to defaults.
 
 ## Engine and card data
 

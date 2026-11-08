@@ -6,12 +6,8 @@ import { pickCards } from './pickedCardsSlice';
 
 const buildInitialItems = () => {
   const items = {};
-  for (const [set, cards] of Object.entries(getExpansions())) {
-    const selectableCards = {};
-    for (const [name, card] of Object.entries(cards)) {
-      selectableCards[name] = { ...card, selected: true };
-    }
-    items[set] = { min: 0, max: MAX_KINGDOM_CARDS, selected: true, cards: selectableCards };
+  for (const set of Object.keys(getExpansions())) {
+    items[set] = { selected: true, min: 0, max: MAX_KINGDOM_CARDS, excludedCards: [] };
   }
   return items;
 };
@@ -36,11 +32,8 @@ const expansionsSlice = createSlice({
     toggleExpansionDrawer(state) {
       state.drawerOpen = !state.drawerOpen;
     },
-    setExpansionLimits(state, { payload: { name, min, max, cards } }) {
-      const item = state.items[name];
-      item.min = min;
-      item.max = max;
-      Object.assign(item.cards, cards);
+    setExpansionLimits(state, { payload: { name, min, max, excludedCards } }) {
+      Object.assign(state.items[name], { min, max, excludedCards });
     }
   },
   extraReducers: builder => {
