@@ -15,7 +15,7 @@ export const getExpansions = () => {
   return cardsByExpansion;
 };
 
-const createCardPool = cards => {
+export const createCardPool = cards => {
   const findCard = name => {
     for (const card of cards) {
       if (card.name === name) {
@@ -37,13 +37,13 @@ const createCardPool = cards => {
     findCard,
     findCards,
     filterCards: rules => createCardPool(rules ? rules.filterCards(cards) : cards),
-    shuffle: () => createCardPool(shuffleArray(cards)),
+    shuffle: random => createCardPool(shuffleArray(cards, random)),
     toString: () => cards.toString(),
     valueOf: () => cards
   };
 };
 
-export const createGameSetup = (rules, allCards = ALL_CARDS) => {
+export const createGameSetup = (rules, allCards = ALL_CARDS, random = Math.random) => {
   const additionalCards = [];
   let pickedCards = [];
 
@@ -61,7 +61,7 @@ export const createGameSetup = (rules, allCards = ALL_CARDS) => {
   const getProsperityCards = cards => {
     const numProsperityCards = cards.filter(card => card.set === 'Prosperity').length;
     // include prosperity Platinum and Colony based on the number of Prosperity cards in the deck
-    const includeProsperityCards = Math.random() < numProsperityCards / cards.length;
+    const includeProsperityCards = random() < numProsperityCards / cards.length;
     if (includeProsperityCards) {
       return allCards.findCards(['Platinum', 'Colony']);
     }
@@ -99,7 +99,7 @@ export const createGameSetup = (rules, allCards = ALL_CARDS) => {
 
     const numDarkAgesCards = cards.filter(card => card.set === 'Dark Ages').length;
     // include Shelters based on the number of Dark Ages cards in the deck
-    const includeShelters = Math.random() < numDarkAgesCards / cards.length;
+    const includeShelters = random() < numDarkAgesCards / cards.length;
     if (includeShelters) {
       additionalCards.push(allCards.findCard('Shelters'));
     }
@@ -114,7 +114,7 @@ export const createGameSetup = (rules, allCards = ALL_CARDS) => {
     getAdditionalCards,
     getPickedCards,
     pickCards: () => {
-      pickedCards = rules.pickCardsFromPool(cardPool.shuffle());
+      pickedCards = rules.pickCardsFromPool(cardPool.shuffle(random));
 
       // add additional Alchemy cards
       additionalCards.push(...getAlchemyCards(pickedCards));

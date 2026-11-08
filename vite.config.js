@@ -5,5 +5,9 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'build/dist'
+  },
+  test: {
+    environment: 'jsdom',
+    setupFiles: ['src/test/setup.js']
   }
 });

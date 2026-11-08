@@ -1,4 +1,4 @@
-export const shuffleArray = (original) => {
+export const shuffleArray = (original, random = Math.random) => {
   const arr = original.slice();
   let currentIndex = arr.length;
   let temporaryValue, randomIndex;
@@ -6,7 +6,7 @@ export const shuffleArray = (original) => {
   // While there remain elements to shuffle...
   while (0 !== currentIndex) {
     // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
+    randomIndex = Math.floor(random() * currentIndex);
     currentIndex -= 1;
 
     // And swap it with the current element.

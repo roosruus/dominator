@@ -38,15 +38,26 @@ Examples: `feat(engine): add Young Witch bane card`, `fix(ui): keep dialog limit
 
 ## Verification
 
-There is no automated test suite yet. Before committing:
+Before committing:
 
 1. `npm run lint` passes with no errors.
-2. `npm run build` succeeds (the chunk size warning is expected).
-3. For UI or engine changes, run `npm start` and exercise the affected flow in a browser: shuffle, the expansion
+2. `npm test` passes.
+3. `npm run build` succeeds (the chunk size warning is expected).
+4. For UI changes, run `npm start` and exercise the affected flow in a browser: shuffle, the expansion
    list, the expansion settings dialog, the recommended rules toggle, and that settings survive a reload. Use
    `npm run build && npm run preview` to check the production build.
 
-CI runs lint and build on every push to `master`.
+CI runs lint, tests and build on every push to `master`.
+
+## Testing
+
+- Vitest with jsdom and Testing Library. Tests sit next to the code as `*.test.js` or `*.test.jsx`.
+- Import `describe`, `it` and `expect` from `vitest` explicitly; globals are off.
+- Engine tests pass `seededRandom(seed)` from `src/test/random.js` to `createGameSetup` so results are repeatable.
+  Prefer property checks over many seeds for rule limits, rather than asserting one specific kingdom.
+- Component tests render with a real store from `createStore()` and query by role and accessible name, the way a
+  user finds things. `src/test/setup.js` cleans up the DOM and `localStorage` after each test.
+- A bug fix comes with a test that fails without it.
 
 ## Code style
 
