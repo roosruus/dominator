@@ -96,6 +96,11 @@ describe('filterCards', () => {
     expect(filterNames({ groups })).toEqual(expected);
   });
 
+  it('treats a missing +Actions, +Cards or +Buys as 0', () => {
+    const groups = [{ type: GROUP_TYPE_PLUS_ACTIONS, rule: { value: 0, operator: '==' } }];
+    expect(filterNames({ groups })).toEqual(['Smithy', 'Militia', 'Witch', 'Gardens', 'Lighthouse']);
+  });
+
   it('matches nothing for an invalid operator', () => {
     const groups = [{ type: GROUP_TYPE_COST, rule: { value: 4, operator: '; alert(1)' } }];
     expect(filterNames({ groups })).toEqual([]);

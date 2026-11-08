@@ -111,6 +111,13 @@ describe('createGameSetup', () => {
       }
     });
 
+    it('never picks more than 5 terminal Action cards', () => {
+      for (const kingdom of kingdoms) {
+        const terminals = kingdom.filter(card => card.types.includes('Action') && !card.plusActions);
+        expect(terminals.length).toBeLessThanOrEqual(5);
+      }
+    });
+
     it('never picks two cards from the same disjoint group', () => {
       for (const kingdom of kingdoms) {
         for (const group of RECOMMENDED_DISJOINT_CARDS) {

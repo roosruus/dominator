@@ -57,11 +57,11 @@ export const createRules = ruleData => {
         if (group.type === GROUP_TYPE_COST && card.cost) {
           comparable = card.cost.value;
         } else if (group.type === GROUP_TYPE_PLUS_BUYS) {
-          comparable = card.plusBuys;
+          comparable = card.plusBuys ?? 0;
         } else if (group.type === GROUP_TYPE_PLUS_CARDS) {
-          comparable = card.plusCards;
+          comparable = card.plusCards ?? 0;
         } else if (group.type === GROUP_TYPE_PLUS_ACTIONS) {
-          comparable = card.plusActions;
+          comparable = card.plusActions ?? 0;
         } else {
           return false;
         }

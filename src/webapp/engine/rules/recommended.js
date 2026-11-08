@@ -13,7 +13,16 @@ export const RECOMMENDED_LIMITS = [
   { rule: { value: 1, operator: '>=' }, type: GROUP_TYPE_PLUS_CARDS, min: 1 },
   { rule: { value: 1, operator: '>=' }, type: GROUP_TYPE_PLUS_ACTIONS, min: 1 },
   { name: 'Attack', type: GROUP_TYPE_CARD_TYPE, min: 0, max: 2 },
-  { rule: { value: 0, operator: '==' }, type: GROUP_TYPE_PLUS_ACTIONS, min: 0, max: 5 },
+  // Max 5 terminal Action cards
+  {
+    type: GROUP_TYPE_COMPOUND,
+    subGroups: [
+      { name: 'Action', type: GROUP_TYPE_CARD_TYPE },
+      { rule: { value: 0, operator: '==' }, type: GROUP_TYPE_PLUS_ACTIONS }
+    ],
+    min: 0,
+    max: 5
+  },
   { name: 'Action', type: GROUP_TYPE_CARD_TYPE, min: 0, max: 2, negate: true },
   { rule: { value: 1, operator: '==' }, type: GROUP_TYPE_COST, min: 0, max: 1 },
   { rule: { value: 2, operator: '==' }, type: GROUP_TYPE_COST, min: 1, max: 2 },
