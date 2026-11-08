@@ -9,7 +9,14 @@ export const GROUP_TYPE_PLUS_CARDS = 'pluscards';
 export const GROUP_TYPE_PLUS_ACTIONS = 'plusactions';
 export const GROUP_TYPE_COMPOUND = 'compound';
 
-const VALID_OPERATORS = ['>', '>=', '==', '<=', '<', '!='];
+const COMPARATORS = {
+  '>': (a, b) => a > b,
+  '>=': (a, b) => a >= b,
+  '==': (a, b) => a === b,
+  '<=': (a, b) => a <= b,
+  '<': (a, b) => a < b,
+  '!=': (a, b) => a !== b
+};
 
 export const createRules = ruleData => {
   const rules = ruleData;
@@ -43,7 +50,7 @@ export const createRules = ruleData => {
       case GROUP_TYPE_PLUS_CARDS:
       case GROUP_TYPE_PLUS_ACTIONS: {
         const { value, operator } = group.rule;
-        if (isNaN(value) || !VALID_OPERATORS.includes(operator)) {
+        if (isNaN(value) || !Object.hasOwn(COMPARATORS, operator)) {
           return false;
         }
         let comparable;
@@ -58,7 +65,7 @@ export const createRules = ruleData => {
         } else {
           return false;
         }
-        return eval(`${comparable} ${operator} ${value}`);
+        return COMPARATORS[operator](comparable, value);
       }
       case GROUP_TYPE_COMPOUND: {
         let result = true;
