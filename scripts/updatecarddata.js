@@ -1,6 +1,6 @@
 const fs = require('fs');
 const https = require('https');
-const $ = require('cheerio');
+const cheerio = require('cheerio');
 
 const CARD_LIST_URL = 'https://dominionstrategy.com/all-cards/';
 const OUTPUT_FILE = './src/webapp/data/cards.json';
@@ -40,8 +40,8 @@ https.get(CARD_LIST_URL, (res) => {
     console.log('Card list loaded.\n');
 
     const cards = [];
-    const dom = $.load(rawData);
-    const content = dom('#post-3041 .entry-content');
+    const $ = cheerio.load(rawData);
+    const content = $('#post-3041 .entry-content');
     let currentSet = '';
     let tableTitle = '';
     content.children().each((i, child) => {

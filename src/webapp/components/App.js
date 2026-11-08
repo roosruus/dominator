@@ -1,86 +1,50 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppBar, Box, Button, Card, CardContent, Toolbar, Typography } from '@mui/material';
 
 import ExpansionList from './ExpansionList';
 import ApplyRecommendedRules from './ApplyRecommendedRules';
 import CardTable from './CardTable';
-import { pickCards } from '../actions';
-import { getCurrentRules } from '../reducers';
-import { createGameSetup } from '../engine';
+import { shuffleKingdom } from '../store/pickedCardsSlice';
+import { selectPickedCards } from '../store/selectors';
 
-const styles = theme => ({
-  results: theme.mixins.gutters({
-    paddingTop: 16,
-    paddingBottom: 16,
-    marginTop: theme.spacing.unit * 3
-  }),
-  flex: {
-    flex: 1
-  }
-});
+export default function App() {
+  const dispatch = useDispatch();
+  const { kingdomCards, additionalCards } = useSelector(selectPickedCards);
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.handleTouchTap = this.handleTouchTap.bind(this);
-  }
-
-  handleTouchTap() {
-    const { dispatch, currentRules } = this.props;
-    const gameSetup = createGameSetup(currentRules);
-    const kingdomCards = gameSetup.pickCards();
-    const additionalCards = gameSetup.getAdditionalCards();
-    dispatch(pickCards({ kingdomCards, additionalCards }));
-  }
-
-  render() {
-    const { classes, pickedCards } = this.props;
-    return (
-      <div>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h6" className={classes.flex}>
-              Shuffle My Kingdom
-            </Typography>
-            <Button color="inherit" onClick={this.handleTouchTap}>
-              Shuffle
-            </Button>
-          </Toolbar>
-        </AppBar>
-        <Card>
-          <CardContent>
-            <ExpansionList />
-            <ApplyRecommendedRules />
-          </CardContent>
+  return (
+    <Box sx={{ maxWidth: 1000, mx: 'auto' }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="h1" sx={{ flexGrow: 1 }}>
+            Shuffle My Kingdom
+          </Typography>
+          <Button color="inherit" onClick={() => dispatch(shuffleKingdom())}>
+            Shuffle
+          </Button>
+        </Toolbar>
+      </AppBar>
+      <Card>
+        <CardContent>
+          <ExpansionList />
+          <ApplyRecommendedRules />
+        </CardContent>
+      </Card>
+      {kingdomCards && (
+        <Card sx={{ mt: 3, px: { xs: 2, sm: 3 }, py: 2 }}>
+          <Typography variant="h6" component="h2">
+            Kingdom cards
+          </Typography>
+          <CardTable cards={kingdomCards} />
+          {additionalCards?.length > 0 && (
+            <>
+              <Typography variant="h6" component="h2" sx={{ mt: 2 }}>
+                Additional cards
+              </Typography>
+              <CardTable cards={additionalCards} />
+            </>
+          )}
         </Card>
-        {pickedCards.kingdomCards && (
-          <Card className={classes.results}>
-            <Typography type="title">Kingdom cards</Typography>
-            <CardTable cards={pickedCards.kingdomCards} />
-            {pickedCards.additionalCards &&
-              pickedCards.additionalCards.length > 0 && (
-              <div>
-                <Typography type="title">Additional cards</Typography>
-                <CardTable cards={pickedCards.additionalCards} />
-              </div>
-            )}
-          </Card>
-        )}
-      </div>
-    );
-  }
+      )}
+    </Box>
+  );
 }
-
-const mapStateToProps = state => ({
-  pickedCards: state.pickedCards,
-  currentRules: getCurrentRules(state)
-});
-
-export default connect(mapStateToProps)(withStyles(styles)(App));

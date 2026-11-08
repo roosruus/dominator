@@ -1,23 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 import App from './components/App';
-import rootReducer, { expansionsInitState } from './reducers';
-import { observeStore } from './utils';
-import { persistCardSelections, persistRuleSelections, mergePersistedSelections } from './persistence';
+import { createStore } from './store';
 
-import './style.css';
+const store = createStore();
+const theme = createTheme();
 
-const initialState = mergePersistedSelections(expansionsInitState);
-const store = createStore(rootReducer, initialState);
-observeStore(store, state => state.expansions.items, persistCardSelections);
-observeStore(store, state => state.otherRules, persistRuleSelections);
-
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('app')
+createRoot(document.getElementById('app')).render(
+  <StrictMode>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <App />
+      </ThemeProvider>
+    </Provider>
+  </StrictMode>
 );

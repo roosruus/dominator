@@ -1,111 +1,47 @@
-import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
-import { withStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Checkbox from '@material-ui/core/Checkbox';
-import Collapse from '@material-ui/core/Collapse';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
+import { useDispatch, useSelector } from 'react-redux';
+import { Checkbox, Collapse, List, ListItemButton, ListItemText } from '@mui/material';
+import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
 import Expansion from './Expansion';
-import { toggleExpansion, toggleAllExpansions, toggleExpansionDrawer, setExpansionMinMax } from '../actions';
+import { toggleAllExpansions, toggleExpansionDrawer } from '../store/expansionsSlice';
 import {
-  getExpansionList,
-  getSelectedExpansionsText,
-  areAllExpansionsSelected,
-  isNoExpansionsSelected,
-  isExpansionDrawerOpen
-} from '../reducers';
+  selectAreAllExpansionsSelected,
+  selectExpansionList,
+  selectIsExpansionDrawerOpen,
+  selectIsNoExpansionsSelected,
+  selectSelectedExpansionsText
+} from '../store/selectors';
 
-const styles = {
-  noLeftPadding: {
-    paddingLeft: 0
-  }
-};
+export default function ExpansionList() {
+  const dispatch = useDispatch();
+  const expansions = useSelector(selectExpansionList);
+  const selectedExpansionsText = useSelector(selectSelectedExpansionsText);
+  const allSelected = useSelector(selectAreAllExpansionsSelected);
+  const noneSelected = useSelector(selectIsNoExpansionsSelected);
+  const open = useSelector(selectIsExpansionDrawerOpen);
 
-class ExpansionList extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.handleExpansionSelected = this.handleExpansionSelected.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleCheck = this.handleCheck.bind(this);
-    this.handleMinMaxChange = this.handleMinMaxChange.bind(this);
-  }
-
-  handleExpansionSelected(name) {
-    const { dispatch } = this.props;
-    dispatch(toggleExpansion(name));
-  }
-
-  handleClick() {
-    const { dispatch } = this.props;
-    dispatch(toggleExpansionDrawer());
-  }
-
-  preventClick(e) {
-    e.stopPropagation();
-  }
-
-  handleCheck() {
-    const { dispatch, areAllExpansionsSelected } = this.props;
-    dispatch(toggleAllExpansions(!areAllExpansionsSelected));
-  }
-
-  handleMinMaxChange(payload) {
-    const { dispatch } = this.props;
-    if (!isNaN(payload.min) && !isNaN(payload.max)) {
-      dispatch(setExpansionMinMax(payload));
-    }
-  }
-
-  render() {
-    const { classes } = this.props;
-    return (
-      <List>
-        <ListItem button onClick={this.handleClick} className={this.props.open ? classes.noLeftPadding : ''}>
-          {this.props.open && (
-            <Checkbox
-              checked={this.props.areAllExpansionsSelected}
-              indeterminate={!(this.props.areAllExpansionsSelected || this.props.isNoExpansionsSelected)}
-              onChange={this.handleCheck}
-              onClick={this.preventClick}
-            />
-          )}
-          <ListItemText
-            primary="Expansions"
-            secondary={!this.props.open ? this.props.selectedExpansions : ''}
+  return (
+    <List>
+      <ListItemButton onClick={() => dispatch(toggleExpansionDrawer())} sx={open ? { pl: 0 } : undefined}>
+        {open && (
+          <Checkbox
+            checked={allSelected}
+            indeterminate={!allSelected && !noneSelected}
+            onChange={() => dispatch(toggleAllExpansions(!allSelected))}
+            onClick={e => e.stopPropagation()}
+            slotProps={{ input: { 'aria-label': 'Select all expansions' } }}
           />
-          {this.props.open ? <ExpandLess /> : <ExpandMore />}
-        </ListItem>
-        <Collapse component="li" in={this.props.open} timeout="auto" unmountOnExit>
-          <List disablePadding>
-            {this.props.expansions.map((expansion, i) => (
-              <Expansion
-                name={expansion.name}
-                selected={expansion.selected}
-                min={expansion.min}
-                max={expansion.max}
-                onSelected={this.handleExpansionSelected}
-                onMinMaxChange={this.handleMinMaxChange}
-                key={`exp_${i}`}
-              />
-            ))}
-          </List>
-        </Collapse>
-      </List>
-    );
-  }
+        )}
+        <ListItemText primary="Expansions" secondary={open ? '' : selectedExpansionsText} />
+        {open ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+      <Collapse component="li" in={open} timeout="auto" unmountOnExit>
+        <List disablePadding>
+          {expansions.map(({ name, selected, min, max }) => (
+            <Expansion key={name} name={name} selected={selected} min={min} max={max} />
+          ))}
+        </List>
+      </Collapse>
+    </List>
+  );
 }
-
-const mapStateToProps = state => ({
-  expansions: getExpansionList(state),
-  selectedExpansions: getSelectedExpansionsText(state),
-  areAllExpansionsSelected: areAllExpansionsSelected(state),
-  isNoExpansionsSelected: isNoExpansionsSelected(state),
-  open: isExpansionDrawerOpen(state)
-});
-
-export default connect(mapStateToProps)(withStyles(styles)(ExpansionList));
