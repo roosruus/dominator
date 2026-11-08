@@ -231,6 +231,8 @@ const getPartOf = card => {
     partOf = 'Shelters';
   } else if(card.types.includes('Ruins')) {
     partOf = 'Ruins';
+  } else if(card.types.includes('Castle') && card.name !== 'Castles') {
+    partOf = 'Castles';
   } else if(card.name === 'Avanto') {
     partOf = 'Sauna';
   } else if(card.name === 'Plunder') {
