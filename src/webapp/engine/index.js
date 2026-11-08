@@ -2,18 +2,16 @@ import { shuffleArray } from './utils';
 import { DEFAULT_RULES, RULES_KINGDOM_CARDS } from './rules/index';
 import { ALL_CARDS } from '../data';
 
-export const getExpansions = () => {
-  const cardsByExpansion = {};
-  
-  for(let card of ALL_CARDS) {
-    if(!cardsByExpansion[card.set]) {
-      cardsByExpansion[card.set] = {};
-    }
-    cardsByExpansion[card.set][card.name] = card;
-  }
-  
-  return cardsByExpansion;
-};
+const CARDS_BY_EXPANSION = {};
+for (const card of ALL_CARDS) {
+  CARDS_BY_EXPANSION[card.set] ??= {};
+  CARDS_BY_EXPANSION[card.set][card.name] = card;
+}
+
+export const getExpansions = () => CARDS_BY_EXPANSION;
+
+export const getKingdomCardsInExpansion = expansion =>
+  RULES_KINGDOM_CARDS.filterCards(Object.values(CARDS_BY_EXPANSION[expansion] ?? {}));
 
 export const createCardPool = cards => {
   const findCard = name => {

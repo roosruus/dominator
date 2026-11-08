@@ -7,7 +7,7 @@ import ExpansionMinMax from './ExpansionMinMax';
 import { MAX_KINGDOM_CARDS } from '../engine/rules';
 import { setExpansionLimits, toggleExpansion } from '../store/expansionsSlice';
 
-export default function Expansion({ name, selected, min = 0, max = MAX_KINGDOM_CARDS }) {
+export default function Expansion({ name, selected, min = 0, max = MAX_KINGDOM_CARDS, excludedCards = [] }) {
   const dispatch = useDispatch();
   const [dialogOpen, setDialogOpen] = useState(false);
 
@@ -37,7 +37,14 @@ export default function Expansion({ name, selected, min = 0, max = MAX_KINGDOM_C
           <ListItemText primary={name} secondary={hasCustomLimits ? `Min: ${min}, Max: ${max}` : ''} />
         </ListItemButton>
       </ListItem>
-      <ExpansionMinMax title={name} open={dialogOpen} onClose={handleDialogClose} min={min} max={max} />
+      <ExpansionMinMax
+        title={name}
+        open={dialogOpen}
+        onClose={handleDialogClose}
+        min={min}
+        max={max}
+        excludedCards={excludedCards}
+      />
     </>
   );
 }

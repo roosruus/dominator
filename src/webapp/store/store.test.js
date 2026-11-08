@@ -42,19 +42,15 @@ describe('expansions', () => {
     expect(selectAreAllExpansionsSelected(store.getState())).toBe(true);
   });
 
-  it('sets limits and card selections without dropping other cards', () => {
+  it('sets limits and excluded cards', () => {
     const store = createStore();
-    const cardsBefore = Object.keys(store.getState().expansions.items.Alchemy.cards);
-    const transmute = store.getState().expansions.items.Alchemy.cards.Transmute;
-
-    store.dispatch(
-      setExpansionLimits({ name: 'Alchemy', min: 2, max: 4, cards: { Transmute: { ...transmute, selected: false } } })
-    );
-
-    const alchemy = store.getState().expansions.items.Alchemy;
-    expect(alchemy).toMatchObject({ min: 2, max: 4 });
-    expect(alchemy.cards.Transmute.selected).toBe(false);
-    expect(Object.keys(alchemy.cards)).toEqual(cardsBefore);
+    store.dispatch(setExpansionLimits({ name: 'Alchemy', min: 2, max: 4, excludedCards: ['Transmute'] }));
+    expect(store.getState().expansions.items.Alchemy).toEqual({
+      selected: true,
+      min: 2,
+      max: 4,
+      excludedCards: ['Transmute']
+    });
   });
 
   it('closes the expansion drawer when cards are picked', () => {
@@ -70,10 +66,7 @@ describe('selectCurrentRules', () => {
   it('includes the selected expansions with their limits and excluded cards', () => {
     const store = createStore();
     selectOnly(store, 'Seaside');
-    const lighthouse = store.getState().expansions.items.Seaside.cards.Lighthouse;
-    store.dispatch(
-      setExpansionLimits({ name: 'Seaside', min: 3, max: 6, cards: { Lighthouse: { ...lighthouse, selected: false } } })
-    );
+    store.dispatch(setExpansionLimits({ name: 'Seaside', min: 3, max: 6, excludedCards: ['Lighthouse'] }));
     store.dispatch(toggleApplyRecommendedRules());
 
     const { filters } = selectCurrentRules(store.getState());
@@ -108,21 +101,87 @@ describe('shuffleKingdom', () => {
 });
 
 describe('persistence', () => {
-  it('restores selections and rules from localStorage', () => {
+  const savedSettings = () => JSON.parse(localStorage.getItem('settings'));
+
+  it('saves only selections, not card data', () => {
     const store = createStore();
     selectOnly(store, 'Seaside');
-    store.dispatch(setExpansionLimits({ name: 'Seaside', min: 2, max: 5, cards: {} }));
+    store.dispatch(setExpansionLimits({ name: 'Seaside', min: 2, max: 5, excludedCards: ['Lighthouse'] }));
+    store.dispatch(toggleApplyRecommendedRules());
+
+    const settings = savedSettings();
+    expect(settings).toMatchObject({ version: 2, applyRecommendedRules: false });
+    expect(settings.expansions.Seaside).toEqual({ selected: true, min: 2, max: 5, excludedCards: ['Lighthouse'] });
+    expect(settings.expansions.Guilds).toEqual({ selected: false, min: 0, max: 10, excludedCards: [] });
+  });
+
+  it('restores saved settings', () => {
+    const store = createStore();
+    selectOnly(store, 'Seaside');
+    store.dispatch(setExpansionLimits({ name: 'Seaside', min: 2, max: 5, excludedCards: ['Lighthouse'] }));
     store.dispatch(toggleApplyRecommendedRules());
 
     const restored = createStore().getState();
-    expect(restored.expansions.items.Seaside).toMatchObject({ selected: true, min: 2, max: 5 });
+    expect(restored.expansions.items.Seaside).toEqual({
+      selected: true,
+      min: 2,
+      max: 5,
+      excludedCards: ['Lighthouse']
+    });
     expect(restored.expansions.items.Guilds.selected).toBe(false);
     expect(restored.otherRules.applyRecommendedRules).toBe(false);
   });
 
-  it('falls back to defaults when saved data is unreadable', () => {
-    localStorage.setItem('selections', '{not json');
-    localStorage.setItem('rules', 'undefined');
+  it('migrates settings saved in the old format and removes them', () => {
+    const staleCard = (name, selected) => ({ name, set: 'Seaside', types: ['Action'], cost: { value: 99 }, selected });
+    localStorage.setItem(
+      'selections',
+      JSON.stringify({
+        Seaside: {
+          selected: true,
+          min: 1,
+          max: 4,
+          cards: { Lighthouse: staleCard('Lighthouse', false), Bazaar: staleCard('Bazaar', true) }
+        },
+        Guilds: { selected: false, min: 0, max: 10, cards: {} },
+        'Removed Expansion': { selected: true, min: 0, max: 10, cards: {} }
+      })
+    );
+    localStorage.setItem('rules', JSON.stringify({ applyRecommendedRules: false }));
+
+    const state = createStore().getState();
+    expect(state.expansions.items.Seaside).toEqual({ selected: true, min: 1, max: 4, excludedCards: ['Lighthouse'] });
+    expect(state.expansions.items.Guilds.selected).toBe(false);
+    expect(state.expansions.items.Alchemy.selected).toBe(true);
+    expect(state.expansions.items['Removed Expansion']).toBeUndefined();
+    expect(state.otherRules.applyRecommendedRules).toBe(false);
+
+    expect(savedSettings().expansions.Seaside.excludedCards).toEqual(['Lighthouse']);
+    expect(localStorage.getItem('selections')).toBeNull();
+    expect(localStorage.getItem('rules')).toBeNull();
+  });
+
+  it('replaces invalid saved values with defaults', () => {
+    localStorage.setItem(
+      'settings',
+      JSON.stringify({
+        version: 2,
+        expansions: { Seaside: { selected: 'yes', min: 99, max: -1, excludedCards: ['Lighthouse', 7] }, Guilds: null },
+        applyRecommendedRules: 'no'
+      })
+    );
+    const state = createStore().getState();
+    expect(state.expansions.items.Seaside).toEqual({ selected: true, min: 0, max: 10, excludedCards: ['Lighthouse'] });
+    expect(state.expansions.items.Guilds.selected).toBe(true);
+    expect(state.otherRules.applyRecommendedRules).toBe(true);
+  });
+
+  it.each([
+    ['unreadable JSON', 'settings', '{not json'],
+    ['an unknown version', 'settings', JSON.stringify({ version: 99, applyRecommendedRules: false })],
+    ['unreadable old-format data', 'selections', '{not json']
+  ])('falls back to defaults for %s', (_, key, value) => {
+    localStorage.setItem(key, value);
     const state = createStore().getState();
     expect(selectAreAllExpansionsSelected(state)).toBe(true);
     expect(state.otherRules.applyRecommendedRules).toBe(true);
