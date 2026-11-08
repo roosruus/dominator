@@ -33,7 +33,7 @@ Hinterlands, Dark Ages, Guilds, Adventures, Empires, Nocturne, Renaissance, and 
 
 - React 19 with function components and hooks
 - Redux Toolkit for state, Material UI 9 for the interface
-- Vite 8 for the dev server and bundling, ESLint 10 for linting
+- Vite 8 for the dev server and bundling, Vitest and Testing Library for tests, ESLint 10 for linting
 - Firebase Hosting for deployment
 
 ## Getting started
@@ -54,6 +54,8 @@ npm start          # dev server at http://localhost:5173
 | `npm run build`            | Create a production build in `build/dist`                      |
 | `npm run preview`          | Serve the production build locally                             |
 | `npm run lint`             | Lint the project with ESLint                                   |
+| `npm test`                 | Run the test suite once                                        |
+| `npm run test:watch`       | Run tests in watch mode                                        |
 | `npm run updatecarddata`   | Regenerate `src/webapp/data/cards.json` (see below)            |
 | `npm run deployToFirebase` | Build and deploy to Firebase Hosting (needs a `.firebaserc`)   |
 
@@ -82,6 +84,7 @@ src/webapp/
   engine/                    kingdom picking engine
     rules/                   rule factory, kingdom card filter and the recommended rules
   store/                     Redux Toolkit slices, selectors and localStorage persistence
+src/test/                    test setup and helpers
 ```
 
 ### How picking works
