@@ -28,11 +28,11 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/):
 - Use the body to explain why, and list notable changes as bullets when a commit touches several areas.
 
 Examples: `feat(engine): add Young Witch bane card`, `fix(ui): keep dialog limits when cancelling`,
-`build: upgrade webpack to 5.113`.
+`build: upgrade vite to 8.4`.
 
 ## Environment
 
-- Node.js 24.11+ (see `.nvmrc`). Babel 8 requires it.
+- Node.js 24.15+ (see `.nvmrc`). jsdom requires it.
 - `.npmrc` pins the public npm registry. Keep it; don't commit lockfile entries resolved from other registries.
 - Dependencies are pinned to exact versions (`npm install --save-exact`). Commit `package-lock.json` with them.
 
@@ -41,9 +41,10 @@ Examples: `feat(engine): add Young Witch bane card`, `fix(ui): keep dialog limit
 There is no automated test suite yet. Before committing:
 
 1. `npm run lint` passes with no errors.
-2. `npm run build` succeeds (bundle size warnings are expected).
+2. `npm run build` succeeds (the chunk size warning is expected).
 3. For UI or engine changes, run `npm start` and exercise the affected flow in a browser: shuffle, the expansion
-   list, the expansion settings dialog, the recommended rules toggle, and that settings survive a reload.
+   list, the expansion settings dialog, the recommended rules toggle, and that settings survive a reload. Use
+   `npm run build && npm run preview` to check the production build.
 
 CI runs lint and build on every push to `master`.
 
@@ -51,7 +52,8 @@ CI runs lint and build on every push to `master`.
 
 - Formatting is enforced by ESLint (`eslint.config.js`): 2-space indent, single quotes, semicolons, 120-character
   lines. Run `npx eslint --fix` for mechanical fixes.
-- Plain JavaScript with ES modules in `src/`, CommonJS in config files and `scripts/`.
+- Plain JavaScript, ES modules everywhere (`"type": "module"`). Files containing JSX use the `.jsx` extension;
+  the card data scraper is CommonJS (`.cjs`).
 - Match the surrounding code; keep comments sparse and about why, not what.
 
 ## React and UI
@@ -77,7 +79,7 @@ CI runs lint and build on every push to `master`.
 
 - `src/webapp/engine/` is framework-independent: no React or Redux imports.
 - Recommended rules live in `engine/rules/recommended.js`; non-kingdom card exclusions in `engine/rules/index.js`.
-- `src/webapp/data/cards.json` is generated. Don't edit it by hand: fix `scripts/updatecarddata.js` and rerun
+- `src/webapp/data/cards.json` is generated. Don't edit it by hand: fix `scripts/updatecarddata.cjs` and rerun
   `npm run updatecarddata`, then review the diff.
 
 ## Tooling notes
