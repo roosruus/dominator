@@ -98,7 +98,7 @@ export const createRules = ruleData => {
   const wouldExceedMax = (pickedCards, card, limits) =>
     limits.some(
       limit =>
-        limit.max &&
+        limit.max !== undefined &&
         isCardInGroup(card, limit) &&
         pickedCards.filter(picked => isCardInGroup(picked, limit)).length >= limit.max
     );

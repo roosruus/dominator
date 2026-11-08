@@ -147,6 +147,11 @@ describe('pickCardsFromPool', () => {
     expect(pick({ include })).toEqual(['Lighthouse', 'Bazaar']);
   });
 
+  it('picks no cards from a group with a maximum of 0', () => {
+    const limits = [{ type: GROUP_TYPE_SET, name: 'Base', min: 0, max: 0 }];
+    expect(pick({ include: { limits } })).toEqual(['Lighthouse', 'Bazaar']);
+  });
+
   it('respects other groups\' maximums while filling a minimum', () => {
     const limits = [
       { type: GROUP_TYPE_CARD_TYPE, name: 'Attack', min: 0, max: 1 },
