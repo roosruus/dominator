@@ -88,6 +88,14 @@ export const createRules = ruleData => {
     return true;
   };
 
+  const wouldExceedMax = (pickedCards, card, limits) =>
+    limits.some(
+      limit =>
+        limit.max &&
+        isCardInGroup(card, limit) &&
+        pickedCards.filter(picked => isCardInGroup(picked, limit)).length >= limit.max
+    );
+
   return {
     filterCards: cards => {
       let filteredCards = cards;
@@ -132,7 +140,11 @@ export const createRules = ruleData => {
               cursor++
             ) {
               const card = cardPool.get(cursor);
-              if (satisfiesRules(pickedCards, card.name) && isCardInGroup(card, group)) {
+              if (
+                satisfiesRules(pickedCards, card.name) &&
+                isCardInGroup(card, group) &&
+                !wouldExceedMax(pickedCards, card, limits)
+              ) {
                 pickedCards.push(card);
               }
             }
@@ -149,16 +161,11 @@ export const createRules = ruleData => {
           pickThisCard = false;
         } else if (rules.filters.include) {
           const { groups, limits } = rules.filters.include;
-          for (let limit of limits) {
-            if (
-              !isCardInGroups(pickedCard, groups) ||
-              (isCardInGroup(pickedCard, limit) &&
-                limit.max &&
-                pickedCards.filter(card => isCardInGroup(card, limit)).length >= limit.max)
-            ) {
-              pickThisCard = false;
-              break;
-            }
+          if (
+            limits.length > 0 &&
+            (!isCardInGroups(pickedCard, groups) || wouldExceedMax(pickedCards, pickedCard, limits))
+          ) {
+            pickThisCard = false;
           }
         }
 

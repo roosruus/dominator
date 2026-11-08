@@ -99,6 +99,18 @@ describe('createGameSetup', () => {
       expect(kingdoms.filter(kingdom => kingdom.length !== 10)).toEqual([]);
     });
 
+    it('never exceeds the Attack limit', () => {
+      for (const kingdom of kingdoms) {
+        expect(kingdom.filter(card => card.types.includes('Attack')).length).toBeLessThanOrEqual(2);
+      }
+    });
+
+    it('never picks more than one hand-reducing Attack', () => {
+      for (const kingdom of kingdoms) {
+        expect(kingdom.filter(card => card.categories?.includes('handreducing')).length).toBeLessThanOrEqual(1);
+      }
+    });
+
     it('never picks two cards from the same disjoint group', () => {
       for (const kingdom of kingdoms) {
         for (const group of RECOMMENDED_DISJOINT_CARDS) {

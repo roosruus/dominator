@@ -142,6 +142,14 @@ describe('pickCardsFromPool', () => {
     expect(pick({ include })).toEqual(['Lighthouse', 'Bazaar']);
   });
 
+  it('respects other groups\' maximums while filling a minimum', () => {
+    const limits = [
+      { type: GROUP_TYPE_CARD_TYPE, name: 'Attack', min: 0, max: 1 },
+      { type: GROUP_TYPE_COST, rule: { value: 4, operator: '>=' }, min: 4 }
+    ];
+    expect(pick({ include: { limits } }, 5)).toEqual(['Smithy', 'Market', 'Militia', 'Gardens', 'Village']);
+  });
+
   it('does not pick disjoint cards together', () => {
     expect(pick({ disjointCards: [['Village', 'Smithy']] })).toEqual(['Village', 'Market', 'Militia']);
   });
